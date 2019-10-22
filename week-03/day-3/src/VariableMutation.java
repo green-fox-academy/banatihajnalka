@@ -40,7 +40,7 @@ public class VariableMutation {
 
         int j = 1521;
         System.out.println(j % 3 == 0 || j % 5 == 0);
-        
+
 
     }
 }
