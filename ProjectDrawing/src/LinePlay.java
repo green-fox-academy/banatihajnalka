@@ -3,23 +3,20 @@ import java.awt.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-public class Triangle {
+public class LinePlay {
     public static void mainDraw(Graphics graphics) {
 
-        graphics.setColor(Color.black);
-        graphics.drawPolygon(new int[]{WIDTH / 2, 0, WIDTH}, new int[]{0, HEIGHT, HEIGHT}, 3);
-        double side = Math.sqrt((Math.pow(HEIGHT, 2) + Math.pow(WIDTH, 2)));
+        graphics.setColor(Color.red);
+        for (int i = 0; i < 15; i++) {
+            graphics.drawLine(0, HEIGHT / 16 * (i + 2),WIDTH / 16 * (i + 1), HEIGHT);
+        }
 
-        for (int i = 1; i <= 15; i++) {
-            graphics.drawLine(WIDTH / 2 - i * WIDTH / 32, 0 + i * HEIGHT / 16, WIDTH / 2 + i * WIDTH / 32, 0 + i * HEIGHT / 16);
-        }
-        for (int i = 1; i <= 15; i++) {
-            graphics.drawLine(WIDTH / 2 - i * WIDTH / 32, 0 + i * HEIGHT / 16, WIDTH - i * WIDTH /16, HEIGHT);
-        }
-        for (int i = 1; i <= 15; i++) {
-            graphics.drawLine(WIDTH / 2 + i * WIDTH / 32, 0 + i * HEIGHT / 16, 0 + i * HEIGHT / 16, HEIGHT);
+        graphics.setColor(Color.blue);
+        for (int i = 0; i < 15; i++) {
+            graphics.drawLine(WIDTH / 16 * (i + 2), 0, WIDTH, HEIGHT / 16 * (i + 1));
         }
     }
+
 
     // Don't touch the code below
     static int WIDTH = 320;
