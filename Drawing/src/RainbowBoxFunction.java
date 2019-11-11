@@ -23,7 +23,7 @@ public class RainbowBoxFunction {
                 drawRainbow(size / z, rainbow, graphics);
             }
         }
-        
+
     private static void drawRainbow(int size, Color[] rainbow, Graphics graphics) {
         Random random = new Random();
         graphics.setColor((rainbow[random.nextInt(7)]));
