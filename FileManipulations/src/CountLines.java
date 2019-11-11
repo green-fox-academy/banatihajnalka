@@ -14,16 +14,17 @@ public class CountLines {
 
         String filename =  "my-file.txt";
         countNumberOfLInes(filename);
+
     }
 
     private static void countNumberOfLInes(String counter) {
         Path filePath = Paths.get(counter);
-        List<String> text = new ArrayList<>();
+        List<String> textLine = new ArrayList<>();
         try {
-            text = Files.readAllLines(filePath);
+            textLine = Files.readAllLines(filePath);
         } catch (IOException e) {
-            System.out.println("Unable to read file: " + counter);
+ //           System.out.println("Unable to read file: " + counter);
         }
-            System.out.println(text.size());
+        System.out.println(textLine.size());
         }
     }

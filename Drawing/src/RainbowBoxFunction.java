@@ -26,7 +26,7 @@ public class RainbowBoxFunction {
 
     private static void drawRainbow(int size, Color[] rainbow, Graphics graphics) {
         Random random = new Random();
-        graphics.setColor((rainbow[random.nextInt(7)])); //not using all of colors, just randomize 
+        graphics.setColor((rainbow[random.nextInt(7)])); //not using all of colors, just randomize
         graphics.fillRect(WIDTH / 2 - size / 2, HEIGHT / 2 - size / 2, size, size);
     }
     // Don't touch the code below
