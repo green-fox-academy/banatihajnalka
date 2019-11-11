@@ -8,9 +8,15 @@ public class Polygon2 {
 
         graphics.setColor(Color.black);
         int side = (int) Math.sqrt((Math.pow(HEIGHT, 2) + Math.pow(WIDTH, 2)));
-        for (int i = 1; i <= 20; i++) {
-            graphics.drawPolygon(new int[]{0, (WIDTH / 2 ), (WIDTH/ 20 * i)}, new int[]{HEIGHT, 0, HEIGHT}, 3);
+
+        int x = WIDTH;
+        int y = HEIGHT;
+
+        for (int i = 1; x <= WIDTH; i++) {
+            
         }
+        int leftX = x - WIDTH /2;
+        int leftY =
     }
  /*     graphics.drawPolygon(new int[]{WIDTH / 2, 0, WIDTH}, new int[]{0, HEIGHT, HEIGHT}, 3);
         graphics.drawPolygon(new int[]{WIDTH / 4, WIDTH / 4 * 3, WIDTH / 2}, new int[]{HEIGHT / 2, HEIGHT / 2, HEIGHT}, 3);
