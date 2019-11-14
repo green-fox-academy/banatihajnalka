@@ -39,9 +39,6 @@ public class Trees {
         nyar.leafColor = "yellow";
         nyar.age = 10;
         nyar.speak();
-
-
-
     }
 
 }
