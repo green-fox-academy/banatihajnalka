@@ -1,9 +1,7 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Logs {
@@ -17,25 +15,31 @@ public class Logs {
         Path filePath = Paths.get(logs);
         List<String> fromToWork = new ArrayList<>();
 
-        try {                                                          //read into an arraylist
+        try {
             fromToWork = Files.readAllLines(filePath);
         } catch (IOException e) {
         }
         System.out.println(fromToWork);
 
-
-        ArrayList<String> justIP = splitTextFunction(fromToWork);
+        int colNumber;
+        ArrayList<String> justIP = splitTextFunction(fromToWork, 8);
         String[] uniqueIP = findUniqueFunction(justIP);
         printUniqueIPFunction(uniqueIP);
+
+        ArrayList<String> justGetPost = splitTextFunction(fromToWork, 11);
+        double occurenceGet = Collections.frequency(justGetPost, "GET");
+        System.out.println(occurenceGet);
+        double occurencePost = Collections.frequency(justGetPost, "POST");
+        System.out.println(occurencePost);
+        double ratio = (occurenceGet / occurencePost);
+        System.out.println("The GET - POST ratio is: " + ratio);
+
     }
 
-  //  private static String[] justIPFunction(String[] outputSplitted) {
- //      Str
- //   }
 
     private static void printUniqueIPFunction(String[] uniqueIP) {
         for (int i = 0; i < uniqueIP.length; i++) {
-            System.out.println("Theese are the unique IPS: " + uniqueIP[i]);
+  //          System.out.println("These are the unique IPS: " + uniqueIP[i]);
         }
     }
 
@@ -49,14 +53,14 @@ public class Logs {
     }
 
 
-    private static ArrayList<String> splitTextFunction(List<String> fromToWork) {
+    private static ArrayList<String> splitTextFunction(List<String> fromToWork, int colNumber) {
         int length = fromToWork.size();
         String[] outputSplitted = new String[length];
         ArrayList<String> justIP= new ArrayList<>();
         for (int i =0; i < fromToWork.size(); i++) {
            outputSplitted = fromToWork.get(i).split(" ");
-           justIP.add(outputSplitted[8]);
-           System.out.println(outputSplitted[8]);
+           justIP.add(outputSplitted[colNumber]);
+  //         System.out.println(outputSplitted[colNumber]);
         }
         return justIP;
 
