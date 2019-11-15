@@ -9,11 +9,15 @@ public class Unique {
         //  should print: `[1, 11, 34, 52, 61]`
 
         int intArray[] = {1, 11, 34, 11, 52, 61, 1, 34};
+        HashMap<Integer, Integer> findUnique = findUniqueFunction(intArray);
+        System.out.println(findUnique.keySet());
+        }
 
+    private static HashMap<Integer, Integer> findUniqueFunction(int[] intArray) {
         HashMap<Integer, Integer> findUnique = new HashMap<Integer, Integer>(intArray.length);
         for (int i = 0; i < intArray.length; i++) {
             findUnique.put(intArray[i], i);
-        }
-        System.out.println(findUnique.keySet());
+        } return findUnique;
     }
+
 }
