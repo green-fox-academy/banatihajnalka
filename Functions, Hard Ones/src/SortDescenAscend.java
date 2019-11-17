@@ -22,7 +22,6 @@ public class SortDescenAscend {
 
         List<Integer> descList = descendFunction(input);
         System.out.println(descList);
-
     }
 
     private static List<Integer> ascendFunction(List<Integer> input) {
@@ -38,7 +37,7 @@ public class SortDescenAscend {
         return descList;
     }
 
-    }
+}
 
  //       boolean isNotInDesc;
   //      for (int i = 0; i < descList.size(); i++) {
