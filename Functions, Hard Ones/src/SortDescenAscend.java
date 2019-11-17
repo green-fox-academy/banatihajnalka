@@ -20,7 +20,9 @@ public class SortDescenAscend {
         List<Integer> ascList = ascendFunction(input);
         System.out.println(ascList);
 
-        List<Integer> descList = descendFunction(input);
+        boolean descendFlag = true;
+
+        List<Integer> descList = descendFunction(input, descendFlag);
         System.out.println(descList);
     }
 
@@ -30,16 +32,12 @@ public class SortDescenAscend {
         return ascList;
     }
 
-    private static List<Integer> descendFunction(List<Integer> input) {
+    private static List<Integer> descendFunction(List<Integer> input, boolean direction) {
         List<Integer> descList = input;
         Collections.sort(descList);
-        Collections.reverse(descList);
+        if (direction) {
+            Collections.reverse(descList);
+        }
         return descList;
     }
-
 }
-
- //       boolean isNotInDesc;
-  //      for (int i = 0; i < descList.size(); i++) {
- //       if (descList.get(i - 1) >= descList.get(i)) {
-//         isNotInDesc = true;
