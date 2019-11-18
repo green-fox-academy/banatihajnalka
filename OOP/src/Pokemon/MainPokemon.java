@@ -4,14 +4,12 @@ import java.util.List;
 
 public class MainPokemon {
     public static void main(String[] args) {
-        List<Pokemon> pokemonOfAsh = initializePokemons();
-
         // Every pokemon has a name and a type.
         // Certain types are effective against others, e.g. water is effective against fire.
-
         // Ash has a few pokemon.
         // A wild pokemon appeared!
-
+        
+        List<Pokemon> pokemonOfAsh = initializePokemons();
         Pokemon wildPokemon = new Pokemon("Oddish", "leaf", "water");
 
         // Which pokemon should Ash use?
