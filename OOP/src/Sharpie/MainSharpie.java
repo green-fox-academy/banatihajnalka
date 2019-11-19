@@ -7,5 +7,6 @@ public class MainSharpie {
         System.out.println(green.inkAmount);
         green.use();
         System.out.println(green.inkAmount);
+
     }
 }
