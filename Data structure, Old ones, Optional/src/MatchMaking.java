@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+
 // Write a method that joins the two lists by matching one girl with one boy into a new list
 // If someone has no pair, he/she should be the element of the list too
 // Expected output: "Eve", "Joe", "Ashley", "Fred"...
