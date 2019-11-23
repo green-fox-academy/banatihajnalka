@@ -19,7 +19,7 @@ public class IsInList {
             result = list.contains(list2.get(i));
             if (!result) {
                 System.out.println("False");
-                return result;
+                break;
             }
         }
         System.out.println("True");
