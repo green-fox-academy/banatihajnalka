@@ -21,8 +21,9 @@ public class IsInList {
                 System.out.println("False");
                 break;
             }
+        } if (result) {
+            System.out.println("True");
         }
-        System.out.println("True");
         return result;
     }
 }
