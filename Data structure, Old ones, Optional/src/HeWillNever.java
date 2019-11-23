@@ -23,29 +23,11 @@ public class HeWillNever {
         map.put(11, "\n");
         map.put(3, "say goodbye ");
 
- //       decodeFunction(notSoCrypticMessage, map);
+        //      decodeFunction(notSoCrypticMessage, map);
 
-        System.out.println(out);
+        for (int i = 0; i < notSoCrypticMessage.length; i++) {
+            out += map.get(notSoCrypticMessage[i]);
+        }
+            System.out.println(out);
+        }
     }
-}
-//
-//    private static StringBuilder decodeFunction(int[] notSoCrypticMessage, Map<Integer, String> map) {
-//        //     String[] notSoCrypticMessageString = new String[notSoCrypticMessage.length];
-//        StringBuilder out = new StringBuilder();
-//        for (Map.Entry<Integer, String> data : map.entrySet()) {
-//            if (data.getKey() = notSoCrypticMessage.);
-//        }
-//
-
-
-
-// //       String result;
-//        for (Map.Entry<Integer, String> data : map.entrySet()) {
-//            for (int i = 0; i < notSoCrypticMessage.length; i++) {
-//                if (map.containsKey(i)) {
-//                    out.append(map.entrySet.getValue().toString());
-////                    result = out.toString();
-//                    return out;
- //               }
-//
-
