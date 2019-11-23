@@ -20,8 +20,8 @@ public class QuoteSwap {
 
     private static String quoteSwap(ArrayList<String> list) {
         Collections.swap(list, 2, 5);
-        String joined = String.join(",", list);
-        String result = joined.replace(",", " ");
-        return result;
+        String joined = String.join(" ", list);  //better with delimiter " ", using "," made to spaces besides to leave the comma between the two part
+   //     String result = joined.replace(",", " ");
+        return joined;
     }
 }
