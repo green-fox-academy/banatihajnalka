@@ -32,7 +32,7 @@ public class SwearWords2 {
 // forditott loop
 // split
 // ures listaba vissza, ami nem csunya
-        
+
         int countRemoved = 0;
         for (int i = 0; i < wordList.size(); i++) {
             String wordTeRemove = wordList.get(i).toString().replace(".","").replace(",","").replace(" ","").toLowerCase();
