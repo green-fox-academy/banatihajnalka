@@ -8,6 +8,14 @@ public class MainPirates {
         pirate1.name = "Jack";
         System.out.println(pirate1.name + " " + pirate1.healthPoints);
 
+        Ship ship = new Ship();
+        ship.addPirates();
+        System.out.println(ship.pirateList.toString());
+
+
+        System.out.println(ship.getPoorPirates());
+
+
     }
 
 
