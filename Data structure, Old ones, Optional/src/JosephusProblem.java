@@ -22,10 +22,9 @@ public class JosephusProblem {
                 currentToBeKilled = currentToBeKilled % currentSize;
             }
             people.remove((currentToBeKilled));
-            System.out.println("Our current set " + currentToBeKilled + ": " + people);
             currentSize--;
             currentToBeKilled++;
-
+            System.out.println("Our current set " + currentToBeKilled + ": " + people);
         }
     }
 
