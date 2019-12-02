@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EncodedLines {
@@ -16,7 +17,6 @@ public class EncodedLines {
 
         String decryptedString = charListToString(characterList);
         System.out.println(decryptedString);
-
     }
 
     private static String charListToString(List<Character> characterList) {
