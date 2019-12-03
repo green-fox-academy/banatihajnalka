@@ -35,6 +35,7 @@ public class EncodedLines {
                 char characters = ' ';
                 characters = text.get(i).charAt(j);
                 characters--;
+//                itt hozza kell tenni, hogy vesszoket ne tegye at
                 characterList.add(characters);
             }
         } return characterList;
