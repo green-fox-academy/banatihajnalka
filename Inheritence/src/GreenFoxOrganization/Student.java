@@ -11,7 +11,7 @@ public class Student extends Person {
     }
     public void introduce() {
         super.introduce();
-        System.out.printf(" [%s] from %s who skipped %d days from the course already.\n", previousOrganisation, skippedDays);
+        System.out.printf("from %s who skipped %d days from the course already.\n", previousOrganisation, skippedDays);
     }
     public void setSkippedDays(int numberOfDays) {
         skippedDays += numberOfDays;
