@@ -18,5 +18,11 @@ public class MainGreenFoxOrg {
 
         mentor.introduce();
         mentor.getGoal();
+
+        Sponsor sponsor = new Sponsor();
+        sponsor.hire();
+        sponsor.introduce();
+        sponsor.getGoal();
+
     }
 }

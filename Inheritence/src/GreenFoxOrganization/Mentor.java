@@ -8,8 +8,8 @@ public class Mentor extends Person {
         this.level = level;
     }
 
-    public Mentor(String name, int age, String gender) {
-        super(name, age, gender);
+    public Mentor() {
+        super();
     }
 
     public void getGoal() {
