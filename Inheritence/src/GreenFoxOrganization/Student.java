@@ -7,11 +7,11 @@ public class Student extends Person {
     private int skippedDays;
 
     public void getGoal() {
-        System.out.println("Be a junior software developer.");
+        System.out.println("\nBe a junior software developer.");
     }
     public void introduce() {
         super.introduce();
-        System.out.printf("from %s who skipped %d days from the course already.\n", previousOrganisation, skippedDays);
+        System.out.printf("from %s who skipped %d days from the course already.", previousOrganisation, skippedDays);
     }
     public void setSkippedDays(int numberOfDays) {
         skippedDays += numberOfDays;
@@ -26,6 +26,10 @@ public class Student extends Person {
         super();
         this.previousOrganisation = "The School of Life";
         this.skippedDays = 0;
+    }
+
+    public int setSkippedDays() {
+        return skippedDays;
     }
 }
 

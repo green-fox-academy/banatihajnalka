@@ -16,10 +16,10 @@ public class Person {
         this.gender = "female";
     }
     public void introduce() {
-        System.out.printf("Hi, I' m %s, a %d year old %s ", name, age, gender);
+        System.out.printf("Hi, I' m %s, a %d year old %s\n", name, age, gender);
     }
     public void getGoal() {
-        System.out.printf("My goal is: Live fot the moment");
+        System.out.printf("My goal is: Live for the moment\n");
     }
 }
 
