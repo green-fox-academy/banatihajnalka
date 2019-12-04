@@ -6,4 +6,8 @@ public class TheFlower extends Plant {
         super(color, currentWaterAmount);
         this.setAbsorbationLevel(0.75);
     }
+    public boolean getIsThirsty() {
+        if (getCurrentWaterAmount() < 5);
+        return true;
+    }
 }
