@@ -9,7 +9,7 @@ public class Plant {
     public Plant() {
     }
 
-    public Plant(String color, double absorbationLevel) {
+    public Plant(String color, int currentWaterAmount) {
         this.color = color;
         this.currentWaterAmount = currentWaterAmount;
     }
@@ -18,16 +18,16 @@ public class Plant {
         return absorbationLevel;
     }
 
-    public double setAbsorbationLevel(double absorbationLevel) {
-        return absorbationLevel;
+    public void setAbsorbationLevel(double absorbationLevel) {
+        this.absorbationLevel = absorbationLevel;
     }
 
     public double getCurrentWaterAmount() {
         return currentWaterAmount;
     }
 
-    public double setCurrentWaterAmount(double currentWaterAmount) {
-        return this.currentWaterAmount;
+    public void setCurrentWaterAmount(double currentWaterAmount) {
+        this.currentWaterAmount = (int) currentWaterAmount;
     }
 
     public String getColor() {
@@ -38,8 +38,15 @@ public class Plant {
         return isThirsty;
     }
 
-    public boolean setIsThirsty(boolean isThirsty) {
+//    public void setThirsty() {
+//        this.isThirsty = isThirsty;
+//    }
+
+    public void setIsThirsty(boolean isThirsty) {
+        this.isThirsty = isThirsty;
+    }
+
+    public boolean isThirsty() {
         return isThirsty;
     }
 }
-

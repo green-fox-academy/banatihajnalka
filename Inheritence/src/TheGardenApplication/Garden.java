@@ -27,8 +27,8 @@ public class Garden extends Plant {
             }
         }
         for (int i = 0; i <thirsty.size() ; i++) {
-           double newWaterAmount = thirsty.get(i).getCurrentWaterAmount() + waterAmount / thirsty.size();
-           thirsty.get(i).setCurrentWaterAmount(newWaterAmount);
+            double newWaterAmount = thirsty.get(i).getCurrentWaterAmount() + waterAmount / thirsty.size() * thirsty.get(i).getAbsorbationLevel();
+            thirsty.get(i).setCurrentWaterAmount(newWaterAmount);
         }
     }
     public void setName(String name) {
@@ -44,13 +44,13 @@ public class Garden extends Plant {
     public void needsWater() {
         for (int i = 0; i <plants.size() ; i++) {
             if (plants.get(i) instanceof TheFlower && plants.get(i).getIsThirsty()) {
-                    System.out.println("The " + plants.get(i).getColor() + " Flower needs water");
+                System.out.println("The " + plants.get(i).getColor() + " Flower needs water " + plants.get(i).getCurrentWaterAmount());
             } else if ((plants.get(i) instanceof TheFlower)) {
-                System.out.println("The " + plants.get(i).getColor() + " Flower doesn't needs water");
+                System.out.println("The " + plants.get(i).getColor() + " Flower doesn't needs water " + plants.get(i).getCurrentWaterAmount());
             } else if (plants.get(i) instanceof TheTree && plants.get(i).getIsThirsty()) {
-                    System.out.println("The " + plants.get(i).getColor() + " Tree needs water");
+                System.out.println("The " + plants.get(i).getColor() + " Tree needs water " + plants.get(i).getCurrentWaterAmount());
             } else {
-                System.out.println("The " + plants.get(i).getColor() + " Tree doesn't needs water");
+                System.out.println("The " + plants.get(i).getColor() + " Tree doesn't needs water " + plants.get(i).getCurrentWaterAmount());
             }
         }
     }
