@@ -3,7 +3,7 @@ package GreenFoxOrganization;
 import java.util.ArrayList;
 
 public class MainGreenFoxOrg {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 //        Person person = new Person();
 //        Person csabi = new Person("Csabi", 35, "male");
 //
@@ -70,6 +70,12 @@ public class MainGreenFoxOrg {
         awesome.addMentor(mentor);
         awesome.addMentor(gandhi);
         awesome.info();
+
+        Student johnTheClone = new Student();
+        johnTheClone = (Student) john.clone();
+        System.out.println(johnTheClone.getName());
+        System.out.println(john.getName());
+
 
 
     }

@@ -21,6 +21,6 @@ public class Cohort {
     }
 
     public void info() {
-        System.out.printf("The %s cohort has %d students and %d mentors.", name, studentList.size(), mentorsList.size());
+        System.out.printf("The %s cohort has %d students and %d mentors.\n", name, studentList.size(), mentorsList.size());
     }
 }

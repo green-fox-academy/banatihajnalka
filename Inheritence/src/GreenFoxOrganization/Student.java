@@ -1,7 +1,5 @@
 package GreenFoxOrganization;
 
-import GreenFoxOrganization.Person;
-
 public class Student extends Person {
     private String previousOrganisation;
     private int skippedDays;

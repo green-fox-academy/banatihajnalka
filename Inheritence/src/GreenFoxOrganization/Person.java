@@ -1,6 +1,6 @@
 package GreenFoxOrganization;
 
-public class Person {
+public class Person implements Cloneable {
     private String name;
     private int age;
     private String gender;
@@ -20,6 +20,15 @@ public class Person {
     }
     public void getGoal() {
         System.out.printf("My goal is: Live for the moment\n");
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public String getName() {
+        return name;
     }
 }
 

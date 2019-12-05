@@ -33,14 +33,9 @@ public class Plant {
     public String getColor() {
         return color;
     }
-
     public boolean getIsThirsty() {
         return isThirsty;
     }
-
-//    public void setThirsty() {
-//        this.isThirsty = isThirsty;
-//    }
 
     public void setIsThirsty(boolean isThirsty) {
         this.isThirsty = isThirsty;
