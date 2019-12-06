@@ -6,9 +6,7 @@ public abstract class Instrument {
     String getName() {
         return name;
     }
-
-    Instrument() {
-    }
+    
     Instrument(String name) {
         this.name = name;
     }
