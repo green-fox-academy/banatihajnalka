@@ -1,4 +1,4 @@
-package CharSequence;
+package CharSequence2;
 
 public class Gnirts2 implements CharSequence {
     private String word;
