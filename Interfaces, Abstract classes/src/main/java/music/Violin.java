@@ -13,9 +13,9 @@ public class Violin extends StringedInstruments {
     public void sound() {
         System.out.println("Screech.");
     }
-    @Override
-    public void play() {
-        System.out.print(this.getName() + ", a " + this.getNumberOfStrings() + " stringed instrument that goes ");
-        this.sound();
-    }
+//    @Override
+//    public void play() {
+//        System.out.print(this.getName() + ", a " + this.getNumberOfStrings() + " stringed instrument that goes ");
+//        this.sound();
+//    }
 }
