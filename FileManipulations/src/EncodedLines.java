@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EncodedLines {
@@ -16,6 +17,15 @@ public class EncodedLines {
 
         String decryptedString = charListToString(characterList);
         System.out.println(decryptedString);
+//        System.out.println(Arrays.toString(decryptedString(i)));
+
+////        String result = "";
+////        for (int i = 0; i < decryptedString.length() ; i++) {
+////            for (int j = 0; j < decryptedString.get(i); j++) {
+////
+////            }
+//            System.out.println(decryptedString(i));
+//        }
     }
 
     private static String charListToString(List<List<Character>> characterList) {
@@ -23,7 +33,7 @@ public class EncodedLines {
        for (List<Character> ch : characterList) {
            builder.append(ch);
         }
-        return builder.toString().replace("\u001F", " ");
+        return builder.toString().replace("\u001F", " ").replace(", ", "");
     }
 
     private static List<List<Character>> shiftedChar(List<String> text) {
@@ -34,7 +44,6 @@ public class EncodedLines {
                 char currentChar = text.get(i).charAt(j);
                 currentChar--;
                 currentCharacters.add(currentChar);
-//                itt hozza kell tenni, hogy vesszoket ne tegye at
             }
             characterList.add(currentCharacters);
         } return characterList;
