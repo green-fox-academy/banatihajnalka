@@ -1,8 +1,9 @@
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class EncodedLines {
@@ -17,28 +18,42 @@ public class EncodedLines {
 
         String decryptedString = charListToString(characterList);
         System.out.println(decryptedString);
-//        System.out.println(Arrays.toString(decryptedString(i)));
 
-////        String result = "";
-////        for (int i = 0; i < decryptedString.length() ; i++) {
-////            for (int j = 0; j < decryptedString.get(i); j++) {
-////
-////            }
-//            System.out.println(decryptedString(i));
-//        }
+   //     characterList.forEach(System.out::println);
+
+        writeFile(decryptedString);
+    }
+
+    private static void writeFile(String stringToWrite) {
+ //       String[] splittedString = stringToWrite.split("[\\r\\n]+");
+        File decrypted = new File("decryptedLines.txt");
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(decrypted);
+            fr.write(stringToWrite);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+//close resources
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private static String charListToString(List<List<Character>> characterList) {
-       StringBuilder builder = new StringBuilder();
-       for (List<Character> ch : characterList) {
-           builder.append(ch);
+        StringBuilder builder = new StringBuilder();
+        for (List<Character> ch : characterList) {
+            builder.append(ch);
         }
         return builder.toString().replace("\u001F", " ").replace(", ", "");
     }
 
     private static List<List<Character>> shiftedChar(List<String> text) {
         List<List<Character>> characterList = new ArrayList<>();
-        for (int i = 0; i < text.size() ; i++) {
+        for (int i = 0; i < text.size(); i++) {
             List<Character> currentCharacters = new ArrayList<>();
             for (int j = 0; j < text.get(i).length(); j++) {
                 char currentChar = text.get(i).charAt(j);
@@ -46,10 +61,11 @@ public class EncodedLines {
                 currentCharacters.add(currentChar);
             }
             characterList.add(currentCharacters);
-        } return characterList;
+        }
+        return characterList;
     }
 
-    private static List readFile(String filename) {
+    private static List<String> readFile(String filename) {
         List<String> text = new ArrayList<>();
         try {
             text = Files.readAllLines(Paths.get(filename));
