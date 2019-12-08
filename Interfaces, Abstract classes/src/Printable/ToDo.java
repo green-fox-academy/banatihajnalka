@@ -26,6 +26,6 @@ public class ToDo implements Printable {
 
     @Override
     public void printAllFields() {
-        System.out.println("Task " + getTask() + "| Priority: " + getPriority() + "| Done: " + isDone());
+        System.out.println("Task " + getTask() + " | Priority: " + getPriority() + " | Done: " + isDone());
     }
 }

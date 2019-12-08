@@ -18,8 +18,8 @@ public class MainPrintable {
         for (Domino d : dominoes) {
             d.printAllFields();
         }
-//        for (Todo t : todos) {
-//            t.printAllFields();
-//        }
+        for (ToDo t : todos) {
+            t.printAllFields();
+        }
     }
 }
