@@ -2,8 +2,6 @@ package Zoo;
 
 import Flyable.Flyable;
 
-import javax.sound.midi.Soundbank;
-
 public class Bird extends Animal implements AbleToDo, Flyable {
     private boolean isFlying;
     private boolean hasFeathers;

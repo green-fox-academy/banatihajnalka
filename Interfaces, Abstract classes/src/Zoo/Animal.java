@@ -22,8 +22,6 @@ public abstract class Animal {
     public int getWeight() {
         return weight;
     }
-
-
 }
 
 
