@@ -3,10 +3,10 @@ package main.java.music;
 public class BassGuitar extends StringedInstruments {
 
     public BassGuitar() {
-        super(4, "BassGuitar");
+        this.numberOfStrings = 4;
     }
     public BassGuitar(int numberOfStrings) {
-        super(numberOfStrings, "BassGuitar");
+        super(numberOfStrings);
     }
 
     @Override

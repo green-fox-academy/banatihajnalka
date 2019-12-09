@@ -1,14 +1,12 @@
 package main.java.music;
 
 public abstract class StringedInstruments extends Instrument {
-    private int numberOfStrings;
+    protected int numberOfStrings;
 
-    int getNumberOfStrings() {
-        return numberOfStrings;
+
+    public StringedInstruments() {
     }
-
-    StringedInstruments(int numberOfStrings, String name) {
-        super(name);
+    public StringedInstruments(int numberOfStrings) {
         this.numberOfStrings = numberOfStrings;
     }
 
@@ -16,7 +14,7 @@ public abstract class StringedInstruments extends Instrument {
 
     @Override
     public void play() {
-        System.out.print(this.getClass().getSimpleName() + ", a " + this.getNumberOfStrings() + " stringed instrument that goes ");
+        System.out.print(this.getClass().getSimpleName() + ", a " + this.numberOfStrings + " stringed instrument that goes ");
         this.sound();
     }
 }

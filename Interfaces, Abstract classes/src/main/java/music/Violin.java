@@ -3,10 +3,10 @@ package main.java.music;
 public class Violin extends StringedInstruments {
 
     public Violin() {
-        super(4, "Violin");
+        this.numberOfStrings = 4;
     }
     public Violin(int numberOfStrings) {
-        super(numberOfStrings, "Violin");
+        super(numberOfStrings);
     }
 
     @Override
