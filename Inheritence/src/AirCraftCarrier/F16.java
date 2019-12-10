@@ -3,8 +3,9 @@ package AirCraftCarrier;
 public class F16 extends Aircraft {
 
     public F16(int ammunition, int maxAmmo, int baseDamage) {
-        super(ammunition);
-        maxAmmo = 8;
-        baseDamage = 30;
+        super();
+        this.setMaxAmmo(8);
+        this.setBaseDamage(30);
+        this.setPriority(false);
     }
 }
