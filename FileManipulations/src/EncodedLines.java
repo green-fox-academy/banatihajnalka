@@ -25,7 +25,6 @@ public class EncodedLines {
     }
 
     private static void writeFile(String stringToWrite) {
- //       String[] splittedString = stringToWrite.split("[\\r\\n]+");
         File decrypted = new File("decryptedLines.txt");
         FileWriter fr = null;
         try {
@@ -45,8 +44,11 @@ public class EncodedLines {
 
     private static String charListToString(List<List<Character>> characterList) {
         StringBuilder builder = new StringBuilder();
-        for (List<Character> ch : characterList) {
-            builder.append(ch);
+        for (List<Character> row : characterList) {
+            for (Character letter : row) {
+                builder.append(letter);
+            }
+            builder.append("\n");
         }
         return builder.toString().replace("\u001F", " ").replace(", ", "");
     }
