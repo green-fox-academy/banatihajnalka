@@ -11,7 +11,7 @@ public abstract class Aircraft<abstrac> {
     private boolean isPriority;
 
     public Aircraft() {
-        ammunition = 0;
+        this.ammunition = 0;
     }
 
    public int fight() {
@@ -22,8 +22,8 @@ public abstract class Aircraft<abstrac> {
 
    public int refill(int charge) {
         int remainingAmmo = charge - (maxAmmo - ammunition);
-        ammunition = maxAmmo;
-        setDamage(ammunition * baseDamage);
+        this.ammunition = maxAmmo;
+        this.setDamage(ammunition * baseDamage);
         return remainingAmmo;
    }
 
