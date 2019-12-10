@@ -19,7 +19,7 @@ public class Carrier {
         this.carrierName.add(aircraft);
     }
 
-    public void fill() {
+    public void fill() throws NoAmmoExeption {
         List<Aircraft> needsAmmoPrior = new ArrayList<>();
         List<Aircraft> needsAmmoOthers = new ArrayList<>();
         for (Aircraft aircraft : carrierName) {
@@ -30,12 +30,24 @@ public class Carrier {
             }
         }
         for (Aircraft aircraft : needsAmmoPrior) {
-            this.ammoStorage -= aircraft.getMaxAmmo() - aircraft.getAmmunition();
-            aircraft.setAmmunition(aircraft.getMaxAmmo());
+            if (this.ammoStorage < aircraft.getMaxAmmo() - aircraft.getAmmunition()) {
+                aircraft.setAmmunition(aircraft.getAmmunition() + this.ammoStorage);
+                this.ammoStorage = 0;
+                throw new NoAmmoExeption();
+            } else {
+                this.ammoStorage -= aircraft.getMaxAmmo() - aircraft.getAmmunition();
+                aircraft.setAmmunition(aircraft.getMaxAmmo());
+            }
         }
         for (Aircraft aircraft : needsAmmoOthers) {
-            this.ammoStorage -= aircraft.getMaxAmmo() - aircraft.getAmmunition();
-            aircraft.setAmmunition(aircraft.getMaxAmmo());
+            if (this.ammoStorage < aircraft.getMaxAmmo() - aircraft.getAmmunition()) {
+                aircraft.setAmmunition(aircraft.getAmmunition() + this.ammoStorage);
+                this.ammoStorage = 0;
+                throw new NoAmmoExeption();
+            } else {
+                this.ammoStorage -= aircraft.getMaxAmmo() - aircraft.getAmmunition();
+                aircraft.setAmmunition(aircraft.getMaxAmmo());
+            }
         }
     }
 }
