@@ -2,7 +2,10 @@ import java.util.ArrayList;
 
 public class Sum {
 
-    public int sumArrayList(ArrayList<Integer> numbersList) {
+    public int sumArrayList(ArrayList<Integer> numbersList) throws ListNotExistingException {
+        if (numbersList == null) {
+            throw new ListNotExistingException();
+        }
         if (numbersList.size() == 0)  {
             System.out.println("empty list");
             return 0;
