@@ -9,7 +9,7 @@ public class SumTest {
     private ArrayList<Integer> numbersList = new ArrayList<>();
 
     @Test
-    public void sumArrayList_should_sumNumbers_when_numbersListAdded() throws ListNotExistingException {
+    public void sumArrayList_should_sumNumbers_when_numbersListAdded() throws Exception {
         numbersList.add(3);
         numbersList.add(5);
         numbersList.add(7);
@@ -21,7 +21,7 @@ public class SumTest {
         assertEquals(sumExpected, result);
     }
     @Test
-    public void sumArrayList_should_sumNumbers_when_negativeNumberAddedToTheList() throws ListNotExistingException {
+    public void sumArrayList_should_sumNumbers_when_negativeNumberAddedToTheList() throws Exception {
         numbersList.add(4);
         numbersList.add(-1);
 
@@ -31,7 +31,7 @@ public class SumTest {
         assertEquals(expectedResult, result);
     }
     @Test
-    public void sumArrayList_should_sumNumbers_when_zeroAddedToTheList() throws ListNotExistingException {
+    public void sumArrayList_should_sumNumbers_when_zeroAddedToTheList() throws Exception {
         numbersList.add(4);
         numbersList.add(0);
 
@@ -41,7 +41,7 @@ public class SumTest {
         assertEquals(expectedResult, result);
     }
     @Test
-    public void sumArrayList_should_return0_when_emptyListIsGiven() throws ListNotExistingException {
+    public void sumArrayList_should_return0_when_emptyListIsGiven() throws Exception {
         int sumExpected = 0;
         int result = sum.sumArrayList(numbersList);
 
@@ -49,7 +49,7 @@ public class SumTest {
     }
 
     @Test
-    public void sumArrayList_should_return0_when_oneElementIsGiven() throws ListNotExistingException {
+    public void sumArrayList_should_return0_when_oneElementIsGiven() throws Exception {
         numbersList.add(3);
 
         int sumExpected = 3;
@@ -59,7 +59,7 @@ public class SumTest {
     }
 
     @Test
-    public void sumArrayList_should_return0_when_nullIsGIvenAsAnElement() throws ListNotExistingException {
+    public void sumArrayList_should_return0_when_nullIsGIvenAsAnElement() throws Exception {
         numbersList.add(null);
 
         int expectedResult = 0;
@@ -67,8 +67,8 @@ public class SumTest {
 
         assertEquals(expectedResult, result);
     }
-    @Test(expected = ListNotExistingException.class)
-    public void sumArrayList_should_throwExeption_when_listIsNotExisting() throws ListNotExistingException {
+    @Test(expected = Exception.class)
+    public void sumArrayList_should_throwExeption_when_listIsNotExisting() throws Exception {
         sum.sumArrayList(null);
     }
 }

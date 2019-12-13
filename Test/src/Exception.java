@@ -1,6 +1,6 @@
-public class NotExistingException extends Exception {
+public class Exception extends java.lang.Exception {
 
-    public NotExistingException(String message) {
+    public Exception(String message) {
         System.out.println(message);
     }
 
