@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
     public class Anagram {
-        public static void main(String[] args) {
+        public static void main(String[] args) throws Exception {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Give me a word: ");
             String first = scanner.nextLine();
@@ -14,13 +14,16 @@ import java.util.Scanner;
             System.out.println("Are they anagrams? " + areAnagram);
         }
 
-       public static boolean anagramFunction(String first, String second) {
+       public static boolean anagramFunction(String first, String second) throws Exception {
+            if (first == null || second == null) {
+                throw new Exception("Word(s) is missing.");
+            }
             boolean areAnagrams = false;
             first = first.toLowerCase();
             second = second.toLowerCase();
             if (first.length() != second.length()) {
                 System.out.println("These can not be anagrams, they have different lengths.");
-                return areAnagrams;
+                return false;
             }
             char[] firstChar = first.toCharArray();
             char[] secChar = second.toCharArray();
