@@ -76,11 +76,10 @@ public class ExtensionTest {
     @Test
     public void translate() throws Exception {
         String teve = "hungarian";
-        assertEquals(extension.translate(teve), "huvungavariviavan");
+        assertEquals("huvungavariviavan", extension.translate(teve));
     }
     @Test
     public void translate2() throws Exception {
-        String teve = "beszélni";
-        assertEquals(extension.translate(teve), "beveszévélnivi");
+        assertEquals("beveszévélnivi", extension.translate("beszélni"));
     }
 }
