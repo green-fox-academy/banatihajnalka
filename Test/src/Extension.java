@@ -35,17 +35,16 @@ public class Extension {
         if (toTranslate == null || toTranslate.isEmpty()) {
             throw new Exception("String not exists");
         }
-//        String translated = "";
         int length = toTranslate.length();
         int i = 0;
-        while (i <= length) {
-            char characters = toTranslate.charAt(i);
-            if (isVowel(characters)) {
-                toTranslate = String.join(characters + "v" + characters, toTranslate.split("" + characters, toTranslate.length()));
-                i += 2;
-                length += 2;
-            }
-            i++;
+        while (i < length) {
+                char characters = toTranslate.charAt(i);
+                if (isVowel(characters)) {
+                    toTranslate = String.join(characters + "v" + characters, toTranslate.split("" + characters, toTranslate.length()));
+                    i += 2;
+                    length += 2;
+                }
+                i++;
         }
         return toTranslate;
     }

@@ -19,7 +19,7 @@ public class EncodedLines {
         String decryptedString = charListToString(characterList);
         System.out.println(decryptedString);
 
-   //     characterList.forEach(System.out::println);
+        characterList.forEach(System.out::println);
 
         writeFile(decryptedString);
     }

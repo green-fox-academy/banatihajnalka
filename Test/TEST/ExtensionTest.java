@@ -70,16 +70,16 @@ public class ExtensionTest {
     }
 
     @Test
-    public void translate_should_throwExeption_when_stringIsEmpty() {
+    public void translate_should_throwExeption_when_stringIsEmpty() throws Exception {
         String teve = "";
     }
     @Test
     public void translate() throws Exception {
-        String teve = "hungarian";
-        assertEquals("huvungavariviavan", extension.translate(teve));
+//        String teve = "hungarian";
+        assertEquals(extension.translate("hungarian"), "huvungavariviavan");
     }
     @Test
     public void translate2() throws Exception {
-        assertEquals("beveszévélnivi", extension.translate("beszélni"));
+        assertEquals(extension.translate("beszélni"), "beveszévélnivi");
     }
 }
