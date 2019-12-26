@@ -13,7 +13,7 @@ abstract class Aircraft {
     }
 
     public int fight() {
-        damage = baseDamage * ammunition;
+        damage = getDamage();
         this.ammunition = 0;
         return damage;
     }
@@ -66,7 +66,7 @@ abstract class Aircraft {
     }
 
     public int getDamage() {
-        return damage;
+        return baseDamage * ammunition;
     }
 
     public void setDamage(int damage) {
