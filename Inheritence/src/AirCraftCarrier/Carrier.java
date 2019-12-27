@@ -8,7 +8,6 @@ public class Carrier {
     private int ammoStorage;
     private int healthPoints;
 
-
     public Carrier(int ammoStorage, int healthPoints) {
         this.carrierName = new ArrayList<Aircraft>();
         this.ammoStorage = ammoStorage;
@@ -82,7 +81,6 @@ public class Carrier {
         }
         return totalDamage;
     }
-
 }
 
 

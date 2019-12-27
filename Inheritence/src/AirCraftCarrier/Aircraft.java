@@ -44,15 +44,6 @@ abstract class Aircraft {
         return ammunition;
     }
 
-    public void setAmmunition(int ammunition) {
-        if (ammunition > maxAmmo) return;
-        this.ammunition = ammunition;
-    }
-
-    public int getMaxAmmo() {
-        return maxAmmo;
-    }
-
     public void setMaxAmmo(int maxAmmo) {
         this.maxAmmo = maxAmmo;
     }
