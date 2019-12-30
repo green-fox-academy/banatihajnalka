@@ -39,12 +39,6 @@ public class IsSymmetricListWithGivenNumber {
                 Integer endVertex = listOfNumbers.get(i).get(j);
                 System.out.printf("Vertex %d is connected to vertex %d%n", startVertex, endVertex);
             }
-
-
             }
-
-
         }
-
-
     }

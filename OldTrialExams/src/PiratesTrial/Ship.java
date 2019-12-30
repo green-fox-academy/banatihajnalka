@@ -30,8 +30,5 @@ public class Ship {
         return poorPirates;
 
     }
-
-//    public int getGolds()
-
-    }
+}
 
