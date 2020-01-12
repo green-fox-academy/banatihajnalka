@@ -11,16 +11,10 @@ package WeeklyFeedbackEvaluator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainFeedback extends SplitTextToHashMap {
+public class MainFeedback extends Print {
 
     public static void main(String[] args) {
 
-//        HashMap<String, Float> averageMap = textToHashMap(readFile("C:\\HAJNI\\greenfox\\banatihajnalka\\OldFoundationExam\\src\\WeeklyFeedbackEvaluator\\Feedback.txt"));
-
-        for (Map.Entry<String, Float> averageMap : textToHashMap(readFile("C:\\HAJNI\\greenfox\\banatihajnalka\\OldFoundationExam\\src\\WeeklyFeedbackEvaluator\\Feedback.txt")).entrySet()) {
-            System.out.println(averageMap.getKey() + " : " + averageMap.getValue());
-        }
-
-
+      print(textToHashMap(readFile("C:\\HAJNI\\greenfox\\banatihajnalka\\OldFoundationExam\\src\\WeeklyFeedbackEvaluator\\Feedback.txt")));
     }
 }

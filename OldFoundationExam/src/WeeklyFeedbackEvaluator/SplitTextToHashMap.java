@@ -3,9 +3,11 @@ package WeeklyFeedbackEvaluator;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SplitTextToHashMap extends ReadFile {
 
+    HashMap<String, Float> averageMap = new HashMap<>();
 
     public static HashMap<String, Float> textToHashMap(List<String> ratings) {
         int matReview = 0;
