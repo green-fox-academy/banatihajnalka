@@ -8,13 +8,12 @@ import java.util.List;
 
 public class ReadFile {
 
-    String filename = "C:\\HAJNI\\greenfox\\banatihajnalka\\OldFoundationExam\\src\\WeeklyFeedbackEvaluator\\Feedback.txt";
+//    String filename = "C:\\HAJNI\\greenfox\\banatihajnalka\\OldFoundationExam\\src\\WeeklyFeedbackEvaluator\\Feedback.txt";
 
     public static List<String> readFile(String filename) {
         List<String> text = new ArrayList<>();
         try {
             text = Files.readAllLines(Paths.get(filename));
-            System.out.println(text);
         } catch (IOException e) {
             System.out.println("File does not exists");
         }

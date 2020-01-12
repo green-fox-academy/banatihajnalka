@@ -8,13 +8,11 @@
 
 package WeeklyFeedbackEvaluator;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainFeedback extends Print {
 
     public static void main(String[] args) {
 
       print(textToHashMap(readFile("C:\\HAJNI\\greenfox\\banatihajnalka\\OldFoundationExam\\src\\WeeklyFeedbackEvaluator\\Feedback.txt")));
+
     }
 }

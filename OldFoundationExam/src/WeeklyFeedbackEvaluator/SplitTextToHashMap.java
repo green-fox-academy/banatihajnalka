@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SplitTextToHashMap extends ReadFile {
-    
 
     public static HashMap<String, Float> textToHashMap(List<String> ratings) {
         int matReview = 0;
@@ -25,7 +24,6 @@ public class SplitTextToHashMap extends ReadFile {
         float averagePreskills = (float) presSkills / ratings.size();
         float averageHelpfulness = (float) helpfulness / ratings.size();
         float averageExplanation = (float) explanation / ratings.size();
-
 
         HashMap<String, Float> averageMap = new HashMap<>();
         averageMap.put("matReview", averageMatReview);
