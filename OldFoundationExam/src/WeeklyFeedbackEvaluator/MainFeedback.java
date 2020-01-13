@@ -8,11 +8,15 @@
 
 package WeeklyFeedbackEvaluator;
 
-public class MainFeedback extends Print {
+import static WeeklyFeedbackEvaluator.Print.print;
+import static WeeklyFeedbackEvaluator.ReadFile.readFile;
+import static WeeklyFeedbackEvaluator.SplitTextToHashMap.textToHashMap;
+
+public class MainFeedback  {
 
     public static void main(String[] args) {
 
-      print(textToHashMap(readFile("C:\\HAJNI\\greenfox\\banatihajnalka\\OldFoundationExam\\src\\WeeklyFeedbackEvaluator\\Feedback.txt")));
+      print(textToHashMap(readFile("src/WeeklyFeedbackEvaluator/Feedback.txt")));
 
     }
 }
