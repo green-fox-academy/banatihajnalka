@@ -14,15 +14,19 @@ import static Lottery.SplitAndCollectNumbers.splitAndCollectNumbers;
 public class MainLottery {
 
     public static void main(String[] args) {
-        
-//        HashMap<Integer, Integer> numbersHashMap = numbersToHashMap(splittedLotteryText);
+
+        List<String> lotteryText = readFile("src\\Lottery\\Lottery.txt");
+        Integer[][] splittedLotteryText = splitAndCollectNumbers(lotteryText);
+//        System.out.println(Arrays.deepToString(splittedLotteryText));
+        HashMap<Integer, Integer> numbersHashMap = numbersToHashMap(splittedLotteryText);
 //        numbersHashMap.entrySet().forEach(entry->{
 //            System.out.println(entry.getKey() + " " + entry.getValue());
 //        });
-
-
-        ArrayList<Integer> mostCommonNumber = findMostCommonNumbers(numbersToHashMap(splitAndCollectNumbers(readFile("src\\Lottery\\Lottery.txt"))));
+        ArrayList<Integer> mostCommonNumber = findMostCommonNumbers(numbersHashMap);
         System.out.println(mostCommonNumber);
+
+//        ArrayList<Integer> mostCommonNumber = findMostCommonNumbers(numbersToHashMap(splitAndCollectNumbers(readFile("src\\Lottery\\Lottery.txt"))));
+//        System.out.println(mostCommonNumber);
     }
 
 }
