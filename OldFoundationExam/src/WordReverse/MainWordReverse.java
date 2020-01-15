@@ -7,6 +7,6 @@ public class MainWordReverse {
         WordReverse wordReverse = new WordReverse();
 
         String sentenceToReserve = "lleW ,enod taht saw ton taht drah";
-        System.out.println(wordReverse.reverse(sentenceToReserve));
+        System.out.println(WordReverse.reverse(sentenceToReserve));
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class WordReverse {
 
-        public String reverse (String sentenceToReserve){
+        public static String reverse(String sentenceToReserve){
             String[] splittedSentence = sentenceToReserve.split(" ");
             List<String> reversedList = new ArrayList<>();
             for (int i = 0; i < splittedSentence.length; i++) {
@@ -18,4 +18,5 @@ public class WordReverse {
             }
             return String.join(" ", reversedList);
         }
+
     }
