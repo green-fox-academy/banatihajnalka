@@ -7,11 +7,13 @@ public class Pirate {
     private int intoxicationLevel;
     private boolean isPassedOut;
     private boolean isAlive;
+    private boolean isCaptain;
 
     public Pirate() {
         this.intoxicationLevel = 0;
         this.isPassedOut = false;
         this.isAlive = true;
+        this.isCaptain = false;
     }
 
     public void drinkSomeRum() {
@@ -23,7 +25,7 @@ public class Pirate {
     }
 
     public void howsItGoingMate() {
-        if (intoxicationLevel >= 4) {
+        if (intoxicationLevel <= 4) {
             System.out.println("Pour me anudder!");
         } else {
             System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
@@ -47,5 +49,13 @@ public class Pirate {
                 anotherPirate.die();
             }
         }
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public boolean isCaptain() {
+        return isCaptain;
     }
 }
