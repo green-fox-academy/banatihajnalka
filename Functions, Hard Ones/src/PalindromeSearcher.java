@@ -13,9 +13,9 @@ public class PalindromeSearcher {
 
         }
 
-    private static ArrayList<String> searchPalindromeFunction(String input) {
+    public static ArrayList<String> searchPalindromeFunction(String input) {
         System.out.println("function start");
-        StringBuilder inputSB = new StringBuilder(input);
+        StringBuilder inputSB = new StringBuilder(input.toLowerCase());
         StringBuilder rev = new StringBuilder();
         ArrayList<String> palindrome = new ArrayList<String>();
         if (input.length() < 3) {
