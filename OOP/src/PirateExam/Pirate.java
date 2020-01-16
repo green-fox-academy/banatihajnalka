@@ -36,11 +36,11 @@ public class Pirate {
     }
 
     public void brawl(Pirate anotherPirate) {
-        int chance = new Random().nextInt(4);
+        int chance = new Random().nextInt(3);
         if (anotherPirate.isAlive) {
-            if (chance >= 0 && chance <= 1) {
+            if (chance == 0) {
                 this.die();
-            } else if (chance >= 1 && chance <= 2) {
+            } else if (chance == 1) {
                 anotherPirate.die();
             } else {
                 this.die();
