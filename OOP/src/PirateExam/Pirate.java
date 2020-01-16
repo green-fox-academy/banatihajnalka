@@ -16,7 +16,7 @@ public class Pirate {
         this.isCaptain = false;
     }
 
-    public void drinkSomeRum() {
+    public void drinkSomeRum(int volume) {
         if (this.isAlive) {
             intoxicationLevel++;
         } else {
@@ -55,7 +55,11 @@ public class Pirate {
         return isAlive;
     }
 
-    public boolean isCaptain() {
-        return isCaptain;
+    public int getIntoxicationLevel() {
+        return intoxicationLevel;
+    }
+
+    public void setIntoxicationLevel(int intoxicationLevel) {
+        this.intoxicationLevel = intoxicationLevel;
     }
 }
