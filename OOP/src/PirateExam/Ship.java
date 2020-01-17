@@ -8,16 +8,17 @@ public class Ship extends Pirate {
     List<Pirate> listOfPirates;
     int rumAmount;
     Pirate captain;
-    int numberOfAlivePirates;
+    int countAlivePirates;
     int numberOfConsumedPirates;
+    private int getNumberOfAlivePirates;
 
     public Ship() {
         listOfPirates = new ArrayList<>();
-
     }
 
     public void fillShip() {
         captain = new Pirate();
+        captain.setCaptain();
         listOfPirates.add(captain);
         int numberOfPirates = randomNumber();
         for (int i = 0; i < numberOfPirates; i++) {
@@ -27,23 +28,31 @@ public class Ship extends Pirate {
 
     public boolean battle(Ship otherShip) {
         if (this.score() > otherShip.score()) {
+            System.out.println(" fighter won");
             this.party();
+            otherShip.lost();
             return true;
+        } else if (this.score() < otherShip.score()) {
+            otherShip.party();
+            this.lost();
+            System.out.println(" defender won");
         } else {
-            for (int i = 0; i < randomNumber(); i++) {
-                otherShip.lost();
-            }
-            return false;
-        }
+            this.drinkSomeRum(46);
+            otherShip.drinkSomeRum(23);
+        } return false;
     }
 
     public int score() {
-        return numberOfAlivePirates - captain.getIntoxicationLevel();
+        return getNumberOfAlivePirates - captain.getIntoxicationLevel();
     }
 
     public void lost() {
-        for (int i = 0; i < this.listOfPirates.size() - randomNumber(); i++) {
-            this.listOfPirates.get(i).die();
+        int loss = randomNumber();
+        int remove = 0;
+        if (remove < loss) {
+            for (int i = 0; i < listOfPirates.size(); i++) {
+               listOfPirates.get(i).die();
+            }
         }
     }
 

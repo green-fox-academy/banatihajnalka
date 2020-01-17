@@ -9,18 +9,16 @@ public class PirateApp {
         ship1.fillShip();
         ship2.fillShip();
 
-        System.out.println(ship1.toString());
+        System.out.println("Ship1 before: " + ship1);
+        System.out.println("Ship2 before: " + ship2);
 
-        ship1.captain.drinkSomeRum(10);
-        ship1.captain.drinkSomeRum(10);
-        ship1.captain.drinkSomeRum(10);
-        ship1.captain.drinkSomeRum(10);
+        ship1.captain.drinkSomeRum(8);
 
         ship2.captain.drinkSomeRum(10);
 
         ship1.battle(ship2);
-        System.out.println(ship1);
-        System.out.println(ship2);
+        System.out.println("Ship1 after: " + ship1);
+        System.out.println("Ship2 after: " + ship2);
 
         }
 }

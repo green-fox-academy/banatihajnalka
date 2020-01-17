@@ -62,4 +62,8 @@ public class Pirate {
     public void setIntoxicationLevel(int intoxicationLevel) {
         this.intoxicationLevel = intoxicationLevel;
     }
+
+    public void setCaptain() {
+        isCaptain = true;
+    }
 }
