@@ -1,7 +1,7 @@
 package TextFromMatrix;
 
 public class MainTextFromMatrix {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyOwnExceptions {
 
         String[][] firstArray = {{"n", "x"}, {"m", "o"}};
         String[][] secondArray = {{"h", "p", "e"}, {"k", "l", "a"}, {"l", "m", "o"}};
