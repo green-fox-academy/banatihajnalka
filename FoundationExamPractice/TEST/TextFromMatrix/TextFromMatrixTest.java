@@ -17,6 +17,7 @@ public class TextFromMatrixTest {
         assertFalse(TextFromMatrix.textFromMatrix(firstArray).isEmpty());
         assertFalse(TextFromMatrix.textFromMatrix(secondArray).isEmpty());
         assertEquals(expected, TextFromMatrix.textFromMatrix(secondArray));
+        assertEquals(9, TextFromMatrix.textFromMatrix(secondArray).length());
     }
 
     @Test(expected = MyOwnExceptions.class)
