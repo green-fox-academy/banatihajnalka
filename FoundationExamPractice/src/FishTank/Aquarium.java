@@ -21,7 +21,7 @@ public class Aquarium {
     }
 
     public void removeFish() {
-        for (int i = 0; i < aquarium.size() ; i++) {
+        for (int i = 0; i < aquarium.size(); i++) {
             if (aquarium.get(i).getWeight() > 11) {
                 aquarium.remove(aquarium.get(i));
             }
@@ -29,9 +29,8 @@ public class Aquarium {
     }
 
     public void getStatus() {
-       for (Fish fish : aquarium) {
-           fish.status();
-       }
+        for (Fish fish : aquarium) {
+            fish.status();
+        }
     }
-
 }
