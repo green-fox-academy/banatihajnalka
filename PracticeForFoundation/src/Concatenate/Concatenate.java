@@ -4,7 +4,7 @@ public class Concatenate {
 
     public static String concatenate(String first, String second) {
         StringBuilder concatenated = new StringBuilder();
-        for (int i = 0; i < first.length() || i < second.length(); i++) {
+        for (int i = 0; i < Math.max(first.length(), second.length()); i++) {
             if (i < first.length())
                 concatenated.append(first.charAt(i));
             if (i < second.length())
