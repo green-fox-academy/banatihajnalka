@@ -3,7 +3,7 @@ package Garage;
 public class Porsche extends Car {
 
     public Porsche(String color) {
-        super(color, 60);
+        super(color, 60, 200);
     }
 
     public double turbo() {

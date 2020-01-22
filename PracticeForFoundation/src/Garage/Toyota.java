@@ -3,7 +3,7 @@ package Garage;
 public class Toyota extends Car {
 
     public Toyota() {
-        super("white", 40);
+        super("white", 40, 120);
     }
 
     @Override
