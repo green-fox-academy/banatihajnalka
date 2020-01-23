@@ -1,6 +1,5 @@
 package Matrix;
 
-import javax.sound.midi.Soundbank;
 import java.util.Arrays;
 
 public class Matrix {
@@ -17,6 +16,11 @@ public class Matrix {
                 {4, 1, 10, 7},
                 {8, 5, 2, 11}};
 
+        Integer[][] test = {
+                {matrix[0][0], matrix[2][1], matrix[1][2], matrix[0][3]},
+                {matrix[1][0], matrix[0][1], matrix[2][2], matrix[1][3]},
+                {matrix[2][0], matrix[1][1], matrix[0][2], matrix[2][3]}
+        };
 
         System.out.println(Arrays.deepToString(matrix));
         Integer[][] shiftedMatrix = shiftMatrix(matrix);
@@ -25,16 +29,14 @@ public class Matrix {
     }
 
     private static Integer[][] shiftMatrix(Integer[][] matrix) {
-        Integer[][] shiftedMatrix = new Integer[3][4];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (i == 0) {
-                    shiftedMatrix[i][j] = matrix[i][j];
-                } else if (i == 1) {
-                    shiftedMatrix[i][j] = matrix[i][j];
-                } else {
-                    shiftedMatrix[i][j] = matrix[i][j];
-                }
+        Integer x = matrix.length;
+        Integer y = matrix[0].length;
+        Integer[][] shiftedMatrix = new Integer[x][y];
+        System.out.println(x);
+        System.out.println(y);
+        for (int j = 0; j < y; j++) {
+            for (int i = 0; i < x; i++) {
+                shiftedMatrix[i][j] = matrix[(((i-j) % x) + x) % x][j];
             }
         }
         return shiftedMatrix;
