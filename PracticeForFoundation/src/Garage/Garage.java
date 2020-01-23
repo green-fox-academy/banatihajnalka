@@ -73,10 +73,7 @@ public class Garage {
 //    }
 
     public int fill(int amount) {
-        List<Car> cars = new ArrayList<Car>();
-        for (Car car : garage) {
-            cars.add(car);
-        }
+        List<Car> cars = new ArrayList<Car>(garage);
         while (amount > 0 && cars.size() > 0) {
             Car currentCar = cars.get(random(cars.size()));
             amount = currentCar.fill(amount);
