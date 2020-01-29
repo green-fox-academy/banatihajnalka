@@ -5,15 +5,13 @@
   body {
     background-color: dodgerblue;
     font-family: 'Abel', sans-serif;
+    font-weight: 50; 
     width: 100%;
   }
 
   table, th ,td {
-    font-family: 'Abel', sans-serif;
-    font-weight: 50; 
     text-align: left;
     height: 50px;
-    width: 300px;
     margin: 10px;
     padding: 10px;
   }
@@ -25,12 +23,26 @@
   th {
     background-color: black;
     color:white;
-    border-bottom: 4px grey;
+    border-bottom: 2px solid grey;
   }
 
   td {
     color: 	#808080;
     border: 0.5px solid #C0C0C0;
+  }
+
+  tr:first-child th{ 
+    min-width: 350px;
+    max-width: 350px;
+ }
+
+  tr th:last-child {
+    min-width: 400px;
+    max-width: 400px;
+ }
+
+  th:last-child { 
+    border-left: 0.5px solid grey; 
   }
 
   th:first-child { 
