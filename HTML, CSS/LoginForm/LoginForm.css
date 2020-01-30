@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+  }
+  
+body {
+    background-color: #D3D3D3;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 62px;
+    margin-left: 357px;
+}
+
+section {
+    background-color: white;
+    padding-left: 86px;
+    padding-top: 59px;
+    padding-right: 84px;
+    padding-bottom: 52px;
+    width: 560px;
+    height: 520px;
+    border-radius: 4px;
+    margin: 62px auto;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 22px;
+    margin-top: 0px;
+    padding-bottom: 28px;
+    margin: 0px;
+}
+
+.form-title {
+    margin-top: 16px;
+    margin-bottom: 20px;
+    font-size: 9px;
+}
+
+.field {
+    margin-top: 16px;
+    margin-bottom: 20px;
+    width: 388px;
+    height: 54px;
+    border: 1px solid rgb(230,230,230);
+    border-radius: 4px;
+    padding-left: 10px;
+    font-size: 28px;
+    color: #333333;
+}
+
+.forgot-pwd {
+    text-align: right;
+    border-radius: 4px;
+}
+
+#forgot-password {
+    background-color: white;
+    font-weight: 200;
+    border: none;
+    cursor: pointer;
+}
+
+.login {
+    text-align: left;
+    border-radius: 4px;
+    margin-top: 48px;
+}
+
+#login {
+    width: 150px;
+    height: 50px;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.field:focus {
+    border:2px solid lightgreen !important;
+    background: none !important;
+    border-radius: 4px;
+}
+
+#login:focus, #forgot-password:focus {
+    outline: none;
+}
+
+#pwd__eye {
+    margin-left: -40px;
+    cursor: pointer;
+    overflow: visible;
+}
