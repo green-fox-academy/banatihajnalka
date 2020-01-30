@@ -49,4 +49,20 @@ h1 {
 
 .field {
     font-size: 18px;
+    border: 0px none;
+    border-bottom: 1px solid #DCDCDC;
+    padding-top: 36px;
+    width: 273px;
+}
+
+.sign-up {
+    padding-top: 58px;
+}
+
+#sign-up {
+    width: 150px;
+    height: 39px;
+    border-radius: 4px;
+    border: 0px none;
+    background-color: #16A085;
 }
