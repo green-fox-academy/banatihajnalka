@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #D3D3D3;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 26px;
+}
+
+.grid {
+    background-color: white;
+    padding-left: 50px;
+    padding-top: 55px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    width: 740px;
+    height: 494px;
+    border-radius: 4px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 275, 24, 52, 24, 275;
+    /* grid-template-rows: 414px; */
+}
