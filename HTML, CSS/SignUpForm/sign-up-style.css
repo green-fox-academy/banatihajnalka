@@ -13,7 +13,8 @@
 h1 {
     margin: 0;
     font-weight: normal;
-    font-size: 26px;
+    font-size: 30px;
+    padding-bottom: 35px;
 }
 
 .grid {
@@ -29,4 +30,23 @@ h1 {
     display: grid;
     grid-template-columns: 275, 24, 52, 24, 275;
     /* grid-template-rows: 414px; */
+}
+
+.col1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.col2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.col3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.field {
+    font-size: 18px;
 }
