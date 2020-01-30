@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign-up</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
+    <link href="sign-up-style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="grid">
+        <section class="col1">
+            <h1>Sign up</h1>
+            <form action="url" method="POST">
+                <div>
+                    <label class="form-title" for="username">Username:</label>
+                    <input class="field" id="username" type="text" required></input>
+                </div>
+                <div>
+                    <label class="form-title" for="email">E-mail:</label>
+                    <input class="field" id="username" type="text" required></input>
+                </div>
+                <div>
+                    <label class="form-title" for="pwd">Password:</label>
+                    <input class="field" id="pwd" type="password" required></input>
+                </div>
+                <div>
+                    <label class="form-title" for="re-pwd">Retype password:</label>
+                    <input class="field" id="pwd" type="password" required></input>
+                </div>
+                <div class="sign-up">
+                    <input id="sign-up" type="submit" value="SIGN ME UP">
+                </div>
+            </form>
+        </section>
+        <section class="col2">
+            <div>
+                <label id="or">OR:</label>
+            </div>
+        </section>
+        <section class="col3">
+            <div>
+                <input id="facebook-login" type="button" value="Log in with facebook"></input>
+            </div>
+            <div>
+                <input id="twitter-login" type="button" value="Log in with Twitter"></input>
+            </div>
+            <div>
+                <input id="google-login" type="button" value="Log in with Google+"></input>
+            </div>
+</body>
+</html>
