@@ -12,7 +12,7 @@
     <div class="grid">
         <section class="column-left">
             <h1>Sign up</h1>
-            <form action="url" method="POST">
+            <form action="https://newsletter-ws.herokuapp.com/register" method="POST">
                 <div>
                     <label class="form-title" for="username"></label>
                     <input class="field" id="username" type="text" placeholder="Username" required></input>
@@ -41,13 +41,13 @@
         </section>
         <section class="column-right">
             <div>
-                <input id="facebook-login" type="button" value="Log in with facebook"></input>
+                <input id="facebook-login" type="button" onclick="window.location.href='https://www.facebook.com/';" value="Log in with facebook"></input>
             </div>
             <div>
-                <input id="twitter-login" type="button" value="Log in with Twitter"></input>
+                <input id="twitter-login" type="button" onclick="window.location.href='https://www.twitter.com/';" value="Log in with Twitter"></input>
             </div>
             <div>
-                <input id="google-login" type="button" value="Log in with Google+"></input>
+                <input id="google-login" type="button" onclick="window.location.href='https://www.google.com/';" value="Log in with Google+"></input>
             </div>
         </section>
     </div>
