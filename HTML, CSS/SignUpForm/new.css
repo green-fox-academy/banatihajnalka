@@ -77,8 +77,6 @@ h1 {
 .circle {
     width: 53px;
     height: 53px;
-    /* padding-left: 10px; */
-    /* padding-top: 15px; */
     border-radius: 50%;
     background: gray;
     text-align: center;
