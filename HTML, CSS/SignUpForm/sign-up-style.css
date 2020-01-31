@@ -2,50 +2,62 @@
     box-sizing: border-box;
   }
   
-  body {
+body {
     background-color: #D3D3D3;
     font-family: 'Raleway', sans-serif;
-    font-weight: 400;
+    /* font-weight: 400; */
     width: 100%;
     box-sizing: border-box;
 }
 
-h1 {
+.grid {
+    background-color: white;
+    width: 740px;
+    height: 494px;
+    margin: 50px auto;
+    border-radius: 4px;
+    /* margin: 50px auto; */
+    /* padding-left: 50px;
+    padding-top: 55px; */
+    /* display: grid; */
+    /* padding-right: 50px;
+    padding-bottom: 50px; */
+    grid-template-columns:  320px, 100px, 320px;
+    grid-template-rows: 414px;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, .5);
+}
+
+.column-left {
+    width: 273px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding-left: 50px;
+    padding-top: 55px;
+    /* grid-row-start: 1;
+    grid-row-end: 2; */
+}
+
+.column-middle {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    /* grid-row-start: 1;
+    grid-row-end: 2; */
+    padding-top: 224px;
+    width: 103px;
+}
+
+/* .column-right {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding-top: 185px;
+}  */
+ 
+/* h1 {
     margin: 0;
     font-weight: normal;
     font-size: 30px;
-    padding-bottom: 35px;
-}
-
-.grid {
-    background-color: white;
-    padding-left: 50px;
-    padding-top: 55px;
-    padding-right: 50px;
-    padding-bottom: 50px;
-    width: 740px;
-    height: 494px;
-    border-radius: 4px;
-    margin: 50px auto;
-    display: grid;
-    grid-template-columns: 275, 24, 52, 24, 275;
-    grid-template-rows: 414px;
-}
-
-.col1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-}
-
-.col2 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    margin-top: 224px;
-}
-
-.col3 {
-    grid-column-start: 5;
-    grid-column-end: 6;
 }
 
 .field {
@@ -58,9 +70,9 @@ h1 {
 
 .sign-up {
     padding-top: 58px;
-}
+} */
 
-#sign-up {
+/* #sign-up {
     width: 150px;
     height: 39px;
     border-radius: 4px;
@@ -74,4 +86,4 @@ h1 {
     border-radius: 100%;
     background-color: #DDDDDD;
     text-align: center;
-}
+} */
