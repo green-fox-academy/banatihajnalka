@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="Eng">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
+<!--    <link href="/css/greeting.css" rel="stylesheet" type="text/css">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'"></p>
+<!--<p th:text="'Hello, ' + ${name} + '!'"></p>-->
+<p th:text="${hello} + '!'" th:style="'color:' + ${color} +';' + 'font-size:' + ${size} + 'px'" ></p>
 </body>
 </html>
