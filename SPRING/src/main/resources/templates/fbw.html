@@ -3,11 +3,9 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
-    <!--    <link href="/css/greeting.css" rel="stylesheet" type="text/css">-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<!--<p th:text="'Hello, ' + ${name} + '!'"></p>-->
-<p th:text="${hello} + '!'" th:style="'color:' + ${color} +';' + 'font-size:' + ${size} + 'px'" ></p>
+<p th:text="'Hello! This site was loaded ' + ${output} + ' times since last server start.'" th:style="'font-size:' + ${size} + 'px'" ></p>
 </body>
 </html>
