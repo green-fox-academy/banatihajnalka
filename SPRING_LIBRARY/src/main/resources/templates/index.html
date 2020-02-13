@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>
+    <div th:each="book : ${books}">
+        <h1 th:text="${book.author} + ' - ' +${book.title} + ' (' + ${book.releaseYear} + ') '"></h1>
+    </div>
+</div>
+</body>
+</html>

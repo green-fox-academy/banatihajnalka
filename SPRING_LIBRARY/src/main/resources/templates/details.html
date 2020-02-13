@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Details</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>
+    <span th:if="${error}" th:text="${error}"></span>
+    <div th:unless="${error}" th:object="${book}">
+        <h1 th:text="*{title}"></h1>
+    </div>
+</div>
+</body>
+</html>
