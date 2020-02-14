@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank of Simba</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+</head>
+<body>
+<div th:each="account : ${bankAccounts}">
+    <h1 th:text="'Account Field of id: ' + ${account.id}"> </h1>
+    <p th:text="'Name: ' + ${account.name}"> </p>
+    <p th:text="' Balance: ' + ${#numbers.formatDecimal(account.balance, 0, 'COMMA', 2, 'POINT')} + ' Zebra'"> </p>
+    <p th:text="' Animal Type: ' + ${account.animalType}"> </p>
+    <p th:text=" ${account.isKing} ? 'This animal is the KING' : 'This animal is not a king.'"> </p>
+    <p th:text=" ${account.isGood} ? 'This animal is good' : 'This animal is an evil one.'"> </p>
+</div>
+</body>
+</html>
