@@ -28,4 +28,9 @@ public class BankController {
         return "show";
     }
 
+    @GetMapping("/show/ception")
+    public String showCeption(Model model) {
+        model.addAttribute("text",    "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+        return "ception";
+    }
 }
