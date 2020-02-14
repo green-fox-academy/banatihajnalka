@@ -33,4 +33,10 @@ public class BankController {
         model.addAttribute("text",    "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
         return "ception";
     }
+
+    @GetMapping("/showtable")
+    public String showTable(Model model) {
+        model.addAttribute("bankAccounts", bankAccounts);
+        return "showtable";
+    }
 }
