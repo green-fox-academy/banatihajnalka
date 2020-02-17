@@ -3,32 +3,35 @@
 <head>
     <title>Table of accounts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <link rel="stylesheet" th:href="@{/add.css}"  type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
 </head>
 <body>
-<div>
+<div class="form">
+    <h1>Add account</h1>
     <form th:action="@{/add}" method="post">
         <div>
-            <label for="name">Name </label>
-            <input type="text" id="name" th:name="name">
+            <label class="form-title" for="name">Name </label>
+            <input class="field" type="text" id="name" th:name="name" required>
         </div>
         <div>
-            <label for="balance">Balance </label>
-            <input type="text" id="balance" th:name="balance">
+            <label class="form-title" for="balance">Balance </label>
+            <input class="field" type="text" id="balance" th:name="balance" required>
         </div>
         <div>
-            <label for="animal type">Animal Type</label>
-            <input type="text" id="animal type" th:name="animalType">
+            <label class="form-title" for="animal type">Animal Type</label>
+            <input class="field" type="text" id="animal type" th:name="animalType" required>
         </div>
         <div>
-            <label for="isKing">Is King or not?</label>
-            <input type="text" id="isKing" th:name="isKing">
+            <label class="form-title" for="isKing">Is King or not?</label>
+            <input class="field" type="text" id="isKing" th:name="isKing" required>
         </div>
         <div>
-            <label for="isGood">Is Good or Not?</label>
-            <input type="text" id="isGood" th:name="isGood">
+            <label class="form-title" for="isGood">Is Good or Not?</label>
+            <input class="field" type="text" id="isGood" th:name="isGood" required>
         </div>
-        <div>
-            <button type="submit" value="Sign up"></button>
+        <div class="button">
+            <button id="add" type="submit" value="Add account">Add account</button>
         </div>
     </form>
 </div>
