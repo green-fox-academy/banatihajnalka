@@ -16,7 +16,7 @@
         <th>King or Not?</th>
         <th>Good or Not?</th>
     </tr>
-    <tr th:each="account : ${bankAccounts}" th:object="${account}">
+    <tr th:each="account : ${bankAccounts}" th:object="${account}" th:attr="class=${account.isKing} ? 'king' : 'notKing'">
         <td id="id" th:text ="${accountStat.count}"> </td>
         <td id="name" th:text="*{name}"> </td>
         <td id="balance" class="zebra" th:text="*{#numbers.formatDecimal(balance, 0, 2, 'POINT')}"></td>

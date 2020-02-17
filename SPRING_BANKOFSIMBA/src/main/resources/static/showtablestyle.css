@@ -65,6 +65,10 @@ tr:last-child td:last-child {
     border-bottom-right-radius: 3px;
 }
 
+.king {
+    color: antiquewhite;
+}
+
 tr:nth-child(even) {
     background-color:skyblue;
 }
@@ -76,6 +80,7 @@ tr:nth-child(odd) {
 .zebra:after {
     content: ' Zebra';
 }
+
 
 #id, #balance {
     text-align: right;
