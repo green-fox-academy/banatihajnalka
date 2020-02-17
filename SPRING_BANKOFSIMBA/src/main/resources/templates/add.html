@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Table of accounts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+</head>
+<body>
+<div>
+    <form th:action="@{/add}" method="post">
+        <div>
+            <label for="name">Name </label>
+            <input type="text" id="name" th:name="name">
+        </div>
+        <div>
+            <label for="balance">Balance </label>
+            <input type="text" id="balance" th:name="balance">
+        </div>
+        <div>
+            <label for="animal type">Animal Type</label>
+            <input type="text" id="animal type" th:name="animalType">
+        </div>
+        <div>
+            <label for="isKing">Is King or not?</label>
+            <input type="text" id="isKing" th:name="isKing">
+        </div>
+        <div>
+            <label for="isGood">Is Good or Not?</label>
+            <input type="text" id="isGood" th:name="isGood">
+        </div>
+        <div>
+            <button type="submit" value="Sign up"></button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

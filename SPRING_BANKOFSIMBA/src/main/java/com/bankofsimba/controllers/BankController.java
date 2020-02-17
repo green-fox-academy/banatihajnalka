@@ -48,7 +48,7 @@ public class BankController {
     }
 
     @PostMapping("/raise")
-    public String raiseBalance(Model model, @RequestParam (required = false) String name) {
+    public String raiseBalance(@RequestParam (required = false) String name) {
 //        BankAccount account = (BankAccount) filterAccountsByName(name);
         for (BankAccount account : bankAccounts) {
             if (account.getName().equals(name)) {
@@ -58,8 +58,18 @@ public class BankController {
                     account.setBalance(account.getBalance() + 10);
                 }
             }
-            model.addAttribute("account", account);
         }
+        return "redirect:/showtable";
+    }
+
+    @GetMapping("/add")
+    public String add() {
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String addAccount(@RequestParam String name, double balance, String animalType, boolean isKing, boolean isGood) {
+        bankAccounts.add(new BankAccount(name, balance, animalType, isKing, isGood));
         return "redirect:/showtable";
     }
 }
