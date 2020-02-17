@@ -4,6 +4,7 @@ import com.bankofsimba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,6 +29,25 @@ public class BankController {
     public String showFields(Model model) {
         model.addAttribute("bankAccounts", bankAccounts);
         return "show";
+    }
+
+    @GetMapping("/show/{name}/details")
+    public String getAccountByName(Model model, @PathVariable(name="name") String name) {
+        BankAccount account = null;
+
+        for(BankAccount bankAccount : bankAccounts) {
+            if (bankAccount.getName().equals(name)) {
+                account = bankAccount;
+            }
+        }
+
+        if (account!= null) {
+            model.addAttribute("account", account);
+        } else {
+            model.addAttribute("error", "No account found");
+        }
+
+        return "details";
     }
 
     @GetMapping("/show/ception")
