@@ -2,7 +2,6 @@ package com.bankofsimba.models;
 
 public class BankAccount {
 
-    private static int nextId = 1;
     private String name;
     private double balance;
     private String animalType;
@@ -16,7 +15,6 @@ public class BankAccount {
         this.animalType = animalType;
         this.isKing = isKing;
         this.isGood = isGood;
-        this.id = nextId++;
     }
 
     public String getName() {

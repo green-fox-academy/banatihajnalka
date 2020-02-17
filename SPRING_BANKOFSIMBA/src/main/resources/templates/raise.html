@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Table of accounts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+</head>
+<body>
+<div>
+    <form th:action="@{/raise}" method="post">
+        <div>
+            <label for="name">Name </label>
+            <input type="text" id="name" th:name="name">
+            <button type="submit" value="Raise"></button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

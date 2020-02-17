@@ -4,6 +4,8 @@ import com.bankofsimba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,7 @@ public class BankController {
 
     @GetMapping("/show/ception")
     public String showCeption(Model model) {
-        model.addAttribute("text",    "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+        model.addAttribute("text", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
         return "ception";
     }
 
@@ -39,4 +41,32 @@ public class BankController {
         model.addAttribute("bankAccounts", bankAccounts);
         return "showtable";
     }
+
+    @GetMapping("/raise")
+    public String raise() {
+        return "raise";
+    }
+
+    @PostMapping("/raise")
+    public String raiseBalance(Model model, @RequestParam (required = false) String name) {
+//        BankAccount account = (BankAccount) filterAccountsByName(name);
+        for (BankAccount account : bankAccounts) {
+            if (account.getName().equals(name)) {
+                if (account.getIsKing()) {
+                    account.setBalance(account.getBalance() + 100);
+                } else {
+                    account.setBalance(account.getBalance() + 10);
+                }
+            }
+            model.addAttribute("account", account);
+        }
+        return "redirect:/showtable";
+    }
 }
+
+//        private List<BankAccount> filterAccountsByName (String name){
+//            return bankAccounts.stream()
+//                    .filter(account -> account.getName().equals(name))
+//                    .collect(Collectors.toList());
+//        }
+//    }
