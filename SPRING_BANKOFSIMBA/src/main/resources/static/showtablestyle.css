@@ -67,6 +67,7 @@ tr:last-child td:last-child {
 
 .king {
     color: antiquewhite;
+    background-color: palevioletred !important;
 }
 
 tr:nth-child(even) {
