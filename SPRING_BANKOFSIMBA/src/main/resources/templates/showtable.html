@@ -3,6 +3,8 @@
 <head>
     <title>Table of accounts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <link rel="stylesheet" th:href="@{/showtablestyle.css}"  type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 <table>
@@ -15,21 +17,13 @@
         <th>Good or Not?</th>
     </tr>
     <tr th:each="account : ${bankAccounts}" th:object="${account}">
-        <td th:text ="${accountStat.count}"> </td>
-        <td th:text="*{name}"> </td>
-        <td th:text="*{#numbers.formatDecimal(balance, 0, 2, 'POINT')}"> </td>
-        <td th:text="*{isKing} ? 'This animal is the KING.' : 'This animal is not a king.'"> </td>
-        <td th:text="*{isGood} ? 'This animal is good.' : 'This animal is an evil one.'"> </td>
+        <td id="id" th:text ="${accountStat.count}"> </td>
+        <td id="name" th:text="*{name}"> </td>
+        <td id="balance" class="zebra" th:text="*{#numbers.formatDecimal(balance, 0, 2, 'POINT')}"></td>
+        <td id="type" th:text="*{animalType}"> </td>
+        <td id="isKing" th:text="*{isKing} ? 'KING' : 'not king'"> </td>
+        <td id="isGood" th:text="*{isGood} ? 'good' : 'evil'"> </td>
     </tr>
 </table>
-<!--<div>-->
-<!--    <form th:action="@{/raise}" method="post" th:each="account : ${bankAccounts}" th:object="${account}">-->
-<!--        <div>-->
-<!--            <label for="name">Name </label>-->
-<!--            <input type="text" id="name" name="name">-->
-<!--            <button type="submit">Raise</button>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
 </body>
 </html>

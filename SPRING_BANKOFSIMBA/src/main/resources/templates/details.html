@@ -11,8 +11,8 @@
         <h1 th:text="'Account of : ' + ${account.name}"> </h1>
         <p th:text="' Balance: ' + ${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')} + ' Zebra'"> </p>
         <p th:text="' Animal Type: ' + ${account.animalType}"> </p>
-        <p th:text=" ${account.isKing} ? 'This animal is the KING' : 'This animal is not a king.'"> </p>
-        <p th:text=" ${account.isGood} ? 'This animal is good' : 'This animal is an evil one.'"> </p>
+        <p th:text=" ${account.isKing} ? 'This animal is the KING.' : 'This animal is not a king.'"> </p>
+        <p th:text=" ${account.isGood} ? 'This animal is good.' : 'This animal is an evil one.'"> </p>
 </div>
 </body>
 </html>
