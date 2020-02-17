@@ -3,7 +3,7 @@
 <head>
     <title>Table of accounts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
-    <link rel="stylesheet" th:href="@{/add.css}"  type="text/css"/>
+    <link rel="stylesheet" th:href="@{/add.css}" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,14 +22,24 @@
             <label class="form-title" for="animal type">Animal Type</label>
             <input class="field" type="text" id="animal type" th:name="animalType" required>
         </div>
-        <div>
-            <label class="form-title" for="isKing">Is King or not?</label>
-            <input class="field" type="text" id="isKing" th:name="isKing" required>
+        <div class="checkboxes">
+            <a class="cb1">
+                <label class="form-title" for="isKing">Is King?</label>
+                <input class="checkbox" type="checkbox" id="isKing" name="isKing">
+            </a>
+            <a class="cb2">
+                <label class="form-title" for="isGood">Is Good?</label>
+                <input class="checkbox" type="checkbox" id="isGood" name="isGood">
+            </a>
         </div>
-        <div>
-            <label class="form-title" for="isGood">Is Good or Not?</label>
-            <input class="field" type="text" id="isGood" th:name="isGood" required>
-        </div>
+        <!--        <div>-->
+        <!--            <label class="form-title" for="isKing">Is King or not?</label>-->
+        <!--            <input class="field" type="text" id="isKing" th:name="isKing" required>-->
+        <!--        </div>-->
+        <!--        <div>-->
+        <!--            <label class="form-title" for="isGood">Is Good or Not?</label>-->
+        <!--            <input class="field" type="text" id="isGood" th:name="isGood" required>-->
+        <!--        </div>-->
         <div class="button">
             <button id="add" type="submit" value="Add account">Add account</button>
         </div>

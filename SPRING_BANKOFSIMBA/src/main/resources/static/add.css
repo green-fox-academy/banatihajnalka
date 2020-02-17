@@ -16,22 +16,22 @@ body {
     background-color: palevioletred;
     padding: 40px 80px 40px 80px;
     width: 560px;
-    height: 550px;
+    height: 450px;
     border-radius: 4px;
     margin: 40px auto;
 }
 
 h1 {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 22px;
     padding-bottom: 15px;
     margin: 0;
 }
 
 .form-title {
-    margin-top: 16px;
+    margin-top: 12px;
     margin-bottom: 20px;
-    font-size: 9px;
+    font-size: 15px;
 }
 
 .field {
@@ -39,6 +39,29 @@ h1 {
     margin-bottom: 10px;
     width: 388px;
     height: 30px;
+    border: 1px solid rgb(230,230,230);
+    border-radius: 4px;
+    padding-left: 10px;
+    font-size: 15px;
+    color: #333333;
+}
+
+
+.cb1 {
+    margin: 20px 20px 20px 20px;
+    padding: 20px 20px 20px 20px;
+}
+
+.cb2 {
+    margin: 20px 20px 20px 20px;
+    padding: 20px 20px 20px 20px;
+}
+
+.checkbox {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 20px;
+    height: 20px;
     border: 1px solid rgb(230,230,230);
     border-radius: 4px;
     padding-left: 10px;
