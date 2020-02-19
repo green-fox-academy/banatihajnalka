@@ -1,7 +1,6 @@
 package com.bankofsimba.controllers;
 
 import com.bankofsimba.models.BankAccount;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -96,13 +95,10 @@ public class BankController {
         return "add";
     }
 
+
     @PostMapping("/add")
-    public String addAccount(@ModelAttribute BankAccount account) {
-//        if (account.getIsKing() == Boolean.parseBoolean(null) || account.getIsGood() == Boolean.parseBoolean(null)) {
-//            account.setIsKing(false);
-//            account.setIsKing(false);
-//        }
-        bankAccounts.add(account);
+    public String addNewAccount(@ModelAttribute BankAccount newAccount) {
+        bankAccounts.add(newAccount);
         return "redirect:/showtable";
     }
 
