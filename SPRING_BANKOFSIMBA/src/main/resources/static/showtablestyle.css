@@ -4,7 +4,6 @@
 
 body {
     background-color: 	turquoise;
-    width: 100%;
 }
 
 h1 {
@@ -65,11 +64,6 @@ tr:last-child td:last-child {
     border-bottom-right-radius: 3px;
 }
 
-.king {
-    color: antiquewhite;
-    background-color: palevioletred !important;
-}
-
 tr:nth-child(even) {
     background-color:skyblue;
 }
@@ -82,6 +76,32 @@ tr:nth-child(odd) {
     content: ' Zebra';
 }
 
+.king {
+    color: antiquewhite;
+    background-color: palevioletred !important;
+}
+
+.button {
+    box-shadow: 0px 10px 14px -7px #276873;
+    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color:#599bb3;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#6b1b15;
+    text-decoration:none;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%
+}
+.button:hover {
+    background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+    background-color:#408c99;
+}
+.button:active {
+    position:relative;
+    top:1px;
+}
 
 #id, #balance {
     text-align: right;
