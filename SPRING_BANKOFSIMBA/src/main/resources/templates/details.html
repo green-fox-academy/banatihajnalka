@@ -7,7 +7,8 @@
 </head>
 <body>
 <div>
-    <div>
+    <span th:if="${error}" th:text="${error}"></span>
+    <div th:unless="${error}">
         <h1 th:text="'Account of : ' + ${account.name}"> </h1>
         <p th:text="' Balance: ' + ${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')} + ' Zebra'"> </p>
         <p th:text="' Animal Type: ' + ${account.animalType}"> </p>

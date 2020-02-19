@@ -9,7 +9,7 @@
 <body>
 <div class="form">
     <h1>Add account</h1>
-    <form action="#" th:action="@{/add}" th:object="${account}" method="post">
+    <form action="#" th:action="@{/add}" object="${account}" method="post">
         <div>
             <label class="form-title" for="name">Name </label>
             <input class="field" type="text" id="name" th:name="name" required>
@@ -29,11 +29,11 @@
 <!--            </div>-->
             <a class="cb1">
                 <label class="form-title" for="isKing">Is King?</label>
-                <input class="checkbox" type="checkbox" id="isKing" name="isKing">
+                <input class="checkbox" type="checkbox" id="isKing" th:name="isKing">
             </a>
             <a class="cb2">
                 <label class="form-title" for="isGood">Is Good?</label>
-                <input class="checkbox" type="checkbox" id="isGood" name="isGood">
+                <input class="checkbox" type="checkbox" id="isGood" th:name="isGood">
             </a>
         </div>
         <!--        <div>-->
