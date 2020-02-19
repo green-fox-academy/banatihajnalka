@@ -15,6 +15,7 @@
         <th>Animal type</th>
         <th>King or Not?</th>
         <th>Good or Not?</th>
+        <th>Raise</th>
     </tr>
     <tr th:each="account : ${bankAccounts}" th:object="${account}" th:attr="class=${account.isKing} ? 'king' : 'notKing'">
         <td id="id" th:text ="${accountStat.count}"> </td>
@@ -23,6 +24,12 @@
         <td id="type" th:text="*{animalType}"> </td>
         <td id="isKing" th:text="*{isKing} ? 'KING' : 'not king'"> </td>
         <td id="isGood" th:text="*{isGood} ? 'good' : 'evil'"> </td>
+        <td>
+            <form action="#" th:action="@{/raise}"  method="post">
+                <input type="hidden" name="name" th:value="*{name}">
+                <button id="add" type="submit" value="Add account">Raise</button>
+            </form>
+        </td>
     </tr>
 </table>
 </body>
