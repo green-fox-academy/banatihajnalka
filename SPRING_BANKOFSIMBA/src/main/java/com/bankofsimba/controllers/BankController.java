@@ -1,12 +1,10 @@
 package com.bankofsimba.controllers;
 
 import com.bankofsimba.models.BankAccount;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,16 +80,32 @@ public class BankController {
         return "redirect:/showtable";
     }
 
+//    @GetMapping("/add")
+//    public String add() {
+//        return "add";
+//    }
+//
+//    @PostMapping("/add")
+//    public String addAccount(String name, double balance, String animalType, boolean isKing, boolean isGood) {
+//        bankAccounts.add(new BankAccount(name, balance, animalType, isKing, isGood));
+//        return "redirect:/showtable";
+//    }
+
     @GetMapping("/add")
-    public String add() {
+    public String addForm() {
         return "add";
     }
 
     @PostMapping("/add")
-    public String addAccount(@RequestParam String name, double balance, String animalType, boolean isKing, boolean isGood) {
-        bankAccounts.add(new BankAccount(name, balance, animalType, isKing, isGood));
+    public String addAccount(@ModelAttribute BankAccount account) {
+//        if (account.getIsKing() == Boolean.parseBoolean(null) || account.getIsGood() == Boolean.parseBoolean(null)) {
+//            account.setIsKing(false);
+//            account.setIsKing(false);
+//        }
+        bankAccounts.add(account);
         return "redirect:/showtable";
     }
+
 }
 
 //        private List<BankAccount> filterAccountsByName (String name){

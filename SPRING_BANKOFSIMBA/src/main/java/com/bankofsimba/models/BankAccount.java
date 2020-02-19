@@ -9,13 +9,16 @@ public class BankAccount {
     private boolean isGood;
     private int id;
 
-    public BankAccount(String name, double balance, String animalType, boolean isKing, boolean isGood) {
+
+    public BankAccount(String name, double balance, String animalType, Boolean isKing, Boolean isGood) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
-        this.isKing = isKing;
-        this.isGood = isGood;
+        this.isKing = false;
+        this.isGood = false;
     }
+
+//    == null ? false : true;
 
     public String getName() {
         return name;
