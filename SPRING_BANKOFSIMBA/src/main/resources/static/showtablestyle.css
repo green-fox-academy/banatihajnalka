@@ -98,6 +98,7 @@ tr:nth-child(odd) {
     background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
     background-color:#408c99;
 }
+
 .button:active {
     position:relative;
     top:1px;
