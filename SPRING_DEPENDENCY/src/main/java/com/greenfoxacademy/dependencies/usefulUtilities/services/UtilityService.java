@@ -25,6 +25,13 @@ public class UtilityService {
         return colors.get(random.nextInt(colors.size()));
     }
 
+    public String validateEmail(String email) {
+        if (email.contains("@") && email.contains(".")) {
+            return "This is a valid email.";
+        }
+        else return "This is not a valid email.";
+    }
+
 
     public String caesar(String text, int number) {
         if (number < 0) {
@@ -37,22 +44,6 @@ public class UtilityService {
             result += (char) (((int) text.charAt(i) + number - offset) % 26 + offset);
         }
         return result;
-    }
-
-    public ArrayList<String> getColors() {
-        return colors;
-    }
-
-    public void setColors(ArrayList<String> colors) {
-        this.colors = colors;
-    }
-
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
     }
 }
 

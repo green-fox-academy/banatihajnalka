@@ -28,4 +28,8 @@ public class UtilityController {
         return "backGroundColor";
     }
 
+//    @GetMapping("/useful/email")
+//    public String validateEmail() {
+//    }
+
 }
