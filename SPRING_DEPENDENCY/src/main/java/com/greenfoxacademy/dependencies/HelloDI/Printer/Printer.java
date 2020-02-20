@@ -1,4 +1,4 @@
-package com.greenfoxacademy.dependencies.services;
+package com.greenfoxacademy.dependencies.HelloDI.Printer;
 
 import org.springframework.stereotype.Service;
 
