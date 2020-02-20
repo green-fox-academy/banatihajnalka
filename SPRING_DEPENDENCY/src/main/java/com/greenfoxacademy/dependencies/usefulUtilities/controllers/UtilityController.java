@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,7 +20,7 @@ public class UtilityController {
     }
 
     @GetMapping("/useful")
-        public String showLinks() {
+    public String showLinks() {
         return "links";
     }
 
@@ -27,19 +28,18 @@ public class UtilityController {
     public String backGroundColor(Model model) {
         String randomColor = utilityService.randomColor();
         model.addAttribute("color", randomColor);
-        return "backGroundColor";
+        return "background_color";
     }
 
     @GetMapping("/useful/email")
     public String renderValidatePage() {
-        return "emailValidation";
+        return "email_validation";
     }
 
     @PostMapping("/useful/email")
-    public String validateEmail(Model model, @RequestParam(name="email") String email) {
+    public String validateEmail(Model model, @RequestParam(name = "email") String email) {
         model.addAttribute("email", email);
         model.addAttribute("isValid", utilityService.validateEmail("email"));
-        return "emailValidation";
+        return "email_validation";
     }
-
 }
