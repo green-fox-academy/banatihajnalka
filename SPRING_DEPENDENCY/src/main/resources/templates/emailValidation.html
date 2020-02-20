@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Validate email</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+<!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <form action="#" th:action="@{/useful/email}" th:method="post">
+        <div>
+            <label class="form-title" for="email">Email</label>
+            <input class="field" name="email" type="text" id="email" required>
+        </div>
+        <div class="button">
+            <button type="submit">Validate email</button>
+        </div>
+    </form>
+    <p th:text="${email}" th:style="${isValid} ? 'color: green' : 'color: red'"></p>
+</div>
+</body>
+</html>

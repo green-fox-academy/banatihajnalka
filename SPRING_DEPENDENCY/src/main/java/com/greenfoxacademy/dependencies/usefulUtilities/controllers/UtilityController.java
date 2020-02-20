@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UtilityController {
@@ -28,8 +30,16 @@ public class UtilityController {
         return "backGroundColor";
     }
 
-//    @GetMapping("/useful/email")
-//    public String validateEmail() {
-//    }
+    @GetMapping("/useful/email")
+    public String renderValidatePage() {
+        return "emailValidation";
+    }
+
+    @PostMapping("/useful/email")
+    public String validateEmail(Model model, @RequestParam(name="email") String email) {
+        model.addAttribute("email", email);
+        model.addAttribute("isValid", utilityService.validateEmail("email"));
+        return "emailValidation";
+    }
 
 }
