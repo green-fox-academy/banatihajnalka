@@ -20,14 +20,14 @@ public class UtilityController {
 
     @GetMapping("/useful")
     public String showLinks() {
-        return "links";
+        return "utilities/links";
     }
 
     @GetMapping("/useful/colored")
     public String backGroundColor(Model model) {
         String randomColor = utilityService.randomColor();
         model.addAttribute("color", randomColor);
-        return "background_color";
+        return "utilities/background_color";
     }
 
 //    @GetMapping("/useful/email")
@@ -39,31 +39,31 @@ public class UtilityController {
     public String validateEmail(Model model, @RequestParam(name = "email", required = false) String email) {
         model.addAttribute("email", email);
         model.addAttribute("isValid", utilityService.validateEmail("email"));
-        return "email_validation";
+        return "utilities/email_validation";
     }
 
     @PostMapping("/useful/email")
     public String validatePostedEmail(Model model, @RequestParam(name = "email") String email) {
         model.addAttribute("email", email);
         model.addAttribute("isValid", utilityService.validateEmail("email"));
-        return "email_validation";
+        return "utilities/email_validation";
     }
 
 
     @GetMapping("/encode")
     public String showEncodeFields() {
-        return "encode";
+        return "utilities/encode";
     }
 
     @PostMapping("/encode")
     public String encode(Model model, @RequestParam("text") String text, @RequestParam ("number") int number) {
         model.addAttribute("encode", utilityService.caesar(text, number));
-        return "encode";
+        return "utilities/encode";
     }
 
     @GetMapping("/decode")
     public String showDecodeFields() {
-        return "decode";
+        return "utilities/decode";
     }
 
     @PostMapping("/decode")
