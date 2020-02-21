@@ -36,11 +36,12 @@ public class UtilityController {
 //    }
 
     @GetMapping("/useful/email")
-    public String validateEmail(Model model, @RequestParam(name = "email") String email) {
+    public String validateEmail(Model model, @RequestParam(name = "email", required = false) String email) {
         model.addAttribute("email", email);
         model.addAttribute("isValid", utilityService.validateEmail("email"));
         return "email_validation";
     }
+
     @PostMapping("/useful/email")
     public String validatePostedEmail(Model model, @RequestParam(name = "email") String email) {
         model.addAttribute("email", email);
@@ -54,12 +55,22 @@ public class UtilityController {
         return "encode";
     }
 
-    @PostMapping("encode")
+    @PostMapping("/encode")
     public String encode(Model model, @RequestParam("text") String text, @RequestParam ("number") int number) {
         model.addAttribute("encode", utilityService.caesar(text, number));
         return "encode";
     }
 
+    @GetMapping("/decode")
+    public String showDecodeFields() {
+        return "decode";
+    }
+
+    @PostMapping("/decode")
+    public String decode(Model model, @RequestParam("text") String text, @RequestParam ("number") int number) {
+        model.addAttribute("decode", utilityService.caesar(text, -number));
+        return "decode";
+    }
 
 }
 

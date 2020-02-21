@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Encode</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<div>
+    <form action="#" th:action="@{/decode}" th:method="post">
+        <div>
+            <input class="field" name="text" type="text" placeholder="Test to decode" required>
+            <input class="field" name="number" type="text"  placeholder="Shifting" required>
+        </div>
+        <div class="button">
+            <button type="submit">Decode</button>
+        </div>
+    </form>
+    <p th:text="${decode}"></p>
+</div>
 </body>
 </html>
