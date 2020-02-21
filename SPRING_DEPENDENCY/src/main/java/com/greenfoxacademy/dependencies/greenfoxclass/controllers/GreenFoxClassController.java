@@ -3,6 +3,7 @@ package com.greenfoxacademy.dependencies.greenfoxclass.controllers;
 import com.greenfoxacademy.dependencies.greenfoxclass.sevices.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -17,11 +18,12 @@ public class GreenFoxClassController {
 
     @GetMapping("/gfa")
     public String showLinks() {
-        return "gFCLinks";
+        return "greenfoxclass/links";
     }
 
     @GetMapping("/gfa/list")
-    public String listStudents() {
-        return "gFCLinks";
+    public String listStudents(Model model) {
+        model.addAttribute("students", studentService.findAll());
+        return "greenfoxclass/student_list";
     }
 }
