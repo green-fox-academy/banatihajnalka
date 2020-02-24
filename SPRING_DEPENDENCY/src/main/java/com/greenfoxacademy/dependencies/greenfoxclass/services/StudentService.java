@@ -1,4 +1,4 @@
-package com.greenfoxacademy.dependencies.greenfoxclass.sevices;
+package com.greenfoxacademy.dependencies.greenfoxclass.services;
 
 import org.springframework.stereotype.Service;
 
@@ -29,4 +29,7 @@ public class StudentService {
         return names.size();
     }
 
+    public boolean check(String name) {
+      return names.contains(name);
+    }
 }
