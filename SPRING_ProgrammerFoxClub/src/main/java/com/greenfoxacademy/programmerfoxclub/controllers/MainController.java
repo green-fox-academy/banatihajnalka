@@ -27,7 +27,7 @@ public class MainController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam (required = true) String name) {
+    public String login(@RequestParam String name) {
         return "redirect:/?name=" + name;
     }
 }

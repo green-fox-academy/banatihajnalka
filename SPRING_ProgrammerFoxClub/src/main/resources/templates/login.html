@@ -12,9 +12,8 @@
     <p> Please provide a name, so you can associate it to your pet! </p>
     <form action="#" th:action="@{/login}" th:method="post">
         <div>
-            <input class="field" name="name" type="text" placeholder="Name" required>
-        </div>
-        <div class="button">
+            <label for="name">Name</label>
+            <input class="field"  id="name" name="name" type="text" required>
             <button type="submit">Go</button>
         </div>
     </form>
