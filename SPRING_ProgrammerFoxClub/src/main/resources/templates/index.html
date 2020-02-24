@@ -13,21 +13,16 @@
     </div>
         <img src="greenfox.png" alt="green fox">
     <div>
-        <p text="This is Mr. Fox"></p>
+        <p th:text="${name}"></p>
     </div>
     <div>
         <h1>Known tricks</h1>
     </div>
-    <ul>
-        <li>Write HTML</li>
-        <li>code in Java</li>
+    <p th:if="${numOfTricks == 0}">You know no tricks, yet. Go and learn some.</p>
+    <ul th:unless="${numOfTricks == 0}">
+            <li>Write HTML</li>
+            <li>code in Java</li>
     </ul>
-<!--    <div>-->
-<!--        <a href="/gfa/add"> Add </a>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <a href="/gfa/check"> Check </a>-->
-<!--    </div>-->
 </div>
 </body>
 </html>
