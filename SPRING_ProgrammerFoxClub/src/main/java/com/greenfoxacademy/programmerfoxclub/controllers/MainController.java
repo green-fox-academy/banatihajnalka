@@ -14,16 +14,20 @@ public class MainController {
 
     private FoxService foxService;
 
-
     @Autowired
     public MainController(FoxService foxService) {
         this.foxService = foxService;
     }
 
     @GetMapping("/")
-    public String showMain(Model model, @RequestParam String name) {
-        model.addAttribute("name", foxService.find(name).toString());
-        model.addAttribute("numOfTricks", foxService.find(name).getNumberOfTricks());
+    public String showMain(Model model, @RequestParam (required = false) String name) {
+        if (name == null) {
+            return "index";
+        } else {
+            model.addAttribute("fox", foxService.find(name));
+            model.addAttribute("toString", foxService.find(name).toString());
+            model.addAttribute("numOfTricks", foxService.find(name).getNumberOfTricks());
+        }
         return "index";
     }
 
@@ -42,4 +46,9 @@ public class MainController {
             return "redirect:/login";
         }
     }
+
+//    @GetMapping("/nutritionstore")
+//    public String renderNutritionStore(@RequestParam String name, Model model) {
+//        return "nutritionstore";
+//    }
 }

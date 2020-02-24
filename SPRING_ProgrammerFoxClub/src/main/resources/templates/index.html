@@ -10,10 +10,18 @@
 <div>
     <div>
         <a href="#"> Information </a>
+<!--        <ul>-->
+<!--            <a th:href="'http://localhost:8080/?name=' + ${fox.name}"> Information </a>-->
+<!--        </ul>-->
+<!--        <ul>-->
+<!--            <a th:href="'http://localhost:8080/nutritionStore?name='+ ${fox.name}"> Nutrition Store </a>-->
+<!--        </ul>-->
     </div>
         <img src="greenfox.png" alt="green fox">
     <div>
-        <p th:text="${name}"></p>
+<!--        <p th:text="'This is ' + ${fox.name} +'. Currently living on ' + ${fox.drink} + ' and '-->
+<!--        + ${fox.food} + '. He knows ' + ${fox.numberOfTricks()} + ' tricks.'"></p>-->
+        <p th:text="${toString}"></p>
     </div>
     <div>
         <h1>Known tricks</h1>
