@@ -8,14 +8,14 @@
 </head>
 <body>
 <div>
-    <div>
-        <a href="#"> Information </a>
-<!--        <ul>-->
-<!--            <a th:href="'http://localhost:8080/?name=' + ${fox.name}"> Information </a>-->
-<!--        </ul>-->
-<!--        <ul>-->
-<!--            <a th:href="'http://localhost:8080/nutritionStore?name='+ ${fox.name}"> Nutrition Store </a>-->
-<!--        </ul>-->
+    <ul>
+        <li>
+            <a th:href="'/?name=' + ${fox.name}"> Information </a>
+        </li>
+        <li>
+            <a th:href="'/nutritionstore?name='+ ${fox.name}"> Nutrition Store </a>
+        </li>
+    </ul>
     </div>
         <img src="greenfox.png" alt="green fox">
     <div>

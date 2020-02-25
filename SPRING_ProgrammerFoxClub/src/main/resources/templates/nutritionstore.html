@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main</title>
+    <title>Nutrition Store</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
     <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 <div>
-    <h1>stg</h1>
+    <ul>
+        <li>
+            <a href="#"> Information </a>
+        </li>
+        <li>
+            <a href="/nutritionstore"> Nutrition Store </a>
+        </li>
+    </ul>
+    <form action="#" th:action="@{/nutritionStore}" th:method="post">
+        <div>
+            <label class="form-title" for="food">Food:</label>
+            <select id="food">
+                <option th:each="food : ${foods}" th:text="${food}"></option>
+            </select>
+        </div>
+        <div>
+            <label class="form-title" for="drink">Drink:</label>
+            <select id="drink">
+                <option th:each="drink : ${drinks}" th:text="${drink}"></option>
+            </select>
+        </div>
+        <div>
+            <input type="hidden" name="name" value="name">
+            <button type="submit">Change</button>
+        </div>
+    </form>
 </div>
 </body>
+</html>

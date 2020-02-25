@@ -1,5 +1,7 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
+        import com.greenfoxacademy.programmerfoxclub.modles.Drink;
+        import com.greenfoxacademy.programmerfoxclub.modles.Food;
         import com.greenfoxacademy.programmerfoxclub.services.FoxService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -7,6 +9,8 @@ package com.greenfoxacademy.programmerfoxclub.controllers;
         import org.springframework.web.bind.annotation.GetMapping;
         import org.springframework.web.bind.annotation.PostMapping;
         import org.springframework.web.bind.annotation.RequestParam;
+
+        import java.util.Arrays;
 
 @Controller
 public class MainController {
@@ -48,8 +52,14 @@ public class MainController {
         }
     }
 
-//    @GetMapping("/nutritionstore")
-//    public String renderNutritionStore(@RequestParam String name, Model model) {
-//        return "nutritionstore";
-//    }
+    @GetMapping("/nutritionstore")
+    public String renderNutritionStorePage(@RequestParam (required = false) String name, Model model) {
+        if (name == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("fox", foxService.find(name));
+        model.addAttribute("foods", Arrays.asList(Food.values()));
+        model.addAttribute("drinks", Arrays.asList(Drink.values()));
+        return "nutritionstore";
+    }
 }
