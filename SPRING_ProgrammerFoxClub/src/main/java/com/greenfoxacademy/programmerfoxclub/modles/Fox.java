@@ -16,6 +16,7 @@ public class Fox {
 
     public Fox(String name) {
         this.name = name;
+        tricks = new ArrayList<>();
     }
 
     public Fox(String name, String food, String drink) {

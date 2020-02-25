@@ -1,6 +1,5 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
-        import com.greenfoxacademy.programmerfoxclub.modles.Fox;
         import com.greenfoxacademy.programmerfoxclub.services.FoxService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -43,7 +42,7 @@ public class MainController {
             return "redirect:/?name=" + name;
         } else {
             foxService.add(name);
-            return "redirect:/login";
+            return "redirect:/?name=" + name;
         }
     }
 
