@@ -16,21 +16,17 @@
             <a href="/nutritionstore"> Nutrition Store </a>
         </li>
     </ul>
-    <form action="#" th:action="@{/nutritionStore}" th:method="post">
-        <div>
+    <form action="#" th:action="@{/nutritionstore}" th:method="post">
             <label class="form-title" for="food">Food:</label>
-            <select id="food">
+            <select id="food" name="food">
                 <option th:each="food : ${foods}" th:text="${food}"></option>
             </select>
-        </div>
-        <div>
             <label class="form-title" for="drink">Drink:</label>
-            <select id="drink">
+            <select id="drink" name="drink">
                 <option th:each="drink : ${drinks}" th:text="${drink}"></option>
             </select>
-        </div>
         <div>
-            <input type="hidden" name="name" value="name">
+            <input type="hidden" name="name" th:value="${fox.name}">
             <button type="submit">Change</button>
         </div>
     </form>

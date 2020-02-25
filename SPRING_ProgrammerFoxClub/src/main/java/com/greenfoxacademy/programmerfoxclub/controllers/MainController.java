@@ -62,4 +62,11 @@ public class MainController {
         model.addAttribute("drinks", Arrays.asList(Drink.values()));
         return "nutritionstore";
     }
+
+    @PostMapping("/nutritionstore")
+    public String addFoodAndDrink(@RequestParam (required = false) String name,  @RequestParam String food, @RequestParam String drink, Model model) {
+        foxService.find(name).setFood(food.toLowerCase());
+        foxService.find(name).setDrink(drink.toLowerCase());
+        return "redirect:/?name=" + name;
+    }
 }

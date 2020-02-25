@@ -75,6 +75,6 @@ public class Fox {
 
     @Override
     public String toString() {
-            return "This is " + name + ". Currently living on " + food + " and " + drink + " He knows " + numberOfTricks() + ".";
+            return "This is " + name + ". Currently living on " + food + " and " + drink + ". He knows " + numberOfTricks() + " tricks.";
     }
 }
