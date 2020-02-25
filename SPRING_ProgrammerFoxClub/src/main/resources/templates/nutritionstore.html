@@ -25,10 +25,8 @@
             <select id="drink" name="drink">
                 <option th:each="drink : ${drinks}" th:text="${drink}"></option>
             </select>
-        <div>
             <input type="hidden" name="name" th:value="${fox.name}">
             <button type="submit">Change</button>
-        </div>
     </form>
 </div>
 </body>
