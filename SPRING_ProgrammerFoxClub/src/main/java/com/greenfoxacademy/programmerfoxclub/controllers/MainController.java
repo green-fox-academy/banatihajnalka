@@ -29,10 +29,10 @@ public class MainController {
         }
         return "index";
     }
-
+    // /login?error=noname
     @GetMapping("/login")
-    public String renderMain(@RequestParam (required=false) String name, Model model) {
-        if (!foxService.isExists(name)) {
+    public String renderMain(@RequestParam (required=false) String name, Model model, @RequestParam(required = false) String error) {
+        if (!(error == null)) {
             model.addAttribute("error", "You have provided a name that has not been used before, add it as a new one!");
         }
         return "login";
