@@ -32,7 +32,9 @@ public class MainController {
 
     @GetMapping("/login")
     public String renderMain(@RequestParam (required=false) String name, Model model) {
-        model.addAttribute("name", foxService.isExists(name) ? "" : "You have provided a name that has not been used before, add it as a new one!");
+        if (!foxService.isExists(name)) {
+            model.addAttribute("error", "You have provided a name that has not been used before, add it as a new one!");
+        }
         return "login";
     }
 
