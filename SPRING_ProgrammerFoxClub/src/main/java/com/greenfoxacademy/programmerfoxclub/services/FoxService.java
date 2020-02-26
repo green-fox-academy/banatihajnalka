@@ -12,6 +12,7 @@ public class FoxService {
     private ArrayList<Fox> foxes;
     private String foodChange;
     private String drinkChange;
+    private String trickChange;
 
     public FoxService() {
         foxes = new ArrayList<>();
@@ -52,13 +53,26 @@ public class FoxService {
     }
     
     public void feedAndRecordChanges(String name, String food) {
-        foodChange = LocalDateTime.now() + " Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
+        foodChange = LocalDateTime.now() + ": Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
         find(name).setFood(food.toLowerCase());
     }
 
     public void drinkAndRecordChanges(String name, String drink) {
-        drinkChange = LocalDateTime.now() + " Food has been changed from: " + find(name).getDrink() + " to " + drink.toLowerCase();
+        drinkChange = LocalDateTime.now() + ": Drink has been changed from: " + find(name).getDrink() + " to " + drink.toLowerCase();
         find(name).setDrink(drink.toLowerCase());
+    }
+
+    public void addTrickAndRecordChanges(String name, String trick) {
+        trickChange = LocalDateTime.now() + ": Learned to: " + find(name).getTricks() + " to " + trick.toLowerCase();
+        find(name).setTricks(trick.toLowerCase());
+    }
+
+    public String getTrickChange() {
+        return trickChange;
+    }
+
+    public void setTrickChange(String trickChange) {
+        this.trickChange = trickChange;
     }
 
     public String getFoodChange() {

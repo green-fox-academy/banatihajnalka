@@ -84,7 +84,8 @@ public class MainController {
 
     @PostMapping("/trickcenter")
     public String addTrick(@RequestParam (required = false) String name, @RequestParam String trick, Model model) {
-        foxService.find(name).setTricks(trick.toLowerCase());
+        foxService.addTrickAndRecordChanges(name, trick);
+//        foxService.find(name).setTricks(trick.toLowerCase());
         return "redirect:/?name=" + name;
     }
 
@@ -94,8 +95,9 @@ public class MainController {
             return "redirect:/login";
         }
         model.addAttribute("fox", foxService.find(name));
-        model.addAttribute("actionFood", foxService.getFoodChange());;
-        model.addAttribute("actionDrink", foxService.getDrinkChange());;
+        model.addAttribute("actionFood", foxService.getFoodChange());
+        model.addAttribute("actionDrink", foxService.getDrinkChange());
+        model.addAttribute("actionTrick", foxService.getTrickChange());
         return "actionhistory";
     }
 }
