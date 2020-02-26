@@ -95,9 +95,9 @@ public class MainController {
             return "redirect:/login";
         }
         model.addAttribute("fox", foxService.find(name));
-        model.addAttribute("actionFood", foxService.getFoodChange());
-        model.addAttribute("actionDrink", foxService.getDrinkChange());
-        model.addAttribute("actionTrick", foxService.getTrickChange());
+        model.addAttribute("actions", foxService.find(name).getActions());
+//        model.addAttribute("actionDrink", foxService.getDrinkChange());
+//        model.addAttribute("actionTrick", foxService.getTrickChange());
         return "actionhistory";
     }
 }

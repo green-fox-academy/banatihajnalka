@@ -23,10 +23,11 @@
         </li>
     </ul>
     <div>
-        <ul>
-            <li th:text="${actionFood}" ></li>
-            <li th:text="${actionDrink}" ></li>
-            <li th:text="${actionTrick}" ></li>
+        <ul th:each="action : ${actions}">
+            <li th:text="${action}" ></li>
+<!--            <li th:text="${actionFood}" ></li>-->
+<!--            <li th:text="${actionDrink}" ></li>-->
+<!--            <li th:text="${actionTrick}" ></li>-->
         </ul>
     </div>
 </div>

@@ -9,7 +9,7 @@ public class Fox {
     private List<String> tricks;
     private String food;
     private String drink;
-    private String foodChange;
+    private List<String> actions;
 
     public Fox() {
     }
@@ -17,6 +17,7 @@ public class Fox {
     public Fox(String name) {
         this.name = name;
         tricks = new ArrayList<>();
+        actions = new ArrayList<>();
     }
 
     public Fox(String name, String food, String drink) {
@@ -24,6 +25,7 @@ public class Fox {
         this.food = food;
         this.drink = drink;
         tricks = new ArrayList<>();
+        actions = new ArrayList<>();
     }
 
     public String getName() {
@@ -57,6 +59,9 @@ public class Fox {
     }
 
     public String getFood() {
+        if (food == null) {
+            return "nothing";
+        }
         return food;
     }
 
@@ -64,8 +69,10 @@ public class Fox {
         this.food = food;
     }
 
-
     public String getDrink() {
+        if (drink == null) {
+            return "nothing";
+        }
         return drink;
     }
 
@@ -73,8 +80,17 @@ public class Fox {
         this.drink = drink;
     }
 
+
+    public List<String> getActions() {
+        return actions;
+    }
+
+    public void addAction(String action) {
+        actions.add(action);
+    }
+
     @Override
     public String toString() {
-            return "This is " + name + ". Currently living on " + food + " and " + drink + ". He knows " + numberOfTricks() + " tricks.";
+        return "This is " + name + ". Currently living on " + food + " and " + drink + ". He knows " + numberOfTricks() + " tricks.";
     }
 }
