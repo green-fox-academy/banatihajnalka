@@ -36,6 +36,12 @@
 <ul th:unless="${numOfTricks == 0}" th:each="trick : ${tricks}">
     <li th:text="${trick}" th:style="'text-transform: lowercase'"></li>
 </ul>
+<div>
+    <h1>Action History</h1>
+    <p th:if="${numOfActions == 0}">There was no action yet.</p>
+    <ul th:unless="${numOfActions == 0}" th:each="action : ${actions}">
+        <li th:text="${action}" ></li>
+    </ul>
 </div>
 </body>
 </html>

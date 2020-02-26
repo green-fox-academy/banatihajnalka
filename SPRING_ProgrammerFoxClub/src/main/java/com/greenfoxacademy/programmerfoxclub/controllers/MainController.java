@@ -32,6 +32,8 @@ public class MainController {
             model.addAttribute("toString", foxService.find(name).toString());
             model.addAttribute("numOfTricks", foxService.find(name).numberOfTricks());
             model.addAttribute("tricks", foxService.find(name).getTricks());
+            model.addAttribute("actions", foxService.find(name).getActions());
+            model.addAttribute("numOfActions", foxService.find(name).numberOfActions());
         }
         return "index";
     }
@@ -96,6 +98,7 @@ public class MainController {
         }
         model.addAttribute("fox", foxService.find(name));
         model.addAttribute("actions", foxService.find(name).getActions());
+        model.addAttribute("numOfActions", foxService.find(name).numberOfActions());
 //        model.addAttribute("actionDrink", foxService.getDrinkChange());
 //        model.addAttribute("actionTrick", foxService.getTrickChange());
         return "actionhistory";

@@ -54,6 +54,14 @@ public class Fox {
         }
     }
 
+    public int numberOfActions() {
+        if (actions.isEmpty()) {
+            return 0;
+        } else {
+            return actions.size();
+        }
+    }
+
     public boolean knowsAllTricks(){
         return tricks.size() == Tricks.values().length;
     }
@@ -79,7 +87,6 @@ public class Fox {
     public void setDrink(String drink) {
         this.drink = drink;
     }
-
 
     public List<String> getActions() {
         return actions;

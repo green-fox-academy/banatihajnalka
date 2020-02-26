@@ -11,9 +11,6 @@ import java.util.ArrayList;
 public class FoxService {
 
     private ArrayList<Fox> foxes;
-    private String foodChange;
-    private String drinkChange;
-    private String trickChange;
 
     LocalDateTime now = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd. HH:mm:ss");
@@ -59,47 +56,22 @@ public class FoxService {
 
     
     public void feedAndRecordChanges(String name, String food) {
-        foodChange = formatDateTime + ": Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
+        String foodChange = formatDateTime + ": Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
         find(name).addAction(foodChange);
         find(name).setFood(food.toLowerCase());
     }
 
     public void drinkAndRecordChanges(String name, String drink) {
-        drinkChange = formatDateTime + ": Drink has been changed from: " + find(name).getDrink() + " to " + drink.toLowerCase();
+        String drinkChange = formatDateTime + ": Drink has been changed from: " + find(name).getDrink() + " to " + drink.toLowerCase();
         find(name).addAction(drinkChange);
         find(name).setDrink(drink.toLowerCase());
     }
 
     public void addTrickAndRecordChanges(String name, String trick) {
-        trickChange = formatDateTime + ": Learned to: " + find(name).getTricks() + " to " + trick.toLowerCase();
+        String trickChange = formatDateTime + ": Learned to: " + trick.toLowerCase();
         find(name).addAction(trickChange);
         find(name).setTricks(trick.toLowerCase());
     }
-
-    public String getTrickChange() {
-        return trickChange;
-    }
-
-    public void setTrickChange(String trickChange) {
-        this.trickChange = trickChange;
-    }
-
-    public String getFoodChange() {
-        return foodChange;
-    }
-
-    public void setFoodChange(String foodChange) {
-        this.foodChange = foodChange;
-    }
-
-    public String getDrinkChange() {
-        return drinkChange;
-    }
-
-    public void setDrinkChange(String drinkChange) {
-        this.drinkChange = drinkChange;
-    }
-
 }
 
 

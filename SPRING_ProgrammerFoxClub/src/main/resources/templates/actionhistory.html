@@ -23,7 +23,8 @@
         </li>
     </ul>
     <div>
-        <ul th:each="action : ${actions}">
+        <p th:if="${numOfActions == 0}">There was no action yet.</p>
+        <ul th:unless="${numOfActions == 0}" th:each="action : ${actions}">
             <li th:text="${action}" ></li>
 <!--            <li th:text="${actionFood}" ></li>-->
 <!--            <li th:text="${actionDrink}" ></li>-->
