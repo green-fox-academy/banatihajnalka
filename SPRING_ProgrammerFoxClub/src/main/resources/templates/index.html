@@ -15,6 +15,9 @@
         <li>
             <a th:href="'/nutritionstore?name='+ ${fox.name}"> Nutrition Store </a>
         </li>
+        <li>
+            <a th:href="'/trickcenter?name='+ ${fox.name}"> Trick Center </a>
+        </li>
     </ul>
     </div>
         <img src="greenfox.png" alt="green fox">
@@ -27,9 +30,8 @@
         <h1>Known tricks</h1>
     </div>
     <p th:if="${numOfTricks == 0}">You know no tricks, yet. Go and learn some.</p>
-    <ul th:unless="${numOfTricks == 0}">
-            <li>Write HTML</li>
-            <li>code in Java</li>
+    <ul th:unless="${numOfTricks == 0}" th:each="trick : ${tricks}" >
+            <li th:text="${trick}" th:style="'text-transform: lowercase'"></li>
     </ul>
 </div>
 </body>

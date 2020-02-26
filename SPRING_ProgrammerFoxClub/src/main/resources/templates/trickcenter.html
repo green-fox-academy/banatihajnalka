@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Trick Center</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <ul>
+        <li>
+            <a href="#"> Information </a>
+        </li>
+        <li>
+            <a href="/nutritionstore"> Nutrition Store </a>
+        </li>
+        <li>
+            <a href="/trickcenter"> Trick Center </a>
+        </li>
+    </ul>
+    <form action="#" th:action="@{/trickcenter}" th:method="post">
+        <label class="form-title" for="tricks"> Tricks:</label>
+        <select id="tricks" name="trick" th:style="'text-transform: lowercase'">
+            <option th:each="trick : ${tricks}" th:text="${trick}" th:style="'text-transform: lowercase'"></option>
+        </select>
+        <input type="hidden" name="name" th:value="${fox.name}">
+        <button type="submit">Learn</button>
+    </form>
+</div>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.greenfoxacademy.programmerfoxclub.controllers;
 
         import com.greenfoxacademy.programmerfoxclub.modles.Drink;
         import com.greenfoxacademy.programmerfoxclub.modles.Food;
+        import com.greenfoxacademy.programmerfoxclub.modles.Tricks;
         import com.greenfoxacademy.programmerfoxclub.services.FoxService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -29,7 +30,8 @@ public class MainController {
         } else {
             model.addAttribute("fox", foxService.find(name));
             model.addAttribute("toString", foxService.find(name).toString());
-            model.addAttribute("numOfTricks", foxService.find(name).getNumberOfTricks());
+            model.addAttribute("numOfTricks", foxService.find(name).numberOfTricks());
+            model.addAttribute("tricks", foxService.find(name).getTricks());
         }
         return "index";
     }
@@ -67,6 +69,22 @@ public class MainController {
     public String addFoodAndDrink(@RequestParam (required = false) String name,  @RequestParam String food, @RequestParam String drink, Model model) {
         foxService.find(name).setFood(food.toLowerCase());
         foxService.find(name).setDrink(drink.toLowerCase());
+        return "redirect:/?name=" + name;
+    }
+
+    @GetMapping("/trickcenter")
+    public String renderTrickCenterPage(@RequestParam (required = false) String name, Model model) {
+        if (name == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("fox", foxService.find(name));
+        model.addAttribute("tricks", Arrays.asList(Tricks.values()));;
+        return "trickcenter";
+    }
+
+    @PostMapping("/trickcenter")
+    public String addTrick(@RequestParam (required = false) String name, @RequestParam String trick, Model model) {
+        foxService.find(name).setTricks(trick.toLowerCase());
         return "redirect:/?name=" + name;
     }
 }

@@ -7,7 +7,6 @@ public class Fox {
 
     private String name;
     private List<String> tricks;
-    private int numberOfTricks;
     private String food;
     private String drink;
 
@@ -38,24 +37,18 @@ public class Fox {
         return tricks;
     }
 
-    public void setTricks(List<String> tricks) {
-        this.tricks = tricks;
+    public void setTricks(String trick) {
+        tricks.add(trick);
     }
 
     public int numberOfTricks() {
         if (tricks.isEmpty()) {
             return 0;
+        } else {
+            return tricks.size();
         }
-        int numberOfTricks = 0;
-        for (int i = 0; i < tricks.size(); i++) {
-            numberOfTricks++;
-        }
-        return numberOfTricks;
     }
 
-    public int getNumberOfTricks() {
-        return numberOfTricks;
-    }
 
     public String getFood() {
         return food;
