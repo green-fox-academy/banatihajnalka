@@ -1,4 +1,4 @@
-package com.greenfoxacademy.programmerfoxclub.modles;
+package com.greenfoxacademy.programmerfoxclub.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ public class Fox {
     private List<String> tricks;
     private String food;
     private String drink;
+    private String foodChange;
 
     public Fox() {
     }
@@ -38,7 +39,9 @@ public class Fox {
     }
 
     public void setTricks(String trick) {
-        tricks.add(trick);
+        if (!tricks.contains(trick)) {
+            tricks.add(trick);
+        }
     }
 
     public int numberOfTricks() {
@@ -49,6 +52,9 @@ public class Fox {
         }
     }
 
+    public boolean knowsAllTricks(){
+        return tricks.size() == Tricks.values().length;
+    }
 
     public String getFood() {
         return food;
@@ -57,6 +63,7 @@ public class Fox {
     public void setFood(String food) {
         this.food = food;
     }
+
 
     public String getDrink() {
         return drink;

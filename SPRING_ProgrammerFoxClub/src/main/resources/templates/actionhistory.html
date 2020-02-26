@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main</title>
+    <title>Nutrition Store</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
     <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -22,20 +22,12 @@
             <a th:href="'/actionhistory?name='+ ${fox.name}"> Action History </a>
         </li>
     </ul>
-</div>
-<img src="greenfox.png" alt="green fox">
-<div>
-    <!--        <p th:text="'This is ' + ${fox.name} +'. Currently living on ' + ${fox.drink} + ' and '-->
-    <!--        + ${fox.food} + '. He knows ' + ${fox.numberOfTricks()} + ' tricks.'"></p>-->
-    <p th:text="${toString}"></p>
-</div>
-<div>
-    <h1>Known tricks</h1>
-</div>
-<p th:if="${numOfTricks == 0}">You know no tricks, yet. Go and learn some.</p>
-<ul th:unless="${numOfTricks == 0}" th:each="trick : ${tricks}">
-    <li th:text="${trick}" th:style="'text-transform: lowercase'"></li>
-</ul>
+    <div>
+        <ul>
+            <li th:text="${actionFood}" ></li>
+            <li th:text="${actionDrink}" ></li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>

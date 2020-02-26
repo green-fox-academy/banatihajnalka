@@ -1,14 +1,17 @@
 package com.greenfoxacademy.programmerfoxclub.services;
 
-import com.greenfoxacademy.programmerfoxclub.modles.Fox;
+import com.greenfoxacademy.programmerfoxclub.models.Fox;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Service
 public class FoxService {
 
     private ArrayList<Fox> foxes;
+    private String foodChange;
+    private String drinkChange;
 
     public FoxService() {
         foxes = new ArrayList<>();
@@ -47,7 +50,32 @@ public class FoxService {
         }
         return null;
     }
+    
+    public void feedAndRecordChanges(String name, String food) {
+        foodChange = LocalDateTime.now() + " Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
+        find(name).setFood(food.toLowerCase());
+    }
 
+    public void drinkAndRecordChanges(String name, String drink) {
+        drinkChange = LocalDateTime.now() + " Food has been changed from: " + find(name).getDrink() + " to " + drink.toLowerCase();
+        find(name).setDrink(drink.toLowerCase());
+    }
+
+    public String getFoodChange() {
+        return foodChange;
+    }
+
+    public void setFoodChange(String foodChange) {
+        this.foodChange = foodChange;
+    }
+
+    public String getDrinkChange() {
+        return drinkChange;
+    }
+
+    public void setDrinkChange(String drinkChange) {
+        this.drinkChange = drinkChange;
+    }
 }
 
 

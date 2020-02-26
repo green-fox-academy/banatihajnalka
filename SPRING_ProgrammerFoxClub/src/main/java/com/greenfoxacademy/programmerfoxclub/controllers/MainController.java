@@ -1,8 +1,8 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
-        import com.greenfoxacademy.programmerfoxclub.modles.Drink;
-        import com.greenfoxacademy.programmerfoxclub.modles.Food;
-        import com.greenfoxacademy.programmerfoxclub.modles.Tricks;
+        import com.greenfoxacademy.programmerfoxclub.models.Drink;
+        import com.greenfoxacademy.programmerfoxclub.models.Food;
+        import com.greenfoxacademy.programmerfoxclub.models.Tricks;
         import com.greenfoxacademy.programmerfoxclub.services.FoxService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -67,8 +67,8 @@ public class MainController {
 
     @PostMapping("/nutritionstore")
     public String addFoodAndDrink(@RequestParam (required = false) String name,  @RequestParam String food, @RequestParam String drink, Model model) {
-        foxService.find(name).setFood(food.toLowerCase());
-        foxService.find(name).setDrink(drink.toLowerCase());
+        foxService.feedAndRecordChanges(name, food);
+        foxService.drinkAndRecordChanges(name, drink);
         return "redirect:/?name=" + name;
     }
 
@@ -78,7 +78,7 @@ public class MainController {
             return "redirect:/login";
         }
         model.addAttribute("fox", foxService.find(name));
-        model.addAttribute("tricks", Arrays.asList(Tricks.values()));;
+        model.addAttribute("tricks", Arrays.asList(Tricks.values()));
         return "trickcenter";
     }
 
@@ -86,5 +86,16 @@ public class MainController {
     public String addTrick(@RequestParam (required = false) String name, @RequestParam String trick, Model model) {
         foxService.find(name).setTricks(trick.toLowerCase());
         return "redirect:/?name=" + name;
+    }
+
+    @GetMapping("/actionhistory")
+    public String renderActionHistoryPage(@RequestParam (required = false) String name, Model model) {
+        if (name == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("fox", foxService.find(name));
+        model.addAttribute("actionFood", foxService.getFoodChange());;
+        model.addAttribute("actionDrink", foxService.getDrinkChange());;
+        return "actionhistory";
     }
 }
