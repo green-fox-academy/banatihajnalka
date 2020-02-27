@@ -1,7 +1,10 @@
 package com.greenfoxacademy.programmerfoxclub.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Fox {
 
@@ -16,6 +19,8 @@ public class Fox {
 
     public Fox(String name) {
         this.name = name;
+        this.food = "nothing";
+        this.drink = "nothing";
         tricks = new ArrayList<>();
         actions = new ArrayList<>();
     }
@@ -88,13 +93,23 @@ public class Fox {
         this.drink = drink;
     }
 
+    public boolean isActionListIsEmpty() {
+      return actions.isEmpty();
+    }
+
+
     public List<String> getActions() {
-        return actions;
+            return actions;
+    }
+
+    public List<String> getLatestFiveActions() {
+        return actions.stream().sorted(Comparator.reverseOrder()).limit(5).collect(Collectors.toList());
     }
 
     public void addAction(String action) {
         actions.add(action);
     }
+
 
     @Override
     public String toString() {

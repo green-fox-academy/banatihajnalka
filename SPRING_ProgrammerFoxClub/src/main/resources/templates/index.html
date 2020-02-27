@@ -38,8 +38,9 @@
 </ul>
 <div>
     <h1>Action History</h1>
-    <p th:if="${numOfActions == 0}">There was no action yet.</p>
-    <ul th:unless="${numOfActions == 0}" th:each="action : ${actions}">
+<!--    <p th:if="${numOfActions == 0}">There was no action yet.</p>-->
+<!--    <ul th:unless="${numOfActions == 0}" th:each="action : ${actions}">-->
+    <ul th:each="action : ${actions}" >
         <li th:text="${action}" ></li>
     </ul>
 </div>

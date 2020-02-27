@@ -12,10 +12,6 @@ public class FoxService {
 
     private ArrayList<Fox> foxes;
 
-    LocalDateTime now = LocalDateTime.now();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd. HH:mm:ss");
-    String formatDateTime = now.format(formatter);
-
     public FoxService() {
         foxes = new ArrayList<>();
         foxes.add(new Fox("Karak", "meat", "water"));
@@ -54,21 +50,26 @@ public class FoxService {
         return null;
     }
 
-    
+    public String date(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd. HH:mm:ss");
+        return now.format(formatter);
+    }
+
     public void feedAndRecordChanges(String name, String food) {
-        String foodChange = formatDateTime + ": Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
+        String foodChange = date() + ": Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
         find(name).addAction(foodChange);
         find(name).setFood(food.toLowerCase());
     }
 
     public void drinkAndRecordChanges(String name, String drink) {
-        String drinkChange = formatDateTime + ": Drink has been changed from: " + find(name).getDrink() + " to " + drink.toLowerCase();
+        String drinkChange = date() + ": Drink has been changed from: " + find(name).getDrink() + " to " + drink.toLowerCase();
         find(name).addAction(drinkChange);
         find(name).setDrink(drink.toLowerCase());
     }
 
     public void addTrickAndRecordChanges(String name, String trick) {
-        String trickChange = formatDateTime + ": Learned to: " + trick.toLowerCase();
+        String trickChange = date() + ": Learned to: " + trick.toLowerCase();
         find(name).addAction(trickChange);
         find(name).setTricks(trick.toLowerCase());
     }
