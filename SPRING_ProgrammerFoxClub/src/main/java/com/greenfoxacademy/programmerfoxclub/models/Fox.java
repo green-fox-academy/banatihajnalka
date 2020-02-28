@@ -1,10 +1,8 @@
 package com.greenfoxacademy.programmerfoxclub.models;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Fox {
 
@@ -13,6 +11,7 @@ public class Fox {
     private String food;
     private String drink;
     private List<String> actions;
+    List<String> notKnownTricks;
 
     public Fox() {
     }
@@ -23,6 +22,7 @@ public class Fox {
         this.drink = "nothing";
         tricks = new ArrayList<>();
         actions = new ArrayList<>();
+        notKnownTricks = notKnownTricks();
     }
 
     public Fox(String name, String food, String drink) {
@@ -31,6 +31,7 @@ public class Fox {
         this.drink = drink;
         tricks = new ArrayList<>();
         actions = new ArrayList<>();
+        notKnownTricks = notKnownTricks();
     }
 
     public String getName() {
@@ -48,6 +49,11 @@ public class Fox {
     public void setTricks(String trick) {
         if (!tricks.contains(trick)) {
             tricks.add(trick);
+            for (int i = 0; i < notKnownTricks.size(); i++) {
+                if (notKnownTricks.get(i).toLowerCase().equals(trick)) {
+                    notKnownTricks.remove(i);
+                }
+            }
         }
     }
 
@@ -67,9 +73,21 @@ public class Fox {
         }
     }
 
-    public boolean knowsAllTricks(){
-        return tricks.size() == Tricks.values().length;
+    public List<String> notKnownTricks() {
+        return Stream.of(Tricks.values())
+                .map(Tricks::name)
+                .collect(Collectors.toList());
     }
+
+    public int knowsAll() {
+      return notKnownTricks.size();
+    }
+
+
+//    public boolean isAllTricksAreKnown() {
+//        return notKnownTricks.containsAll(tricks);
+//    }
+
 
     public String getFood() {
         if (food == null) {
@@ -94,12 +112,12 @@ public class Fox {
     }
 
     public boolean isActionListIsEmpty() {
-      return actions.isEmpty();
+        return actions.isEmpty();
     }
 
 
     public List<String> getActions() {
-            return actions;
+        return actions;
     }
 
     public List<String> getLatestFiveActions() {
@@ -110,6 +128,9 @@ public class Fox {
         actions.add(action);
     }
 
+    public List<String> getNotKnownTricks() {
+        return notKnownTricks;
+    }
 
     @Override
     public String toString() {

@@ -18,11 +18,16 @@
         <li>
             <a href="/trickcenter"> Trick Center </a>
         </li>
+        <li>
+            <a th:href="'/actionhistory?name='+ ${fox.name}"> Action History </a>
+        </li>
     </ul>
-    <form action="#" th:action="@{/trickcenter}" th:method="post">
+    <p th:if="${knowsAll == 0}"> You learned everything.</p>
+    <form th:unless="${knowsAll== 0}" action="#" th:action="@{/trickcenter}" th:method="post">
         <label class="form-title" for="tricks"> Tricks:</label>
         <select id="tricks" name="trick" th:style="'text-transform: lowercase'">
             <option th:each="trick : ${tricks}" th:text="${trick}" th:style="'text-transform: lowercase'"></option>
+<!--            <option th:each="trick : ${tricks}" th:text="${trick}" th:style="'text-transform: lowercase'"></option>-->
         </select>
         <input type="hidden" name="name" th:value="${fox.name}">
         <button type="submit">Learn</button>
