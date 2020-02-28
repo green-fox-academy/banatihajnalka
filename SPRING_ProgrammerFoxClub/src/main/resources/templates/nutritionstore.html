@@ -18,11 +18,11 @@
     </ul>
     <form action="#" th:action="@{/nutritionstore}" th:method="post">
             <label class="form-title" for="food">Food:</label>
-            <select id="food" name="food" th:style="'text-transform: lowercase'">
+            <select id="food" name="food" th:selected="${fox.food}" th:style="'text-transform: lowercase'">
                 <option th:each="food : ${foods}" th:text="${food}" th:style="'text-transform: lowercase'"></option>
             </select>
             <label class="form-title" for="drink">Drink:</label>
-            <select id="drink" name="drink" th:style="'text-transform: lowercase'">
+            <select id="drink" name="drink" th:selected="${fox.drink}" th:style="'text-transform: lowercase'">
                 <option th:each="drink : ${drinks}" th:text="${drink}" th:style="'text-transform: lowercase'"></option>
             </select>
             <input type="hidden" name="name" th:value="${fox.name}">
