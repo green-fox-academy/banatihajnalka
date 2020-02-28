@@ -79,14 +79,37 @@ public class Fox {
                 .collect(Collectors.toList());
     }
 
+    public List<String> drinks() {
+        return Stream.of(Drink.values())
+                .map(Drink::name)
+                .collect(Collectors.toList());
+    }
+
+//    public List<String> foods() {
+//        return Stream.of(Food.values())
+//                .map(Food::name)
+//                .collect(Collectors.toList());
+//    }
+
+    public List<String> getFoodsList() {
+        return Stream.of(Food.values())
+                .map(Food::name)
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getDrinksList() {
+        return Stream.of(Drink.values())
+                .map(Drink::name)
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+    }
+
+
     public int knowsAll() {
       return notKnownTricks.size();
     }
 
-
-//    public boolean isAllTricksAreKnown() {
-//        return notKnownTricks.containsAll(tricks);
-//    }
 
 
     public String getFood() {
