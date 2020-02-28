@@ -1,12 +1,12 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
-        import com.greenfoxacademy.programmerfoxclub.services.FoxService;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.ui.Model;
-        import org.springframework.web.bind.annotation.GetMapping;
-        import org.springframework.web.bind.annotation.PostMapping;
-        import org.springframework.web.bind.annotation.RequestParam;
+import com.greenfoxacademy.programmerfoxclub.services.FoxService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -20,8 +20,10 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String showMain(Model model, @RequestParam (required = false) String name) {
+    public String showMain(Model model, @RequestParam(required = false) String name) {
         if (name == null) {
+            return "login";
+        } else if (!(foxService.isExists(name))) {
             return "login";
         } else {
             model.addAttribute("fox", foxService.find(name));
@@ -34,9 +36,10 @@ public class MainController {
         }
         return "index";
     }
+
     // /login?error=noname
     @GetMapping("/login")
-    public String renderMain(@RequestParam (required=false) String name, Model model, @RequestParam(required = false) String error) {
+    public String renderMain(@RequestParam(required = false) String name, Model model, @RequestParam(required = false) String error) {
         if (!(error == null)) {
             model.addAttribute("error", "You have provided a name that has not been used before, add it as a new one!");
         }
@@ -52,6 +55,4 @@ public class MainController {
             return "redirect:/?name=" + name;
         }
     }
-
-
 }

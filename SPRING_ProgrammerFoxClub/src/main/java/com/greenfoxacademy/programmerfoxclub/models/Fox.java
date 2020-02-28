@@ -11,7 +11,7 @@ public class Fox {
     private String food;
     private String drink;
     private List<String> actions;
-    List<String> notKnownTricks;
+    private List<String> notKnownTricks;
 
     public Fox() {
     }
@@ -79,17 +79,6 @@ public class Fox {
                 .collect(Collectors.toList());
     }
 
-    public List<String> drinks() {
-        return Stream.of(Drink.values())
-                .map(Drink::name)
-                .collect(Collectors.toList());
-    }
-
-//    public List<String> foods() {
-//        return Stream.of(Food.values())
-//                .map(Food::name)
-//                .collect(Collectors.toList());
-//    }
 
     public List<String> getFoodsList() {
         return Stream.of(Food.values())
