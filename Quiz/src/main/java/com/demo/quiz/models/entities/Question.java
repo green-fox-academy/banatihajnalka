@@ -3,7 +3,7 @@ package com.demo.quiz.models.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="quiz_questions")
+@Table(name="questions")
 public class Question {
 
     @Id
@@ -15,6 +15,9 @@ public class Question {
     private String answer3;
     private String answer4;
     private int correctAnswer;
+
+    public Question() {
+    }
 
     public Question(String question, String answer1, String answer2, String answer3, String answer4, int correctAnswer) {
         this.question = question;
