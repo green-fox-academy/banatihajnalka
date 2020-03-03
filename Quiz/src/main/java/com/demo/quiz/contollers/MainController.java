@@ -1,16 +1,18 @@
 package com.demo.quiz.contollers;
 
+import com.demo.quiz.repositories.QuestionRepository;
 import com.demo.quiz.services.QuestionService;
+import com.demo.quiz.services.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
 
-    private QuestionService questionService;
+   private QuestionService questionService;
 
-    @Autowired
     public MainController(QuestionService questionService) {
         this.questionService = questionService;
     }
@@ -18,5 +20,11 @@ public class MainController {
     @GetMapping("/login")
     public String renderLoginPage() {
         return "login";
+    }
+
+    @GetMapping("/list")
+    public String list(Model model) {
+        model.addAttribute("questions", questionService.getRandomQuestion());
+        return "questionlist";
     }
 }

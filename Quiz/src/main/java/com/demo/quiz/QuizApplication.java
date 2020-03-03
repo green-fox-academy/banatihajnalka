@@ -23,10 +23,10 @@ public class QuizApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        questionRepository.save(new Question("java.util.Collections is a", "Class", "Interface", "Object", "None of above", 1));
-        questionRepository.save(new Question("Which of those allows duplicate elements?", "Set", "List", "All", "None of above", 2));
-        questionRepository.save(new Question("ArrayList implements that of the following?", "List", "RandomAccess", "Cloneable", "All of these", 4));
-        questionRepository.save(new Question("Which of those permits the storage of the many null values?", "Set", "List", "None of above", "All of these", 4));
-        questionRepository.save(new Question("Which allows the removal of elements from a collection?", "Enumeration", "Iterator", "None of the above", "Both", 3));
+        questionRepository.save(new Question("java.util.Collections is a", "Class", "Interface", "Object", "None of above", "Class"));
+        questionRepository.save(new Question("Which of those allows duplicate elements?", "Set", "List", "All", "None of above", "List"));
+        questionRepository.save(new Question("ArrayList implements that of the following?", "List", "RandomAccess", "Cloneable", "All of these", "All of these"));
+        questionRepository.save(new Question("Which of those permits the storage of the many null values?", "Set", "List", "None of above", "All of these", "All of these"));
+        questionRepository.save(new Question("Which allows the removal of elements from a collection?", "Enumeration", "Iterator", "None of the above", "Both", "None of the above"));
     }
 }

@@ -14,12 +14,12 @@ public class Question {
     private String answer2;
     private String answer3;
     private String answer4;
-    private int correctAnswer;
+    private String correctAnswer;
 
     public Question() {
     }
 
-    public Question(String question, String answer1, String answer2, String answer3, String answer4, int correctAnswer) {
+    public Question(String question, String answer1, String answer2, String answer3, String answer4, String correctAnswer) {
         this.question = question;
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -32,7 +32,7 @@ public class Question {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -76,11 +76,11 @@ public class Question {
         this.answer4 = answer4;
     }
 
-    public int getCorrectAnswer() {
+    public String getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(int correctAnswer) {
+    public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 }
