@@ -3,7 +3,7 @@
 <head>
     <title>ToDo</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
-    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+        <link rel="stylesheet" th:href="@{/styles.css}"  type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,9 +12,9 @@
     <table>
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Is urgent</th>
-            <th>Is done</th>
+            <th>ACTION</th>
+            <th>DONE</th>
+            <th>URGENT</th>
         </tr>
         <tr th:each="todo : ${todos}" th:object="${todo}">
             <td th:text="*{id}"></td>

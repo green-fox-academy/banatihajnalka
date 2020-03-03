@@ -16,11 +16,10 @@ public class ToDo {
     private boolean isUrgent;
     private boolean isDone;
 
-    public ToDo(long id, String title, boolean urgent, boolean done) {
-        this.id = id;
+    public ToDo(String title, boolean urgent, boolean done) {
         this.title = title;
-        this.isUrgent = false;
-        this.isDone = false;
+        this.isUrgent = urgent;
+        this.isDone = done;
     }
 
     public ToDo() {
@@ -28,6 +27,8 @@ public class ToDo {
 
     public ToDo(String title) {
         this.title = title;
+        this.isUrgent = false;
+        this.isDone = false;
     }
 
     public long getId() {
