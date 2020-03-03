@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <h1> Add new todo </h1>
+    <form action="#" th:action="@{/todo/add}"  th:object="${todo}" th:method="post">
+        <div>
+<!--            <label for="name">Name</label>-->
+            <input class="field"  id="name" th:field="*{title}" type="text" required>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

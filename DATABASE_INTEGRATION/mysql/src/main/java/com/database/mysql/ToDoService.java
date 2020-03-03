@@ -41,5 +41,9 @@ public class ToDoService {
         }
         return notActiveTodos;
     }
+
+    public void addToDo(ToDo todo) {
+        toDoRepository.save(todo);
+    }
 }
 

@@ -1,12 +1,10 @@
 package com.database.mysql.controllers;
 
 import com.database.mysql.ToDoService;
-import com.database.mysql.repositories.ToDoRepository;
+import com.database.mysql.models.ToDo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/todo")
@@ -29,6 +27,19 @@ public class ToDoController {
         }
         return "todolist";
     }
+
+    @GetMapping("/add")
+    public String renderAddPage(Model model) {
+        model.addAttribute("todo", new ToDo());
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String add(@ModelAttribute ToDo todo) {
+        toDoService.addToDo(todo);
+        return "redirect:/todo/list";
+    }
+
 
 
 }
