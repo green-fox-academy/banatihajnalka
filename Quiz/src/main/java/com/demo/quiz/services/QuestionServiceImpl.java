@@ -5,6 +5,8 @@ import com.demo.quiz.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,12 +21,11 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public String getRandomQuestion() {
-        return null;
-//        int randomIndex = 1 + (int)(Math.random() * questionRepository.count());
-//        String question = questionRepository.findById(randomIndex);
-//        return question;
+    public List<Question> getRandomQuestionList() {
+        List<Question> questions = new ArrayList<>();
+        int randomIndex = 1 + (int) (Math.random() * questionRepository.count());
+        Optional<Question> question = questionRepository.findById(randomIndex);
+        question.ifPresent(questions::add);
+        return questions;
     }
-
-
 }

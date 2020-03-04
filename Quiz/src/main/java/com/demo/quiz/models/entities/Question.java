@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String question;
     private String answer1;
     private String answer2;
@@ -28,12 +28,8 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getQuestion() {

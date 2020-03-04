@@ -8,15 +8,7 @@
 </head>
 <body>
 <div>
-    <h1>Todos for today:</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Is urgent</th>
-            <th>Is done</th>
-        </tr>
-        <tr th:each="question : ${questions}" th:object="${questions}">
+        <tr th:each="question : ${questions}" th:object="${question}">
             <td th:text="*{id}"></td>
             <td th:text="*{question}"></td>
             <td th:text="*{answer1}"></td>

@@ -1,9 +1,6 @@
 package com.demo.quiz.contollers;
 
-import com.demo.quiz.repositories.QuestionRepository;
 import com.demo.quiz.services.QuestionService;
-import com.demo.quiz.services.QuestionServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +21,13 @@ public class MainController {
 
     @GetMapping("/list")
     public String list(Model model) {
-        model.addAttribute("questions", questionService.getRandomQuestion());
+        model.addAttribute("questions", questionService.getRandomQuestionList());
         return "questionlist";
     }
 }
+
+//    @RequestMapping(value = "/test.html", method = RequestMethod.GET)
+//    public String test() {
+//        return "redirect:index.html#test";
+//    }
+//
