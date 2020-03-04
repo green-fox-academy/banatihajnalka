@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Table of accounts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+<!--    <link rel="stylesheet" th:href="@{/add.css}" type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="form">
+    <h1>Edit Todo</h1>
+    <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" method="post">
+        <div>
+            <label class="form-title" for="name">Todo description</label>
+            <input class="field" type="text" id="name" th:field="*{title}" >
+        </div>
+        <div class="checkboxes">
+            <a class="cb1">
+                <label class="form-title" for="isUrgent">Urgent</label>
+                <input class="checkbox" type="checkbox" id="isUrgent" th:checked="*{isUrgent}" th:name="isUrgent">
+            </a>
+            <a class="cb2">
+                <label class="form-title" for="isDone">Done?</label>
+                <input class="checkbox" type="checkbox" id="isDone" th:checked="*{isDone}" th:name="isDone">
+            </a>
+        </div>
+        <div class="button">
+            <button id="add" type="submit" value="Submit">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

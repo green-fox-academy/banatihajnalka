@@ -1,11 +1,11 @@
-package com.database.mysql;
+package com.database.mysql.services;
 
 import com.database.mysql.models.ToDo;
 import com.database.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class ToDoService {
@@ -35,6 +35,11 @@ public class ToDoService {
 
     public void deleteToDoById(Long id) {
         toDoRepository.deleteById(id);
+    }
+
+    public ToDo findById(Long id) {
+        Optional<ToDo> todo = toDoRepository.findById(id);
+        return todo.orElse(null);
     }
 }
 

@@ -29,7 +29,13 @@
                     <td>
                         <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
 <!--                            <input type="hidden" name="id" th:value="*{id}">-->
-                            <button class="button" id="delete" type="submit" value="Delete">Delete</button>
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" method="get">
+                            <!--                            <input type="hidden" name="id" th:value="*{id}">-->
+                            <button type="submit">Edit</button>
                         </form>
                     </td>
                 </tr>
