@@ -20,26 +20,13 @@ public class ToDoService {
     public Iterable<ToDo> findAll() {
         return toDoRepository.findAll();
     }
-
-
+    
     public Iterable<ToDo> findAllActive() {
-        ArrayList<ToDo> activeTodos = new ArrayList<>();
-        for (ToDo todo : toDoRepository.findAll()) {
-            if (todo.getIsDone()) {
-                activeTodos.add(todo);
-            }
-        }
-        return activeTodos;
+        return toDoRepository.findAllByIsDone(true);
     }
 
     public Iterable<ToDo> findAllNotActive() {
-        ArrayList<ToDo> notActiveTodos = new ArrayList<>();
-        for (ToDo todo : toDoRepository.findAll()) {
-            if (!todo.getIsDone()) {
-                notActiveTodos.add(todo);
-            }
-        }
-        return notActiveTodos;
+        return toDoRepository.findAllByIsDone(false);
     }
 
     public void addToDo(ToDo todo) {

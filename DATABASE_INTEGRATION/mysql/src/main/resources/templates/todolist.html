@@ -26,6 +26,12 @@
             <td th:text="*{title}"></td>
             <td th:text="*{isDone}"></td>
             <td th:text="*{isUrgent}"></td>
+            <td>
+                <form action="#" th:action="@{/{id}/delete}"  method="post">
+                    <input type="hidden" name="id" th:value="*{id}">
+                    <button class="button" id="add" type="submit" value="Delete">Delete</button>
+                </form>
+            </td>
         </tr>
     </table>
 </div>
