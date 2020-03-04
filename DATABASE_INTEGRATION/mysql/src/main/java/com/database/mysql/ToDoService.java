@@ -20,7 +20,7 @@ public class ToDoService {
     public Iterable<ToDo> findAll() {
         return toDoRepository.findAll();
     }
-    
+
     public Iterable<ToDo> findAllActive() {
         return toDoRepository.findAllByIsDone(true);
     }
@@ -31,6 +31,10 @@ public class ToDoService {
 
     public void addToDo(ToDo todo) {
         toDoRepository.save(todo);
+    }
+
+    public void deleteToDoById(Long id) {
+        toDoRepository.deleteById(id);
     }
 }
 

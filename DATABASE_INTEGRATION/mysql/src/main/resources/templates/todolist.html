@@ -3,7 +3,7 @@
 <head>
     <title>ToDo</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
-        <link rel="stylesheet" th:href="@{/styles.css}"  type="text/css"/>
+    <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,26 +14,28 @@
             <li>
                 <a href="/todo/add"> Add new todo </a>
             </li>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>ACTION</th>
-            <th>DONE</th>
-            <th>URGENT</th>
-        </tr>
-        <tr th:each="todo : ${todos}" th:object="${todo}">
-            <td th:text="*{id}"></td>
-            <td th:text="*{title}"></td>
-            <td th:text="*{isDone}"></td>
-            <td th:text="*{isUrgent}"></td>
-            <td>
-                <form action="#" th:action="@{/{id}/delete}"  method="post">
-                    <input type="hidden" name="id" th:value="*{id}">
-                    <button class="button" id="add" type="submit" value="Delete">Delete</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>ACTION</th>
+                    <th>DONE</th>
+                    <th>URGENT</th>
+                </tr>
+                <tr th:each="todo : ${todos}" th:object="${todo}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{title}"></td>
+                    <td th:text="*{isDone}"></td>
+                    <td th:text="*{isUrgent}"></td>
+                    <td>
+                        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
+<!--                            <input type="hidden" name="id" th:value="*{id}">-->
+                            <button class="button" id="delete" type="submit" value="Delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
