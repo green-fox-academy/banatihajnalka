@@ -8,11 +8,13 @@
 </head>
 <body>
 <div>
-        <tr th:each="question : ${questions}" th:object="${question}">
-            <td th:text="*{id}"></td>
+    <table>
+        <tr th:object="${question}">
             <td th:text="*{question}"></td>
             <td th:text="*{answer1}"></td>
             <td th:text="*{answer2}"></td>
+            <td th:text="*{answer3}"></td>
+            <td th:text="*{answer4}"></td>
         </tr>
     </table>
 </div>

@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String question;
     private String answer1;
@@ -15,6 +15,7 @@ public class Question {
     private String answer3;
     private String answer4;
     private String correctAnswer;
+    private boolean isUsed;
 
     public Question() {
     }
@@ -78,5 +79,14 @@ public class Question {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+
+    public boolean getIsUsed() {
+        return isUsed;
+    }
+
+    public void setIsUsed(boolean used) {
+        isUsed = used;
     }
 }

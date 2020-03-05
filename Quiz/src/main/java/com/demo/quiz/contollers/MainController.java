@@ -21,8 +21,8 @@ public class MainController {
 
     @GetMapping("/list")
     public String list(Model model) {
-        model.addAttribute("questions", questionService.getRandomQuestionList());
-        return "questionlist";
+        model.addAttribute("question", questionService.findByIsUsed());
+        return "question";
     }
 }
 
