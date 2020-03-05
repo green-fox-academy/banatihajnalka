@@ -15,5 +15,4 @@ public interface QuestionRepository extends CrudRepository<Question, Integer> {
     List<Question> findAll();
 
     List<Question> findAllByIsUsed(boolean isUsed);
-    Optional<Question> findByIsUsed(boolean isUsed);
 }

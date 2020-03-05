@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:object="${question}" class="quizz" >
+    <h1 th:text="*{question}"></h1>
+    <form action="#" th:action="@{/list}" method="post">
+        <input type="button" name="question" th:value="*{answer1}">
+        <input type="button" name="question" th:value="*{answer2}">
+        <input type="button" name="question" th:value="*{answer3}">
+        <input type="button" name="question" th:value="*{answer4}">
+        <div>
+            <button th:value="*{correctAnswer}" type="submit">Next</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

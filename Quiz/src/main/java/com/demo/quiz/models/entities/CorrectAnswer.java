@@ -1,4 +1,4 @@
-package com.demo.quiz.models.entities.dtos;
+package com.demo.quiz.models.entities;
 
 public class CorrectAnswer {
 

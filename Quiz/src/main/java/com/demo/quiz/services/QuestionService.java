@@ -19,16 +19,27 @@ public class QuestionService {
     }
 
 
-    public Iterable<Question> findAllWAsNotUSed() {
+    public List<Question> findAllWAsNotUSed() {
         return questionRepository.findAllByIsUsed(false);
     }
 
     public Question findByIsUsed() {
-        List<Question> findAllWAsNotUSed = questionRepository.findAllByIsUsed(false);
-        Optional<Question> question = findAllWAsNotUSed.stream().findFirst();
-//        Optional<Question> question = questionRepository.findByIsUsed(false);
+        Optional<Question> question = findAllWAsNotUSed().stream().findFirst();
         question.ifPresent(value -> value.setIsUsed(true));
         return question.orElse(null);
     }
 
+    public Optional<Question> getRandomQuestionList() {
+        List<Question> questions = new ArrayList<>();
+        int id = 0;
+        Optional<Question> question = questionRepository.findById(id);
+        question.ifPresent(questions::add);
+        return question;
+    }
+
+
+    public void addAnswer(Question question) {
+        questionRepository.save(question);
+    }
 }
+

@@ -15,6 +15,7 @@ public class Question {
     private String answer3;
     private String answer4;
     private String correctAnswer;
+    private String userAnswer;
     private boolean isUsed;
 
     public Question() {
@@ -31,6 +32,18 @@ public class Question {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean getIsUsed() {
+        return isUsed;
+    }
+
+    public void setIsUsed(boolean used) {
+        isUsed = used;
     }
 
     public String getQuestion() {
@@ -82,11 +95,11 @@ public class Question {
     }
 
 
-    public boolean getIsUsed() {
-        return isUsed;
+    public String getUserAnswer() {
+        return userAnswer;
     }
 
-    public void setIsUsed(boolean used) {
-        isUsed = used;
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
     }
 }
