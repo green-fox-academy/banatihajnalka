@@ -1,0 +1,63 @@
+/*body {*/
+/*    background-color: palegoldenrod;*/
+/*    font-family: 'Quicksand', sans-serif ;*/
+/*}*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: ivory;
+}
+
+li {
+    float: left;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    background-color: darkslategrey;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-right: 1px solid lightslategray;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a:hover {
+    background-color: lightslategray;
+    color: darkslategrey;
+}
+
+.active {
+    background-color: slategrey;
+    color: black;
+}
+
+.icon-credit, .back {
+    background-color: palegoldenrod;
+    color: black;
+}
+
+.actions-li {
+    color: black;
+}
+
+.info {
+    font-weight: bold;
+}
+
+.chapter {
+    font-style: italic;
+    color: darkslategrey;
+}

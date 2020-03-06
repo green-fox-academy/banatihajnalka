@@ -26,6 +26,7 @@ public class FoxContoller {
         model.addAttribute("fox", foxService.find(name));
         model.addAttribute("foods", foxService.find(name).getFoodsList());
         model.addAttribute("drinks", foxService.find(name).getDrinksList());
+//        model.addAttribute("active", "nutrition-store");
         return "nutritionstore";
     }
 
@@ -46,6 +47,7 @@ public class FoxContoller {
 //        model.addAttribute("tricks", foxService.find(name).isAllTricksAreKnown() ? "You have learned all tricks." : foxService.find(name).notKnownTricks());
         model.addAttribute("knowsAll",  foxService.find(name).knowsAll());
         model.addAttribute("tricks",  foxService.find(name).getNotKnownTricks());
+//        model.addAttribute("active", "trick-center");
         return "trickcenter";
     }
 
@@ -64,6 +66,7 @@ public class FoxContoller {
         model.addAttribute("fox", foxService.find(name));
         model.addAttribute("numOfActions", foxService.find(name).numberOfActions());
         model.addAttribute("actions", foxService.find(name).getActions());
+//        model.addAttribute("active", "action-history");
 //        model.addAttribute("actionDrink", foxService.getDrinkChange());
 //        model.addAttribute("actionTrick", foxService.getTrickChange());
         return "actionhistory";

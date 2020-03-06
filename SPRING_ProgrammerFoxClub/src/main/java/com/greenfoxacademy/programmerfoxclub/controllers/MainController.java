@@ -31,6 +31,7 @@ public class MainController {
             model.addAttribute("numOfTricks", foxService.find(name).numberOfTricks());
             model.addAttribute("tricks", foxService.find(name).getTricks());
             model.addAttribute("actions", foxService.find(name).isActionListIsEmpty() ? "There was no action yet." : foxService.find(name).getLatestFiveActions());
+//            model.addAttribute("active", "index");
 //            model.addAttribute("actions", foxService.find(name).getActions());
 //            model.addAttribute("numOfActions", foxService.find(name).numberOfActions());
         }
@@ -43,6 +44,7 @@ public class MainController {
         if (!(error == null)) {
             model.addAttribute("error", "You have provided a name that has not been used before, add it as a new one!");
         }
+//        model.addAttribute("active", "login");
         return "login";
     }
 

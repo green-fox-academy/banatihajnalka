@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="topnav" th:object="${fox}">
+    <ul>
+        <li><a th:attr="class=${active == 'information'} ? 'active'"  th:href="'/?name=' + *{name}"> Information</a></li>
+        <li><a th:attr="class=${active == 'nutrition-store'} ? 'active'" th:href="'/nutritionstore?name='+ *{name}"> Nutrition Store</a></li>
+        <li><a th:attr="class=${active == 'trick-center'} ? 'active'" th:href="'/trickcenter?name='+ *{name}"> Trick Center</a></li>
+        <li><a th:attr="class=${active == 'action-history'} ? 'active'" th:href="'/actionhistory?name='+ *{name}"> Action History </a>
+        </li>
+    </ul>
+</div>
+</html>

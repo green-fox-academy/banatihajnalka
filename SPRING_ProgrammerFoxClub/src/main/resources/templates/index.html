@@ -3,26 +3,31 @@
 <head>
     <title>Main</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
-    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+<!--    <link rel="stylesheet" th:href="@{/style.css}" type="text/css"/>-->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-<div>
-    <ul>
-        <li>
-            <a th:href="'/?name=' + ${fox.name}"> Information </a>
-        </li>
-        <li>
-            <a th:href="'/nutritionstore?name='+ ${fox.name}"> Nutrition Store </a>
-        </li>
-        <li>
-            <a th:href="'/trickcenter?name='+ ${fox.name}"> Trick Center </a>
-        </li>
-        <li>
-            <a th:href="'/actionhistory?name='+ ${fox.name}"> Action History </a>
-        </li>
-    </ul>
-</div>
+<!--<div th:replace="navigation-bar :: topnav"></div>-->
+<header>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a th:href="'/?name=' + ${fox.name}"> Information </a>
+                </li>
+                <li>
+                    <a th:href="'/nutritionstore?name='+ ${fox.name}"> Nutrition Store </a>
+                </li>
+                <li>
+                    <a th:href="'/trickcenter?name='+ ${fox.name}"> Trick Center </a>
+                </li>
+                <li>
+                    <a th:href="'/actionhistory?name='+ ${fox.name}"> Action History </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 <img src="greenfox.png" alt="green fox">
 <div>
     <!--        <p th:text="'This is ' + ${fox.name} +'. Currently living on ' + ${fox.drink} + ' and '-->
