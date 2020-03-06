@@ -1,22 +1,28 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Learning words</title>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>Quiz application</h1>
-<form action="/" method="get">
-    <div>
-        <select name="lang">
-            <option value="hu">Magyar</option>
-            <option value="ru">Руский</option>
-        </select>
-    </div>
-    <div>
-        <input type="submit" value="Learn">
-    </div>
-</form>
+<div>
+    <h1> Welcome to Quizzy</h1>
+    <p> Please provide a name, and a password, so you can play! </p>
+    <form action="#" th:action="@{/login}" th:method="post">
+        <div>
+            <label for="name">Name</label>
+            <input class="field"  id="name" name="name" type="text" required>
+            <label for="password">Password</label>
+            <input class="field"  id="password" name="name" type="text" required>
+            <button type="submit">Go</button>
+        </div>
+        <div>
+            <p th:style="'color:red'" th:text=${error}></p>
+        </div>
+
+    </form>
+</div>
 </body>
 </html>

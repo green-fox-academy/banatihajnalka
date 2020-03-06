@@ -25,7 +25,7 @@ public class MainController {
     @GetMapping("/list")
     public String renderQuiz(Model model) {
         model.addAttribute("question", questionService.findByIsUsed());
-        return "question3";
+        return "question2";
     }
 
     @PostMapping("/list")
