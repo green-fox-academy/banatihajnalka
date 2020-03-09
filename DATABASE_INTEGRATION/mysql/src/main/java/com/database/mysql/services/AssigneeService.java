@@ -1,7 +1,6 @@
 package com.database.mysql.services;
 
 import com.database.mysql.models.Assignee;
-import com.database.mysql.models.ToDo;
 import com.database.mysql.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +29,18 @@ public class AssigneeService {
         assigneeRepository.deleteById(id);
     }
 
-    public void editAssigneeById(Long id) {
-        Optional<Assignee> assignee = assigneeRepository.findById(id);
-        assignee.ifPresent(value -> assigneeRepository.save(value));
+    public Assignee findAssigneeByName(String name) {
+        Optional<Assignee> assignee = assigneeRepository.findByName(name);
+        return assignee.orElse(null);
     }
+
+    public void editAssigneeById(Long id, Assignee assigneeForm) {
+        Optional<Assignee> currentAssignee = assigneeRepository.findById(id);
+        if (currentAssignee.isPresent()) {
+           Assignee assignee = currentAssignee.get();
+           assignee.setName(assigneeForm.getName());
+           assigneeRepository.save(assignee);
+        }
+    }
+
 }

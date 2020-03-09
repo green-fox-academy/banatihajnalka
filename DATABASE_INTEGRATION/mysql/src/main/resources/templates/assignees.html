@@ -25,7 +25,8 @@
                 </form>
             </td>
             <td>
-                <form action="#" th:action="@{'/todo/assignee/' + ${assignee.id} + '/edit'}" method="post">
+                <form action="#" th:action="@{'/todo/assignee/' + ${assignee.id} + '/edit'}"  method="post">
+                    <input class="field" type="text" th:field="${assignee.name}" required>
                     <button type="submit">Edit</button>
                 </form>
             </td>
