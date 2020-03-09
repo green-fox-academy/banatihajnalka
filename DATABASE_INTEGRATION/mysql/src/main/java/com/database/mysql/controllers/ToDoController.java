@@ -72,9 +72,21 @@ public class ToDoController {
         return "assignees";
     }
 
-    @PostMapping("/add-assignee")
+    @PostMapping("/assignee/add")
     public String addAssignee(@ModelAttribute Assignee assignee) {
-        assigneeService.add(assignee);
+        assigneeService.addAssignee(assignee);
+        return "redirect:/todo/assignees";
+    }
+
+    @PostMapping("/assignee/{id}/delete")
+    public String deleteAssignee(@PathVariable Long id) {
+        assigneeService.deleteAssigneeById(id);
+        return "redirect:/todo/assignees";
+    }
+
+    @PostMapping("/assignee/{id}/edit")
+    public String editAssignee(@PathVariable Long id, @ModelAttribute Assignee assignee) {
+        assigneeService.editAssigneeById(id);
         return "redirect:/todo/assignees";
     }
 

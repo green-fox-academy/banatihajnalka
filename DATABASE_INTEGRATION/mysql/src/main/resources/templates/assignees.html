@@ -20,12 +20,12 @@
             <td th:text="*{name}"></td>
             <td th:text="*{email}"></td>
             <td>
-                <form action="#" th:action="@{/todo/delete}" method="post">
-                    <button type="submit">Delete</button>
+                <form action="#" th:action="@{'/todo/assignee/' + ${assignee.id} + '/delete'}" method="post">
+                    <button type="submit" >Delete</button>
                 </form>
             </td>
             <td>
-                <form action="#" th:action="@{/todo/edit}" method="post">
+                <form action="#" th:action="@{'/todo/assignee/' + ${assignee.id} + '/edit'}" method="post">
                     <button type="submit">Edit</button>
                 </form>
             </td>
@@ -33,7 +33,7 @@
     </table>
     <div>
         <h1> Add new assignee </h1>
-        <form action="#" th:action="@{/todo/add-assignee}" th:object="${assignee}" th:method="post">
+        <form action="#" th:action="@{/todo/assignee/add}" th:object="${assignee}" th:method="post">
             <div>
                 <!--            <label for="name">Name</label>-->
                 <input class="field"  th:field="*{name}" type="text" required>

@@ -6,6 +6,8 @@ import com.database.mysql.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AssigneeService {
 
@@ -20,7 +22,16 @@ public class AssigneeService {
         return assigneeRepository.findAll();
     }
 
-    public void add(Assignee assignee) {
+    public void addAssignee(Assignee assignee) {
         assigneeRepository.save(assignee);
+    }
+
+    public void deleteAssigneeById(Long id) {
+        assigneeRepository.deleteById(id);
+    }
+
+    public void editAssigneeById(Long id) {
+        Optional<Assignee> assignee = assigneeRepository.findById(id);
+        assignee.ifPresent(value -> assigneeRepository.save(value));
     }
 }
