@@ -1,5 +1,7 @@
 package com.database.mysql.controllers;
 
+import com.database.mysql.models.Assignee;
+import com.database.mysql.services.AssigneeService;
 import com.database.mysql.services.ToDoService;
 import com.database.mysql.models.ToDo;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class ToDoController {
 
     private ToDoService toDoService;
+    private AssigneeService assigneeService;
 
-    public ToDoController(ToDoService toDoService) {
+    public ToDoController(ToDoService toDoService, AssigneeService assigneeService) {
         this.toDoService = toDoService;
+        this.assigneeService = assigneeService;
     }
 
     @GetMapping(value = {"/", "/list"})
@@ -59,6 +63,19 @@ public class ToDoController {
         model.addAttribute("todo", toDoService.findById(id));
         toDoService.addToDo(todo);
         return "redirect:/todo/";
+    }
+
+    @GetMapping("/assignees")
+    public String renderAssigneesPage(Model model) {
+        model.addAttribute("assignee", new Assignee());
+        model.addAttribute("assignees", assigneeService.findAll());
+        return "assignees";
+    }
+
+    @PostMapping("/add-assignee")
+    public String addAssignee(@ModelAttribute Assignee assignee) {
+        assigneeService.add(assignee);
+        return "redirect:/todo/assignees";
     }
 
 

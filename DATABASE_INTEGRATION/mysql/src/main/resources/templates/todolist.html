@@ -3,7 +3,7 @@
 <head>
     <title>ToDo</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
-<!--    <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>-->
+    <!--    <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>-->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,6 +13,9 @@
         <ul>
             <li>
                 <a href="/todo/add"> Add new todo </a>
+            </li>
+            <li>
+                <a href="/todo/assignees"> List of assignees </a>
             </li>
             <div>
                 <h1> Search for a todo </h1>
@@ -37,12 +40,12 @@
                     <td th:text="*{isUrgent}"></td>
                     <td>
                         <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
-<!--                            <input type="hidden" name="id" th:value="*{id}">-->
+                            <!--                            <input type="hidden" name="id" th:value="*{id}">-->
                             <button type="submit">Delete</button>
                         </form>
                     </td>
                     <td>
-                        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" method="get">
+                        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" method="post">
                             <!--                            <input type="hidden" name="id" th:value="*{id}">-->
                             <button type="submit">Edit</button>
                         </form>
