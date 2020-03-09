@@ -15,7 +15,6 @@ public class Question {
     private String answer3;
     private String answer4;
     private String correctAnswer;
-    private String userAnswer;
     private boolean isUsed;
 
     public Question() {
@@ -92,14 +91,5 @@ public class Question {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
-    }
-
-
-    public String getUserAnswer() {
-        return userAnswer;
-    }
-
-    public void setUserAnswer(String userAnswer) {
-        this.userAnswer = userAnswer;
     }
 }

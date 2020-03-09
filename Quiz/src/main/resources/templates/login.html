@@ -9,13 +9,13 @@
 <body>
 <div>
     <h1> Welcome to Quizzy</h1>
-    <p> Please provide a name, and a password, so you can play! </p>
-    <form action="#" th:action="@{/login}" th:method="post">
+    <p> Please provide a name, and a password, so you can start a quiz! </p>
+    <form action="#" th:action="@{/login}"  th:method="post">
         <div>
             <label for="name">Name</label>
             <input class="field"  id="name" name="name" type="text" required>
             <label for="password">Password</label>
-            <input class="field"  id="password" name="name" type="text" required>
+            <input class="field"  id="password" name="password" type="text" required>
             <button type="submit">Go</button>
         </div>
         <div>

@@ -14,6 +14,15 @@
             <li>
                 <a href="/todo/add"> Add new todo </a>
             </li>
+            <div>
+                <h1> Search for a todo </h1>
+                <form action="#" th:action="@{/todo/}" method="get">
+                    <label>
+                        <input name="title" type="text" required>
+                    </label>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
             <table>
                 <tr>
                     <th>ID</th>

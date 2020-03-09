@@ -17,12 +17,14 @@ public class ToDoController {
     }
 
     @GetMapping(value = {"/", "/list"})
-    public String list( Model model, @RequestParam (required = false) String isActive) {
-        if (isActive == null) {
+    public String list(Model model, @RequestParam (required = false) String isActive, @RequestParam(required = false) String title) {
+        if (title != null) {
+            model.addAttribute("todos", toDoService.findAllByTitleContains(title));
+        } else if (isActive == null) {
             model.addAttribute("todos", toDoService.findAll());
         } else if (isActive.equals("true")) {
             model.addAttribute("todos", toDoService.findAllActive());
-        } else {
+        } else if (isActive.equals("false")) {
             model.addAttribute("todos", toDoService.findAllNotActive());
         }
         return "todolist";
@@ -58,6 +60,7 @@ public class ToDoController {
         toDoService.addToDo(todo);
         return "redirect:/todo/";
     }
+
 
 
 

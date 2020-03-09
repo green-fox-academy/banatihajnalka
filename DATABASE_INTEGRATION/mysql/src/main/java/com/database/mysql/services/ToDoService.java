@@ -41,5 +41,9 @@ public class ToDoService {
         Optional<ToDo> todo = toDoRepository.findById(id);
         return todo.orElse(null);
     }
+
+    public Iterable<ToDo> findAllByTitleContains(String title) {
+        return toDoRepository.findAllByTitleContains(title);
+    }
 }
 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/style.css}" type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--<div th:replace="navigation-bar :: topnav"></div>-->
+<!--<header>-->
+<!--    <nav>-->
+<!--        <ul>-->
+<!--            <li>-->
+<!--                <a th:href="'/?name=' + ${user.name}"> Information </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a th:href="'/nutritionstore?name='+ ${fox.name}"> Nutrition Store </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a th:href="'/trickcenter?name='+ ${fox.name}"> Trick Center </a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a th:href="'/actionhistory?name='+ ${fox.name}"> Action History </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--</header>-->
+<!--<img src="greenfox.png" alt="green fox">-->
+<div>
+    <!--        <p th:text="'This is ' + ${fox.name} +'. Currently living on ' + ${fox.drink} + ' and '-->
+    <!--        + ${fox.food} + '. He knows ' + ${fox.numberOfTricks()} + ' tricks.'"></p>-->
+<!--    <p th:text="${toString}"></p>-->
+</div>
+<div th:object="${user}">
+    <h1>Earlier results</h1>
+    <div>
+        <ul>
+            <li th:text="*{name}"></li>
+        </ul>
+    </div>
+<!--</div>-->
+<!--<p th:if="${numOfTricks == 0}">You know no tricks, yet. Go and learn some.</p>-->
+<!--<ul th:unless="${numOfTricks == 0}" th:each="trick : ${tricks}">-->
+<!--    <li th:text="${trick}" th:style="'text-transform: lowercase'"></li>-->
+<!--</ul>-->
+<!--<div>-->
+<!--    <h1>Action History</h1>-->
+<!--    &lt;!&ndash;    <p th:if="${numOfActions == 0}">There was no action yet.</p>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <ul th:unless="${numOfActions == 0}" th:each="action : ${actions}">&ndash;&gt;-->
+<!--    <ul th:each="action : ${actions}">-->
+<!--        <li th:text="${action}"></li>-->
+<!--    </ul>-->
+</div>
+</body>
+</html>
