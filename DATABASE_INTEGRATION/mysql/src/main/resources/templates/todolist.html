@@ -45,10 +45,10 @@
                         </form>
                     </td>
                     <td>
-                        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" method="post">
+                        <a th:href="@{'/todo/' + ${todo.id} + '/edit'}">
                             <!--                            <input type="hidden" name="id" th:value="*{id}">-->
-                            <button type="submit">Edit</button>
-                        </form>
+                            <button>Edit</button>
+                        </a>
                     </td>
                 </tr>
             </table>

@@ -1,10 +1,6 @@
 package com.database.mysql.models;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ToDo {
@@ -15,6 +11,8 @@ public class ToDo {
     private String title;
     private boolean isUrgent;
     private boolean isDone;
+    @ManyToOne
+    private Assignee assignee;
 
     public ToDo(String title, boolean urgent, boolean done) {
         this.title = title;
@@ -61,6 +59,18 @@ public class ToDo {
 
     public void setIsDone(boolean done) {
         this.isDone = done;
+    }
+
+    public boolean isUrgent() {
+        return isUrgent;
+    }
+
+    public Assignee getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
     }
 }
 

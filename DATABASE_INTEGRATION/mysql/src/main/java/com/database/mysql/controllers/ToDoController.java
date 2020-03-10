@@ -1,6 +1,5 @@
 package com.database.mysql.controllers;
 
-import com.database.mysql.models.Assignee;
 import com.database.mysql.services.AssigneeService;
 import com.database.mysql.services.ToDoService;
 import com.database.mysql.models.ToDo;
@@ -13,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class ToDoController {
 
     private ToDoService toDoService;
+    private AssigneeService assigneeService;
 
-    public ToDoController(ToDoService toDoService) {
+    public ToDoController(ToDoService toDoService, AssigneeService assigneeService) {
         this.toDoService = toDoService;
+        this.assigneeService = assigneeService;
     }
 
     @GetMapping(value = {"/", "/list"})
@@ -53,6 +54,7 @@ public class ToDoController {
     @GetMapping("/{id}/edit")
     public String renderEditPage(@PathVariable Long id, Model model) {
         model.addAttribute("todo", toDoService.findById(id));
+        model.addAttribute("assignees", assigneeService.findAll());
         return "edit";
     }
 

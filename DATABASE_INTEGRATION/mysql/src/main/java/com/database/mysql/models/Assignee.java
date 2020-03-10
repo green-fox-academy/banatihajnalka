@@ -1,9 +1,8 @@
 package com.database.mysql.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Assignee {
@@ -13,13 +12,17 @@ public class Assignee {
     private Long id;
     private String name;
     private String email;
+    @OneToMany(mappedBy = "assignee")
+    private List<ToDo> todos;
 
     public Assignee() {
+        todos = new ArrayList<>();
     }
 
     public Assignee(String name, String email) {
         this.name = name;
         this.email = email;
+        todos = new ArrayList<>();
     }
 
     public Long getId() {
@@ -45,4 +48,13 @@ public class Assignee {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public List<ToDo> getTodos() {
+        return todos;
+    }
+
+//    public void setTodos(List<ToDo> todos) {
+//        this.todos = todos;
+//        todos.forEach(toDo -> toDo.addAssignee(this));
+//    }
 }

@@ -3,7 +3,7 @@
 <head>
     <title>Table of accounts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
-<!--    <link rel="stylesheet" th:href="@{/add.css}" type="text/css"/>-->
+    <!--    <link rel="stylesheet" th:href="@{/add.css}" type="text/css"/>-->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" method="post">
         <div>
             <label class="form-title" for="name">Todo description</label>
-            <input class="field" type="text" id="name" th:field="*{title}" >
+            <input class="field" type="text" id="name" th:field="*{title}">
         </div>
         <div class="checkboxes">
             <a class="cb1">
@@ -23,11 +23,18 @@
                 <label class="form-title" for="isDone">Done?</label>
                 <input class="checkbox" type="checkbox" id="isDone" th:checked="*{isDone}" th:name="isDone">
             </a>
-        </div>
-        <div class="button">
-            <button id="add" type="submit" value="Submit">Submit</button>
+            <div>
+                <label class="form-title" for="assignees"> Assignees:</label>
+                <select id="assignees" name="assignee">
+                    <option th:each="assignee : ${assignees}" th:text="${assignee.name}"></option>
+                </select>
+                <!--                <input type="hidden" name="name" th:value="${assignee.id}">-->
+            </div>
         </div>
     </form>
+</div>
+<div class="button">
+    <button type="submit" value="Submit">Submit</button>
 </div>
 </body>
 </html>
