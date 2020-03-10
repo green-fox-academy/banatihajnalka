@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.*;
 public class ToDoController {
 
     private ToDoService toDoService;
-    private AssigneeService assigneeService;
 
-    public ToDoController(ToDoService toDoService, AssigneeService assigneeService) {
+    public ToDoController(ToDoService toDoService) {
         this.toDoService = toDoService;
-        this.assigneeService = assigneeService;
     }
 
     @GetMapping(value = {"/", "/list"})
@@ -64,48 +62,4 @@ public class ToDoController {
         toDoService.addToDo(todo);
         return "redirect:/todo/";
     }
-
-    @GetMapping("/assignees")
-    public String renderAssigneesPage(Model model) {
-        model.addAttribute("assignee", new Assignee());
-        model.addAttribute("assignees", assigneeService.findAll());
-        return "assignees";
-    }
-
-    @PostMapping("/assignee/add")
-    public String addAssignee(@ModelAttribute Assignee assignee) {
-        assigneeService.addAssignee(assignee);
-        return "redirect:/todo/assignees";
-    }
-
-    @PostMapping("/assignee/{id}/delete")
-    public String deleteAssignee(@PathVariable Long id) {
-        assigneeService.deleteAssigneeById(id);
-        return "redirect:/todo/assignees";
-    }
-
-//    @PostMapping("/assignee/{name}/edit")
-//    public String editAssignee(@PathVariable String name, @ModelAttribute Assignee assignee) {
-//        assigneeService.editAssigneeByName(name);
-//        return "redirect:/todo/assignees";
-//    }
-//
-//    @PostMapping("/assignee/{name}/edit")
-//    public String editTodoById(@PathVariable String name, @ModelAttribute Assignee assignee, Model model) {
-////        model.addAttribute("assignee", assigneeService.findAssigneeByName(name));
-//        assigneeService.addAssignee(assigneeService.findAssigneeByName(name));
-//        return "redirect:/todo/assignees";
-//    }
-
-    @PostMapping("/assignee/{id}/edit")
-    public String editAssignee(@PathVariable Long id, @ModelAttribute Assignee assignee) {
-        assigneeService.editAssigneeById(id, assignee);
-        return "redirect:/todo/assignees";
-    }
-
-
-
-
-
-
 }
