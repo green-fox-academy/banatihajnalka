@@ -2,7 +2,6 @@ package com.database.mysql.models.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Optional;
 
 @Entity
 public class ToDo {
@@ -87,6 +86,14 @@ public class ToDo {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public Long getAssigneeId() {
+        if (assignee == null) {
+            return 0L;
+        } else {
+            return assignee.getId();
+        }
     }
 }
 

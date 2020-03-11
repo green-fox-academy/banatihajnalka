@@ -42,6 +42,16 @@ public class ToDoService {
         return todo.orElse(null);
     }
 
+//    public void delete(Long id) {
+//        Optional<ToDo> currentTodo = toDoRepository.findById(id);
+//        if (currentTodo.isPresent()) {
+//            ToDo todo = currentTodo.get();
+//            todo.getAssignee().deleteToDo(Optional.of(todo));
+//            todo.setAssignee(null);
+//            toDoRepository.deleteById(id);
+//        }
+//    }
+
     public Iterable<ToDo> findAllByTitleContains(String title) {
         return toDoRepository.findAllByTitleContains(title);
     }

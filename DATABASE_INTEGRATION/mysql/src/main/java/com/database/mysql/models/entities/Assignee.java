@@ -3,6 +3,7 @@ package com.database.mysql.models.entities;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Assignee {
@@ -12,8 +13,7 @@ public class Assignee {
     private Long id;
     private String name;
     private String email;
-    @JoinColumn(name = "assignee_id")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "assignee", fetch = FetchType.EAGER)
     private List<ToDo> todos;
 
     public Assignee() {
@@ -67,6 +67,10 @@ public class Assignee {
         todos.add(todo);
         todo.setAssignee(this);
     }
+
+//    public  void deleteToDo(Optional<ToDo> todo) {
+//        todos.remove(todo);
+//    }
 
     @Override
     public String toString() {
