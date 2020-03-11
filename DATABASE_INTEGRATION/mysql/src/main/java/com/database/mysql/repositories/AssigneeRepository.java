@@ -1,6 +1,6 @@
 package com.database.mysql.repositories;
 
-import com.database.mysql.models.Assignee;
+import com.database.mysql.models.entities.Assignee;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

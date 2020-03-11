@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todos of an assignee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <h1>Todos of an assignee</h1>
+    <table>
+        <tr>
+            <th>ASSIGNEE ID</th>
+            <th>NAME OF THE ASSIGNEE</th>
+            <th>EMAIL OF THE ASSIGNEE</th>
+        </tr>
+        <tr th:object="${assignee}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{email}"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>TODO ID</th>
+            <th>TITLE</th>
+            <th>DATE OF CREATION</th>
+            <th>ACTION</th>
+            <th>DONE</th>
+            <th>URGENT</th>
+        </tr>
+        <tr th:each="todo : ${todos}" th:object="${todo}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{title}"></td>
+            <td th:text="*{creationDate}"></td>
+            <td th:text="*{isDone}"></td>
+            <td th:text="*{isUrgent}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

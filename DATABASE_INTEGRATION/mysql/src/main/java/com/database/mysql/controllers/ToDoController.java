@@ -2,7 +2,7 @@ package com.database.mysql.controllers;
 
 import com.database.mysql.services.AssigneeService;
 import com.database.mysql.services.ToDoService;
-import com.database.mysql.models.ToDo;
+import com.database.mysql.models.entities.ToDo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +19,8 @@ public class ToDoController {
         this.assigneeService = assigneeService;
     }
 
-    @GetMapping(value = {"/", "/list"})
-    public String list(Model model, @RequestParam (required = false) String isActive, @RequestParam(required = false) String title) {
+    @GetMapping(value = {"", "/", "/list"})
+    public String list(Model model, @RequestParam(required = false) String isActive, @RequestParam(required = false) String title) {
         if (title != null) {
             model.addAttribute("todos", toDoService.findAllByTitleContains(title));
         } else if (isActive == null) {
@@ -45,7 +45,7 @@ public class ToDoController {
         return "redirect:/todo/list";
     }
 
-    @PostMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String add(@PathVariable Long id) {
         toDoService.deleteToDoById(id);
         return "redirect:/todo/";
@@ -62,6 +62,14 @@ public class ToDoController {
     public String editTodoById(@PathVariable Long id, @ModelAttribute ToDo todo, Model model) {
         model.addAttribute("todo", toDoService.findById(id));
         toDoService.addToDo(todo);
+        assigneeService.addToDo(todo);
         return "redirect:/todo/";
     }
 }
+
+//    @PostMapping("/{id}/edit")
+//    public String editTodoById(@PathVariable Long id, @ModelAttribute ToDoDTO toDoDTO, Model model) {
+//        model.addAttribute("todo", toDoService.findById(id));
+//        toDoService.addToDo(todo);
+//        return "redirect:/todo/";
+//    }

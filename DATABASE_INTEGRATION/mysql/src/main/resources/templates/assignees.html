@@ -14,10 +14,15 @@
             <th>ID</th>
             <th>NAME</th>
             <th>email</th>
+            <th>email</th>
         </tr>
         <tr th:each="assignee : ${assignees}" th:object="${assignee}">
             <td th:text="*{id}"></td>
-            <td th:text="*{name}"></td>
+            <td>
+                <a th:href="'/todo/assignee/' + ${assignee.id} + '/todos'">
+                    <button th:text="*{name}"></button>
+                </a>
+            </td>
             <td th:text="*{email}"></td>
             <td>
                 <form action="#" th:action="@{'/todo/assignee/' + ${assignee.id} + '/delete'}" method="post">
@@ -42,6 +47,9 @@
                 <button type="submit">Submit</button>
             </div>
         </form>
+        <div>
+            <a href="/todo/">TodoList</a>
+        </div>
     </div>
 </div>
 </body>

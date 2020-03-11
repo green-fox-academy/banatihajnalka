@@ -1,6 +1,6 @@
 package com.database.mysql.services;
 
-import com.database.mysql.models.ToDo;
+import com.database.mysql.models.entities.ToDo;
 import com.database.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

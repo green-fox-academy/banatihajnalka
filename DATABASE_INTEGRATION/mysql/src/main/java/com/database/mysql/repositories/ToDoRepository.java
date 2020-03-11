@@ -1,7 +1,7 @@
 package com.database.mysql.repositories;
 
 
-import com.database.mysql.models.ToDo;
+import com.database.mysql.models.entities.ToDo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

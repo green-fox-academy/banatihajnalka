@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
-    <title>Table of accounts</title>
+    <title>Edit todo</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
     <!--    <link rel="stylesheet" th:href="@{/add.css}" type="text/css"/>-->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:100,400&display=swap" rel="stylesheet">
@@ -9,10 +9,10 @@
 <body>
 <div class="form">
     <h1>Edit Todo</h1>
-    <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" method="post">
+    <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" th:method="post">
         <div>
             <label class="form-title" for="name">Todo description</label>
-            <input class="field" type="text" id="name" th:field="*{title}">
+            <input class="field" id="name" type="text" th:field="*{title}">
         </div>
         <div class="checkboxes">
             <a class="cb1">
@@ -25,16 +25,21 @@
             </a>
             <div>
                 <label class="form-title" for="assignees"> Assignees:</label>
-                <select id="assignees" name="assignee">
-                    <option th:each="assignee : ${assignees}" th:text="${assignee.name}"></option>
+                <select id="assignees" name="assignee" th:field="*{assignee}" >
+                    <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee.id}"></option>
                 </select>
-                <!--                <input type="hidden" name="name" th:value="${assignee.id}">-->
+            </div>
+            <div class="button">
+                <button type="submit" value="Submit">Submit</button>
             </div>
         </div>
     </form>
 </div>
-<div class="button">
-    <button type="submit" value="Submit">Submit</button>
+<div>
+    <a href="/todo/">TodoList</a>
+</div>
+<div>
+    <a th:href="@{/todo/assignees}">List of assignees</a>
 </div>
 </body>
 </html>

@@ -1,10 +1,12 @@
 package com.database.mysql.services;
 
-import com.database.mysql.models.Assignee;
+import com.database.mysql.models.entities.Assignee;
+import com.database.mysql.models.entities.ToDo;
 import com.database.mysql.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,8 +31,8 @@ public class AssigneeService {
         assigneeRepository.deleteById(id);
     }
 
-    public Assignee findAssigneeByName(String name) {
-        Optional<Assignee> assignee = assigneeRepository.findByName(name);
+    public Assignee findAssigneeById(Long id) {
+        Optional<Assignee> assignee = assigneeRepository.findById(id);
         return assignee.orElse(null);
     }
 
@@ -43,4 +45,17 @@ public class AssigneeService {
         }
     }
 
+    public void addToDo(ToDo todo) {
+        todo.getAssignee().addToDo(todo);
+    }
+
+    public List<ToDo> listAllConnectedTodos(Long id) {
+        Optional<Assignee> currentAssignee = assigneeRepository.findById(id);
+        if (currentAssignee.isPresent()) {
+            List<ToDo> todos = currentAssignee.get().getTodos();
+            return todos;
+        } else {
+            return null;
+        }
+    }
 }

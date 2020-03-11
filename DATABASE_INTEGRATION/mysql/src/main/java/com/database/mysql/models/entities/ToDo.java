@@ -1,6 +1,8 @@
-package com.database.mysql.models;
+package com.database.mysql.models.entities;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.Optional;
 
 @Entity
 public class ToDo {
@@ -14,19 +16,25 @@ public class ToDo {
     @ManyToOne
     private Assignee assignee;
 
-    public ToDo(String title, boolean urgent, boolean done) {
-        this.title = title;
-        this.isUrgent = urgent;
-        this.isDone = done;
-    }
+    @Temporal(TemporalType.DATE)
+    private Date creationDate;
 
     public ToDo() {
+        creationDate = new Date();
     }
 
     public ToDo(String title) {
         this.title = title;
         this.isUrgent = false;
         this.isDone = false;
+        creationDate = new Date();
+    }
+
+    public ToDo(String title, boolean urgent, boolean done) {
+        this.title = title;
+        this.isUrgent = urgent;
+        this.isDone = done;
+        creationDate = new Date();
     }
 
     public Long getId() {
@@ -71,6 +79,14 @@ public class ToDo {
 
     public void setAssignee(Assignee assignee) {
         this.assignee = assignee;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }
 

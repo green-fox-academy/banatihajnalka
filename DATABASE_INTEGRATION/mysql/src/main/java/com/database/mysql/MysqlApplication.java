@@ -1,7 +1,7 @@
 package com.database.mysql;
 
-import com.database.mysql.models.Assignee;
-import com.database.mysql.models.ToDo;
+import com.database.mysql.models.entities.Assignee;
+import com.database.mysql.models.entities.ToDo;
 import com.database.mysql.repositories.AssigneeRepository;
 import com.database.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

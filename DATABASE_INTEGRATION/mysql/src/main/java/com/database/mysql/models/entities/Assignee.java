@@ -1,4 +1,4 @@
-package com.database.mysql.models;
+package com.database.mysql.models.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,10 +12,16 @@ public class Assignee {
     private Long id;
     private String name;
     private String email;
-    @OneToMany(mappedBy = "assignee")
+    @JoinColumn(name = "assignee_id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ToDo> todos;
 
     public Assignee() {
+        todos = new ArrayList<>();
+    }
+
+    public Assignee(String name) {
+        this.name = name;
         todos = new ArrayList<>();
     }
 
@@ -53,8 +59,18 @@ public class Assignee {
         return todos;
     }
 
-//    public void setTodos(List<ToDo> todos) {
-//        this.todos = todos;
-//        todos.forEach(toDo -> toDo.addAssignee(this));
-//    }
+    public void setToDos(List<ToDo> todos) {
+        this.todos = todos;
+    }
+
+    public void addToDo(ToDo todo) {
+        todos.add(todo);
+        todo.setAssignee(this);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }
