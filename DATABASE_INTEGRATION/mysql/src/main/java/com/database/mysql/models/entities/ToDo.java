@@ -1,5 +1,7 @@
 package com.database.mysql.models.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -14,9 +16,10 @@ public class ToDo {
     private boolean isDone;
     @ManyToOne
     private Assignee assignee;
-
-    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dueDate;
 
     public ToDo() {
         creationDate = new Date();
@@ -94,6 +97,14 @@ public class ToDo {
         } else {
             return assignee.getId();
         }
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
     }
 }
 

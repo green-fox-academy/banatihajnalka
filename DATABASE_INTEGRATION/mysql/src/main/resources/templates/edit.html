@@ -29,6 +29,10 @@
                     <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee.id}"></option>
                 </select>
             </div>
+            <div>
+                <label for="due-date">Due date</label>
+                <input type="date" id="due-date" th:field="*{dueDate}">
+            </div>
             <div class="button">
                 <button type="submit" value="Submit">Submit</button>
             </div>

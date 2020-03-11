@@ -38,6 +38,7 @@
                 <tr th:each="todo : ${todos}" th:object="${todo}">
                     <td th:text="*{id}"></td>
                     <td th:text="*{creationDate}"></td>
+                    <td th:text="*{dueDate}"></td>
                     <td>
                         <a th:href="'/todo/assignee/' + *{getAssigneeId()} + '/todos'">
                             <button th:text="*{assignee}"></button>
