@@ -58,4 +58,14 @@ public class AssigneeService {
             return null;
         }
     }
+
+    public List<ToDo> listAllConnectedTodos(String assignee) {
+        Optional<Assignee> currentAssignee = assigneeRepository.findByName(assignee);
+        if (currentAssignee.isPresent()) {
+            List<ToDo> todos = currentAssignee.get().getTodos();
+            return todos;
+        } else {
+            return null;
+        }
+    }
 }

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/todo")
 public class ToDoController {
@@ -20,11 +22,14 @@ public class ToDoController {
     }
 
     @GetMapping(value = {"", "/", "/list"})
-    public String list(Model model, @RequestParam(required = false) String isActive, @RequestParam(required = false) String title) {
-        if (title != null) {
-            model.addAttribute("todos", toDoService.findAllByTitleContains(title));
-        } else if (isActive == null) {
+    public String list(Model model,
+                       @RequestParam(required = false) String isActive,
+                       @RequestParam(required = false) String search,
+                       @RequestParam(required = false, value = "key") String key) {
+        if (isActive == null && search == null && key == null) {
             model.addAttribute("todos", toDoService.findAll());
+        } else if (search != null && key != null) {
+            model.addAttribute("todos", toDoService.searchByParam(search, key));
         } else if (isActive.equals("true")) {
             model.addAttribute("todos", toDoService.findAllActive());
         } else if (isActive.equals("false")) {
@@ -32,6 +37,31 @@ public class ToDoController {
         }
         return "todolist";
     }
+
+//    @GetMapping(value = {"", "/", "/list"})
+//    public String list(Model model,
+//                       @RequestParam(required = false) String isActive,
+//                       @RequestParam(required = false) String title,
+//                       @RequestParam(required = false) String assignee,
+//                       @RequestParam(required = false) Date dueDate,
+//                       @RequestParam(required = false) Date creationDate) {
+//        if (dueDate != null) {
+//            model.addAttribute("dueDate", toDoService.findByDueDate(dueDate));
+//        } else if (creationDate != null) {
+//                model.addAttribute("dueDate", toDoService.findByCreationDate(creationDate));
+//        } else if (assignee != null) {
+//            model.addAttribute("assignee", assigneeService.listAllConnectedTodos(assignee));
+//        } else if (title != null) {
+//            model.addAttribute("todos", toDoService.findAllByTitleContains(title));
+//        } else if (isActive == null) {
+//            model.addAttribute("todos", toDoService.findAll());
+//        } else if (isActive.equals("true")) {
+//            model.addAttribute("todos", toDoService.findAllActive());
+//        } else if (isActive.equals("false")) {
+//            model.addAttribute("todos", toDoService.findAllNotActive());
+//        }
+//        return "todolist";
+//    }
 
     @GetMapping("/add")
     public String renderAddPage(Model model) {

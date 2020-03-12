@@ -67,13 +67,8 @@ public class Assignee {
         todo.setAssignee(this);
     }
 
-//    public  void deleteToDo(Optional<ToDo> todo) {
-//        todos.remove(todo);
-//    }
-
     @Override
     public String toString() {
         return name;
     }
-
 }
