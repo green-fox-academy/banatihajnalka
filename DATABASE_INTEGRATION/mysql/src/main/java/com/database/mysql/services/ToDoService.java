@@ -65,33 +65,48 @@ public class ToDoService {
 
 
     public List<ToDo> searchByParam(String search, String key) throws ParseException {
-      List<ToDo> result = new ArrayList<>();
+        List<ToDo> todos = toDoRepository.findAll();
+        List<ToDo> filteredTodos = new ArrayList<>();
         switch (key) {
             case "byAssignee":
                 Optional<Assignee> assignee = assigneeRepository.findByName(search);
                 if (assignee.isPresent()) {
-                    result = toDoRepository.findAllByAssignee(assignee.get());
+                    filteredTodos = toDoRepository.findAllByAssignee(assignee.get());
                 }
                 break;
             case "byTitle":
 //                Optional<ToDo> todoByTitle = toDoRepository.findByTitleContainsIgnoreCase(search);
 //                if (todoByTitle.isPresent()) {
-                    result = toDoRepository.findAllByTitleContainsIgnoreCase(search);
+                    filteredTodos = toDoRepository.findAllByTitleContainsIgnoreCase(search);
                 break;
             case "byDueDate":
-                String dueDate = search;
-                Date searchDueDate =new SimpleDateFormat("yyyy-MM-dd").parse(dueDate);
-                result = toDoRepository.findAll().stream().filter(todo -> todo.getDueDate().equals(searchDueDate)).
-                        collect(Collectors.toList());
+                for (ToDo todo : todos) {
+                    if (todo.getDueDate() != null) {
+                        if (todo.getDueDate().toString().equals(search)) {
+                            filteredTodos.add(todo);
+                        }
+                    }
+                }
+//                String dueDate = search;
+//                Date searchDueDate =new SimpleDateFormat("yyyy-MM-dd").parse(dueDate);
+//                result = toDoRepository.findAll().stream().filter(todo -> todo.getDueDate().equals(searchDueDate)).
+//                        collect(Collectors.toList());
             break;
             case "byCreationDate":
-                String creationDate = search;
-                Date searchCreationDate =new SimpleDateFormat("yyyy-MM-dd").parse(creationDate);
-                result = toDoRepository.findAll().stream().filter(todo -> todo.getCreationDate().equals(searchCreationDate)).
-                        collect(Collectors.toList());
+                for (ToDo todo : todos) {
+                    if (todo.getCreationDate() != null) {
+                        if (todo.getCreationDate().toString().equals(search)) {
+                            filteredTodos.add(todo);
+                        }
+                    }
+                }
+//                String creationDate = search;
+//                Date searchCreationDate =new SimpleDateFormat("yyyy-MM-dd").parse(creationDate);
+//                filteredTodos = toDoRepository.findAll().stream().filter(todo -> todo.getCreationDate().equals(searchCreationDate)).
+//                        collect(Collectors.toList());
                 break;
         }
-        return result;
+        return filteredTodos;
     }
 
 

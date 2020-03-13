@@ -48,7 +48,7 @@
                     <th>DONE</th>
                     <th>URGENT</th>
                 </tr>
-                <tr th:if="${todos.size() == 0}" th:text="No matches found">
+                <p th:if="${todos.size() == 0}">No matches found</p>
                 <tr th:unless="${todos.size() == 0}" th:each="todo : ${todos}" th:object="${todo}">
                     <td th:text="*{id}"></td>
                     <td th:text="*{#dates.format(creationDate, 'yyyy-MM-dd')}"></td>
