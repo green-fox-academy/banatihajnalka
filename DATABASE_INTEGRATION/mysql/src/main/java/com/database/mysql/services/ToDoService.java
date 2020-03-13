@@ -2,10 +2,13 @@ package com.database.mysql.services;
 
 import com.database.mysql.models.entities.Assignee;
 import com.database.mysql.models.entities.ToDo;
+import com.database.mysql.repositories.AssigneeRepository;
 import com.database.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,21 +16,24 @@ import java.util.stream.Collectors;
 public class ToDoService {
 
     private ToDoRepository toDoRepository;
+    private AssigneeRepository assigneeRepository;
+
 
     @Autowired
-    public ToDoService(ToDoRepository toDoRepository) {
+    public ToDoService(ToDoRepository toDoRepository, AssigneeRepository assigneeRepository) {
         this.toDoRepository = toDoRepository;
+        this.assigneeRepository = assigneeRepository;
     }
 
-    public Iterable<ToDo> findAll() {
+    public List<ToDo> findAll() {
         return toDoRepository.findAll();
     }
 
-    public Iterable<ToDo> findAllActive() {
+    public List<ToDo> findAllActive() {
         return toDoRepository.findAllByIsDone(true);
     }
 
-    public Iterable<ToDo> findAllNotActive() {
+    public List<ToDo> findAllNotActive() {
         return toDoRepository.findAllByIsDone(false);
     }
 
@@ -52,29 +58,37 @@ public class ToDoService {
         return toDoRepository.findAllByDueDate(dueDate);
     }
 
+
     public Iterable<ToDo> findByCreationDate(Date dueDate) {
         return toDoRepository.findAllByCreationDate(dueDate);
     }
 
 
-    public Iterable<ToDo> searchByParam(String search, String key){
+    public List<ToDo> searchByParam(String search, String key) throws ParseException {
       List<ToDo> result = new ArrayList<>();
         switch (key) {
             case "byAssignee":
-                result = toDoRepository.findAll().stream().filter(todo -> todo.getAssignee().getName().toLowerCase().contains(search.toLowerCase())).
-                        collect(Collectors.toList());
+                Optional<Assignee> assignee = assigneeRepository.findByName(search);
+                if (assignee.isPresent()) {
+                    result = toDoRepository.findAllByAssignee(assignee.get());
+                }
                 break;
             case "byTitle":
-                result = toDoRepository.findAll().stream().filter(todo -> todo.getTitle().toLowerCase().contains(search.toLowerCase())).
-                        collect(Collectors.toList());
+//                Optional<ToDo> todoByTitle = toDoRepository.findByTitleContainsIgnoreCase(search);
+//                if (todoByTitle.isPresent()) {
+                    result = toDoRepository.findAllByTitleContainsIgnoreCase(search);
                 break;
             case "byDueDate":
-                result = toDoRepository.findAll().stream().filter(todo -> todo.getDueDate().toString().contains(search)).
+                String dueDate = search;
+                Date searchDueDate =new SimpleDateFormat("yyyy-MM-dd").parse(dueDate);
+                result = toDoRepository.findAll().stream().filter(todo -> todo.getDueDate().equals(searchDueDate)).
                         collect(Collectors.toList());
-                break;
+            break;
             case "byCreationDate":
-                result = toDoRepository.findAll().stream().filter(todo -> todo.getCreationDate().toString().contains(search)).collect(
-                        Collectors.toList());
+                String creationDate = search;
+                Date searchCreationDate =new SimpleDateFormat("yyyy-MM-dd").parse(creationDate);
+                result = toDoRepository.findAll().stream().filter(todo -> todo.getCreationDate().equals(searchCreationDate)).
+                        collect(Collectors.toList());
                 break;
         }
         return result;

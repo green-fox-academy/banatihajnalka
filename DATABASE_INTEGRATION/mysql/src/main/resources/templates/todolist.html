@@ -37,31 +37,6 @@
                         <button type="submit">Search</button>
                     </div>
                 </form>
-
-<!--                <form action="#" th:action="@{/todo/}" method="get">-->
-<!--                    <label>-->
-<!--                        <input name="title" type="text" required>-->
-<!--                    </label>-->
-<!--                    <button type="submit">Search in todos</button>-->
-<!--                </form>-->
-<!--                <form action="#" th:action="@{/todo/}" method="get">-->
-<!--                    <label>-->
-<!--                        <input name="assignee" type="text" required>-->
-<!--                    </label>-->
-<!--                    <button type="submit">Search for assignee</button>-->
-<!--                </form>-->
-<!--                <form action="#" th:action="@{/todo/}" method="get">-->
-<!--                    <label>-->
-<!--                        <input name="dueDate" type="text" required>-->
-<!--                    </label>-->
-<!--                    <button type="submit">Search for due date</button>-->
-<!--                </form>-->
-<!--                <form action="#" th:action="@{/todo/}" method="get">-->
-<!--                    <label>-->
-<!--                        <input name="creationDate" type="text" required>-->
-<!--                    </label>-->
-<!--                    <button type="submit">Search for creation date</button>-->
-<!--                </form>-->
             </div>
             <table>
                 <tr>
@@ -73,11 +48,12 @@
                     <th>DONE</th>
                     <th>URGENT</th>
                 </tr>
-                <tr th:each="todo : ${todos}" th:object="${todo}">
+                <tr th:if="${todos.size() == 0}" th:text="No matches found">
+                <tr th:unless="${todos.size() == 0}" th:each="todo : ${todos}" th:object="${todo}">
                     <td th:text="*{id}"></td>
                     <td th:text="*{#dates.format(creationDate, 'yyyy-MM-dd')}"></td>
                     <td th:text="*{#dates.format(dueDate, 'yyyy-MM-dd')}"></td>
-<!--                    <td th:text="*{dueDate}"></td>-->
+                    <!--                    <td th:text="*{dueDate}"></td>-->
                     <td>
                         <a th:href="'/todo/assignee/' + *{getAssigneeId()} + '/todos'">
                             <button th:text="*{assignee}"></button>
@@ -87,10 +63,6 @@
                     <td th:text="*{isDone}"></td>
                     <td th:text="*{isUrgent}"></td>
                     <td>
-                        <!--                        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">-->
-                        <!--                            &lt;!&ndash;                            <input type="hidden" name="id" th:value="*{id}">&ndash;&gt;-->
-                        <!--                            <button type="submit">Delete</button>-->
-                        <!--                        </form>-->
                         <a th:href="'/todo/' + ${todo.id} + '/delete'">
                             <button>Delete</button>
                         </a>

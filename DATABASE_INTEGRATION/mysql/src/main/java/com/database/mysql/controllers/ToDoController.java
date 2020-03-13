@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.text.ParseException;
 
 @Controller
 @RequestMapping("/todo")
@@ -25,15 +25,18 @@ public class ToDoController {
     public String list(Model model,
                        @RequestParam(required = false) String isActive,
                        @RequestParam(required = false) String search,
-                       @RequestParam(required = false, value = "key") String key) {
+                       @RequestParam(required = false, value = "key") String key) throws ParseException {
         if (isActive == null && search == null && key == null) {
             model.addAttribute("todos", toDoService.findAll());
         } else if (search != null && key != null) {
             model.addAttribute("todos", toDoService.searchByParam(search, key));
-        } else if (isActive.equals("true")) {
-            model.addAttribute("todos", toDoService.findAllActive());
-        } else if (isActive.equals("false")) {
-            model.addAttribute("todos", toDoService.findAllNotActive());
+        } else {
+            assert isActive != null;
+            if (isActive.equals("true")) {
+                model.addAttribute("todos", toDoService.findAllActive());
+            } else if (isActive.equals("false")) {
+                model.addAttribute("todos", toDoService.findAllNotActive());
+            }
         }
         return "todolist";
     }
