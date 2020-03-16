@@ -67,9 +67,6 @@ public class ToDoService {
     public List<ToDo> searchByParam(String search, String key) throws ParseException {
         List<ToDo> todos = findAll();
         List<ToDo> filteredTodos = new ArrayList<>();
-
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(search);
-
         switch (key) {
             case "byAssignee":
                 Optional<Assignee> assignee = assigneeRepository.findByName(search);
@@ -83,9 +80,10 @@ public class ToDoService {
                     filteredTodos = toDoRepository.findAllByTitleContainsIgnoreCase(search);
                 break;
             case "byDueDate":
+                Date dueDate = new SimpleDateFormat("yyyy-MM-dd").parse(search);
                 for (ToDo todo : todos) {
                     if (todo.getDueDate() != null) {
-                        if (todo.getDueDate().compareTo(date) == 0) {
+                        if (todo.getDueDate().compareTo(dueDate) == 0) {
                             filteredTodos.add(todo);
                         }
                     }
@@ -96,9 +94,10 @@ public class ToDoService {
 //                        collect(Collectors.toList());
             break;
             case "byCreationDate":
+                Date creationDate = new SimpleDateFormat("yyyy-MM-dd").parse(search);
                 for (ToDo todo : todos) {
                     if (todo.getCreationDate() != null) {
-                        if (todo.getCreationDate().toString().equals(search)) {
+                        if (todo.getCreationDate().compareTo(creationDate) == 0) {
                             filteredTodos.add(todo);
                         }
                     }
