@@ -7,6 +7,7 @@ import com.database.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -63,10 +64,12 @@ public class ToDoService {
         return toDoRepository.findAllByCreationDate(dueDate);
     }
 
-
     public List<ToDo> searchByParam(String search, String key) throws ParseException {
-        List<ToDo> todos = toDoRepository.findAll();
+        List<ToDo> todos = findAll();
         List<ToDo> filteredTodos = new ArrayList<>();
+
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(search);
+
         switch (key) {
             case "byAssignee":
                 Optional<Assignee> assignee = assigneeRepository.findByName(search);
@@ -82,7 +85,7 @@ public class ToDoService {
             case "byDueDate":
                 for (ToDo todo : todos) {
                     if (todo.getDueDate() != null) {
-                        if (todo.getDueDate().toString().equals(search)) {
+                        if (todo.getDueDate().compareTo(date) == 0) {
                             filteredTodos.add(todo);
                         }
                     }
