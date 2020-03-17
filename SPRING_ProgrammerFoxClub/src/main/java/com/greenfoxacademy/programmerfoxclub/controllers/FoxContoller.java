@@ -45,8 +45,10 @@ public class FoxContoller {
         model.addAttribute("fox", foxService.find(name));
 //        model.addAttribute("tricks", Arrays.asList(Tricks.values()));
 //        model.addAttribute("tricks", foxService.find(name).isAllTricksAreKnown() ? "You have learned all tricks." : foxService.find(name).notKnownTricks());
-        model.addAttribute("knowsAll",  foxService.find(name).knowsAll());
-        model.addAttribute("tricks",  foxService.find(name).getNotKnownTricks());
+        model.addAttribute("tricks",  foxService.getNotKnownTricks(foxService.find(name)));
+        model.addAttribute("tricks",  foxService.getNotKnownTricks(foxService.find(name)).size());
+//        model.addAttribute("tricks",  foxService.find(name).getNotKnownTricks());
+//        model.addAttribute("knowsAll",  foxService.find(name).knowsAll());
 //        model.addAttribute("active", "trick-center");
         return "trickcenter";
     }

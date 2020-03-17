@@ -12,11 +12,13 @@ public class Fox {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long foxId;
     private String name;
-    private List<String> tricks;
+    @OneToMany
+    private List<Trick> tricks;
     private String food;
     private String drink;
+    @OneToMany
     private List<String> actions;
-    private List<String> notKnownTricks;
+//    private List<String> notKnownTricks;
     @ManyToOne
     private User user;
 
@@ -29,7 +31,7 @@ public class Fox {
         this.drink = "nothing";
         tricks = new ArrayList<>();
         actions = new ArrayList<>();
-        notKnownTricks = notKnownTricks();
+//        notKnownTricks = notKnownTricks();
     }
 
     public Fox(String name, String food, String drink) {
@@ -38,7 +40,7 @@ public class Fox {
         this.drink = drink;
         tricks = new ArrayList<>();
         actions = new ArrayList<>();
-        notKnownTricks = notKnownTricks();
+//        notKnownTricks = notKnownTricks();
     }
 
     public String getName() {
@@ -49,18 +51,18 @@ public class Fox {
         this.name = name;
     }
 
-    public List<String> getTricks() {
+    public List<Trick> getTricks() {
         return tricks;
     }
 
-    public void setTricks(String trick) {
+    public void setTricks(Trick trick) {
         if (!tricks.contains(trick)) {
             tricks.add(trick);
-            for (int i = 0; i < notKnownTricks.size(); i++) {
-                if (notKnownTricks.get(i).toLowerCase().equals(trick)) {
-                    notKnownTricks.remove(i);
-                }
-            }
+//            for (int i = 0; i < notKnownTricks.size(); i++) {
+//                if (notKnownTricks.get(i).toLowerCase().equals(trick)) {
+//                    notKnownTricks.remove(i);
+//                }
+//            }
         }
     }
 
@@ -80,12 +82,6 @@ public class Fox {
         }
     }
 
-    public List<String> notKnownTricks() {
-        return Stream.of(Tricks.values())
-                .map(Tricks::name)
-                .collect(Collectors.toList());
-    }
-
 
     public List<String> getFoodsList() {
         return Stream.of(Food.values())
@@ -100,12 +96,6 @@ public class Fox {
                 .map(String::toLowerCase)
                 .collect(Collectors.toList());
     }
-
-
-    public int knowsAll() {
-      return notKnownTricks.size();
-    }
-
 
 
     public String getFood() {
@@ -147,9 +137,6 @@ public class Fox {
         actions.add(action);
     }
 
-    public List<String> getNotKnownTricks() {
-        return notKnownTricks;
-    }
 
     @Override
     public String toString() {
@@ -171,4 +158,5 @@ public class Fox {
     public void setUser(User user) {
         this.user = user;
     }
+
 }

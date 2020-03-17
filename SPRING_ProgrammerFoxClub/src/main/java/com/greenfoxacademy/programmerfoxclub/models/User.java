@@ -12,7 +12,7 @@ public class User {
     private Long userId;
     private String username;
     private String password;
-    @OneToMany(mappedBy = "fox", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Fox> foxes;
 
     public User() {
