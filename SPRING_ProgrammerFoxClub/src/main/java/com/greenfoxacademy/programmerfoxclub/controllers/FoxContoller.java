@@ -71,4 +71,5 @@ public class FoxContoller {
 //        model.addAttribute("actionTrick", foxService.getTrickChange());
         return "actionhistory";
     }
+
 }

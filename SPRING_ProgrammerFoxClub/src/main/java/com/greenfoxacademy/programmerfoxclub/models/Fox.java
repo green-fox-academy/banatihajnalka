@@ -1,17 +1,24 @@
 package com.greenfoxacademy.programmerfoxclub.models;
 
+import javax.persistence.*;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Entity
 public class Fox {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long foxId;
     private String name;
     private List<String> tricks;
     private String food;
     private String drink;
     private List<String> actions;
     private List<String> notKnownTricks;
+    @ManyToOne
+    private User user;
 
     public Fox() {
     }
@@ -147,5 +154,21 @@ public class Fox {
     @Override
     public String toString() {
         return "This is " + name + ". Currently living on " + food + " and " + drink + ". He knows " + numberOfTricks() + " tricks.";
+    }
+
+    public Long getFoxId() {
+        return foxId;
+    }
+
+    public void setFoxId(Long foxId) {
+        this.foxId = foxId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
