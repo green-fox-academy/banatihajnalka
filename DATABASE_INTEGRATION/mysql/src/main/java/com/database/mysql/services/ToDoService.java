@@ -51,9 +51,9 @@ public class ToDoService {
         return todo.orElse(null);
     }
 
-    public Iterable<ToDo> findAllByTitleContains(String title) {
-        return toDoRepository.findAllByTitleContainsIgnoreCase(title);
-    }
+//    public Iterable<ToDo> findAllByTitleContains(String title) {
+//        return toDoRepository.findAllByTitleContainsIgnoreCase(title);
+//    }
 
     public Iterable<ToDo> findByDueDate(Date dueDate) {
         return toDoRepository.findAllByDueDate(dueDate);
@@ -64,20 +64,21 @@ public class ToDoService {
         return toDoRepository.findAllByCreationDate(dueDate);
     }
 
-    public List<ToDo> searchByParam(String search, String key) throws ParseException {
-        List<ToDo> todos = findAll();
+    public List<ToDo> searchByParam(String search, String key, String isActive) throws ParseException {
+        boolean activeSearch = Boolean.parseBoolean(isActive);
+        List<ToDo> todos = toDoRepository.findAllByIsDone(activeSearch);
         List<ToDo> filteredTodos = new ArrayList<>();
         switch (key) {
             case "byAssignee":
                 Optional<Assignee> assignee = assigneeRepository.findByName(search);
                 if (assignee.isPresent()) {
-                    filteredTodos = toDoRepository.findAllByAssignee(assignee.get());
+                    filteredTodos = toDoRepository.findAllByAssigneeAndIsDone(assignee.get(), activeSearch);
                 }
                 break;
             case "byTitle":
 //                Optional<ToDo> todoByTitle = toDoRepository.findByTitleContainsIgnoreCase(search);
 //                if (todoByTitle.isPresent()) {
-                    filteredTodos = toDoRepository.findAllByTitleContainsIgnoreCase(search);
+                    filteredTodos = toDoRepository.findAllByTitleContainsIgnoreCaseAndIsDone(search, activeSearch);
                 break;
             case "byDueDate":
                 Date dueDate = new SimpleDateFormat("yyyy-MM-dd").parse(search);

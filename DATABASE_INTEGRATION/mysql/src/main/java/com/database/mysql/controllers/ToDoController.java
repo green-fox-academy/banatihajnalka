@@ -29,7 +29,7 @@ public class ToDoController {
         if (isActive == null && search == null && key == null) {
             model.addAttribute("todos", toDoService.findAll());
         } else if (search != null && key != null) {
-            model.addAttribute("todos", toDoService.searchByParam(search, key));
+            model.addAttribute("todos", toDoService.searchByParam(search, key, isActive));
         } else {
             assert isActive != null;
             if (isActive.equals("true")) {

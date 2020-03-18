@@ -18,10 +18,10 @@ public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
     List<ToDo> findAll();
     List<ToDo> findAllByIsDone(boolean isActive);
-    List<ToDo> findAllByTitleContainsIgnoreCase(String title);
+    List<ToDo> findAllByTitleContainsIgnoreCaseAndIsDone(String title, boolean isActive);
     List<ToDo> findAllByDueDate(Date dueDate);
     List<ToDo> findAllByCreationDate(Date dueDate);
-    List<ToDo> findAllByAssignee(Assignee assignee);
+    List<ToDo> findAllByAssigneeAndIsDone(Assignee assignee, boolean isActive);
 
 
 }
