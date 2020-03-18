@@ -26,17 +26,20 @@ public class ToDoController {
                        @RequestParam(required = false) String isActive,
                        @RequestParam(required = false) String search,
                        @RequestParam(required = false, value = "key") String key) throws ParseException {
+        model.addAttribute("isActive", isActive);
         if (isActive == null && search == null && key == null) {
             model.addAttribute("todos", toDoService.findAll());
         } else if (search != null && key != null) {
             model.addAttribute("todos", toDoService.searchByParam(search, key, isActive));
         } else {
             assert isActive != null;
-            if (isActive.equals("true")) {
-                model.addAttribute("todos", toDoService.findAllActive());
-            } else if (isActive.equals("false")) {
-                model.addAttribute("todos", toDoService.findAllNotActive());
-            }
+            model.addAttribute("todos", toDoService.findActiveOrNot(isActive));
+//
+//            if (isActive.equals("true")) {
+//                model.addAttribute("todos", toDoService.findAllActive());
+//            } else if (isActive.equals("false")) {
+//                model.addAttribute("todos", toDoService.findAllNotActive());
+//            }
         }
         return "todolist";
     }

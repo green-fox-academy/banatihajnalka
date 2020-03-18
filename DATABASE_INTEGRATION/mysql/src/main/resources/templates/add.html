@@ -9,7 +9,7 @@
 <body>
 <div>
     <h1> Add new todo </h1>
-    <form action="#" th:action="@{/todo/add}"  th:object="${todo}" th:method="post">
+    <form action="#" th:action="@{/todo/add}"  th:object="${todo}" method="post">
         <div>
 <!--            <label for="name">Name</label>-->
             <input class="field"  id="name" th:field="*{title}" type="text" required>

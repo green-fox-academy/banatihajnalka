@@ -9,7 +9,7 @@
 <body>
 <div class="form">
     <h1>Edit Todo</h1>
-    <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" th:method="post">
+    <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" th:object="${todo}" method="post">
         <div>
             <label class="form-title" for="name">Todo description</label>
             <input class="field" id="name" type="text" th:field="*{title}">

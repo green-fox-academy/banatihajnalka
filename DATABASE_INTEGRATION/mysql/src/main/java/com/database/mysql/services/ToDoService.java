@@ -30,12 +30,17 @@ public class ToDoService {
         return toDoRepository.findAll();
     }
 
-    public List<ToDo> findAllActive() {
-        return toDoRepository.findAllByIsDone(false);
-    }
+//    public List<ToDo> findAllActive() {
+//        return toDoRepository.findAllByIsDone(false);
+//    }
+//
+//    public List<ToDo> findAllNotActive() {
+//        return toDoRepository.findAllByIsDone(true);
+//    }
 
-    public List<ToDo> findAllNotActive() {
-        return toDoRepository.findAllByIsDone(true);
+    public List<ToDo> findActiveOrNot(String isActive) {
+        boolean activeSearch = Boolean.parseBoolean(isActive);
+            return toDoRepository.findAllByIsDone(activeSearch);
     }
 
     public void addToDo(ToDo todo) {
@@ -51,18 +56,15 @@ public class ToDoService {
         return todo.orElse(null);
     }
 
-//    public Iterable<ToDo> findAllByTitleContains(String title) {
-//        return toDoRepository.findAllByTitleContainsIgnoreCase(title);
+
+//    public Iterable<ToDo> findByDueDate(Date dueDate) {
+//        return toDoRepository.findAllByDueDate(dueDate);
 //    }
-
-    public Iterable<ToDo> findByDueDate(Date dueDate) {
-        return toDoRepository.findAllByDueDate(dueDate);
-    }
-
-
-    public Iterable<ToDo> findByCreationDate(Date dueDate) {
-        return toDoRepository.findAllByCreationDate(dueDate);
-    }
+//
+//
+//    public Iterable<ToDo> findByCreationDate(Date dueDate) {
+//        return toDoRepository.findAllByCreationDate(dueDate);
+//    }
 
     public List<ToDo> searchByParam(String search, String key, String isActive) throws ParseException {
         boolean activeSearch = Boolean.parseBoolean(isActive);

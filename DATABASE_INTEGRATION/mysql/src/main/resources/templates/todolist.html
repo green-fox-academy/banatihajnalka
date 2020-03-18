@@ -22,7 +22,7 @@
             </li>
             <div>
                 <h1> Search for todos </h1>
-                <form id="" action="/todo/" method="get">
+                <form id="" th:action="'/todo/?isActive=' + ${isActive}" method="get">
                     <div><label for="search">Search for*:</label>
                         <input type="text" id="search" name="search"/></div>
                     <label for="key">Search key:</label>
