@@ -16,7 +16,6 @@ import java.util.Optional;
 @Service
 public class FoxService {
 
-
     private TrickRepository trickRepository;
     private FoxRepository foxRepository;
 

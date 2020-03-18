@@ -15,6 +15,10 @@ public class Action {
     public Action() {
     }
 
+    public Action(String action) {
+        this.action = action;
+    }
+
     public String getAction() {
         return action;
     }
@@ -23,7 +27,12 @@ public class Action {
         this.action = action;
     }
 
-    public Action(String action) {
-        this.action = action;
+
+    public Long getActionId() {
+        return actionId;
+    }
+
+    public void setActionId(Long actionId) {
+        this.actionId = actionId;
     }
 }

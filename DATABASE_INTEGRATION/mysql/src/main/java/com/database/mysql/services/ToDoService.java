@@ -31,11 +31,11 @@ public class ToDoService {
     }
 
     public List<ToDo> findAllActive() {
-        return toDoRepository.findAllByIsDone(true);
+        return toDoRepository.findAllByIsDone(false);
     }
 
     public List<ToDo> findAllNotActive() {
-        return toDoRepository.findAllByIsDone(false);
+        return toDoRepository.findAllByIsDone(true);
     }
 
     public void addToDo(ToDo todo) {
