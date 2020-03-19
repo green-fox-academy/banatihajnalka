@@ -13,9 +13,6 @@ import java.util.Optional;
 @Repository
 public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 
-    Optional<ToDo> findByTitleContainsIgnoreCase(String title);
-    Optional<ToDo> findByDueDate(String dueDate);
-
     List<ToDo> findAll();
     List<ToDo> findAllByIsDone(boolean isActive);
     List<ToDo> findAllByTitleContainsIgnoreCaseAndIsDone(String title, boolean isActive);

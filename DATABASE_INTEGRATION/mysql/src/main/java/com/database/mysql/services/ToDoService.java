@@ -18,7 +18,6 @@ public class ToDoService {
     private ToDoRepository toDoRepository;
     private AssigneeRepository assigneeRepository;
 
-
     @Autowired
     public ToDoService(ToDoRepository toDoRepository, AssigneeRepository assigneeRepository) {
         this.toDoRepository = toDoRepository;
@@ -47,11 +46,13 @@ public class ToDoService {
         return todo.orElse(null);
     }
 
+    public Date dateFormatter(String date) throws ParseException {
+        return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+    }
+
 
     public List<ToDo> searchByParam(String search, String key, String isActive) throws ParseException {
         boolean activeSearch = Boolean.parseBoolean(isActive);
-        List<ToDo> todos = toDoRepository.findAllByIsDone(activeSearch);
-        List<ToDo> filteredTodos = new ArrayList<>();
         switch (key) {
             case "byAssignee":
                 Optional<Assignee> assignee = assigneeRepository.findByName(search);
@@ -59,36 +60,35 @@ public class ToDoService {
                     return toDoRepository.findAllByAssigneeAndIsDone(assignee.get(), activeSearch);
                 }
             case "byTitle":
-//                Optional<ToDo> todoByTitle = toDoRepository.findByTitleContainsIgnoreCase(search);
-//                if (todoByTitle.isPresent()) {
                 return toDoRepository.findAllByTitleContainsIgnoreCaseAndIsDone(search, activeSearch);
             case "byDueDate":
-                Date dueDate = new SimpleDateFormat("yyyy-MM-dd").parse(search);
-                for (ToDo todo : todos) {
-                    if (todo.getDueDate() != null) {
-                        if (todo.getDueDate().compareTo(dueDate) == 0) {
-                            filteredTodos.add(todo);
-                        }
-                    }
-                }
-                return filteredTodos;
+                 return toDoRepository.findAllByDueDate(dateFormatter(search));
             case "byCreationDate":
-                Date creationDate = new SimpleDateFormat("yyyy-MM-dd").parse(search);
-                for (ToDo todo : todos) {
-                    if (todo.getCreationDate() != null) {
-                        if (todo.getCreationDate().compareTo(creationDate) == 0) {
-                            filteredTodos.add(todo);
-                        }
-                    }
-                }
-                return filteredTodos;
-//                String creationDate = search;
-//                Date searchCreationDate =new SimpleDateFormat("yyyy-MM-dd").parse(creationDate);
-//                filteredTodos = toDoRepository.findAll().stream().filter(todo -> todo.getCreationDate().equals(searchCreationDate)).
-//                        collect(Collectors.toList());
+                return toDoRepository.findAllByCreationDate(dateFormatter(search));
         }
         return null;
     }
-}
 
+    public void editTodo(Long id, Long assigneeId, ToDo todo) {
+        Optional<ToDo> optionalToDo = toDoRepository.findById(id);
+        if (optionalToDo.isPresent()) {
+            ToDo currentTodo = optionalToDo.get();
+            toDoRepository.save(currentTodo);
+            Optional<Assignee> optionalAssignee = assigneeRepository.findById(assigneeId);
+            if (optionalAssignee.isPresent()) {
+                Assignee assignee = optionalAssignee.get();
+                currentTodo.setAssignee(assignee);
+            }
+            toDoRepository.save(todo);
+        }
+    }
 
+//    public ToDo saveToDO(ToDoDTO toDoDTO) {
+//        ToDo todo = new ToDo(toDoDTO.getTitle(), toDoDTO.getIsUrgent(), toDoDTO.getIsDone());
+//        Optional<Assignee> currentAssignee = assigneeRepository.findById(toDoDTO.getAssigneeId());
+//        if (currentAssignee.isPresent()) {
+//            Assignee assignee = currentAssignee.get();
+//            todo.setAssignee(assignee);
+//        }
+//        return toDoRepository.save(todo)
+    }

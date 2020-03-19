@@ -27,13 +27,13 @@ public class MysqlApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        toDoRepository.save(new ToDo("I have to learn Object Relational Mapping", true, false));
-        toDoRepository.save(new ToDo("I have to finish the exercises", false, false));
-        toDoRepository.save(new ToDo("I have do the washing", false, false));
-        toDoRepository.save(new ToDo("I have to make the demo for Friday", true, false));
-        toDoRepository.save(new ToDo("I have to eat something", false, true));
-        toDoRepository.save(new ToDo("I have to feed my geckos", true, true));
-        assigneeRepository.save(new Assignee("Karak", "kjhxdkfh.uuyysef@gmail.com"));
-        assigneeRepository.save(new Assignee("Nala", "kjdf.iuiysdfiu@gmail.com"));
+//        toDoRepository.save(new ToDo("I have to learn Object Relational Mapping", true, false));
+//        toDoRepository.save(new ToDo("I have to finish the exercises", false, false));
+//        toDoRepository.save(new ToDo("I have do the washing", false, false));
+//        toDoRepository.save(new ToDo("I have to make the demo for Friday", true, false));
+//        toDoRepository.save(new ToDo("I have to eat something", false, true));
+//        toDoRepository.save(new ToDo("I have to feed my geckos", true, true));
+//        assigneeRepository.save(new Assignee("Karak", "kjhxdkfh.uuyysef@gmail.com"));
+//        assigneeRepository.save(new Assignee("Nala", "kjdf.iuiysdfiu@gmail.com"));
     }
 }

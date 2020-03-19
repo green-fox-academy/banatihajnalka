@@ -3,6 +3,7 @@ package com.database.mysql.controllers;
 import com.database.mysql.services.AssigneeService;
 import com.database.mysql.services.ToDoService;
 import com.database.mysql.models.entities.ToDo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class ToDoController {
     private ToDoService toDoService;
     private AssigneeService assigneeService;
 
+    @Autowired
     public ToDoController(ToDoService toDoService, AssigneeService assigneeService) {
         this.toDoService = toDoService;
         this.assigneeService = assigneeService;
@@ -64,17 +66,25 @@ public class ToDoController {
     }
 
     @PostMapping("/{id}/edit")
-    public String editTodoById(@PathVariable Long id, @ModelAttribute ToDo todo, Model model) {
-        model.addAttribute("todo", toDoService.findById(id));
-        toDoService.addToDo(todo);
-        assigneeService.addToDo(todo);
-        return "redirect:/todo/";
+    public String editTodoById(@PathVariable Long id,  @ModelAttribute("assignee") Long assigneeId, @ModelAttribute ToDo todo) {
+            toDoService.editTodo(id, assigneeId, todo);
+            return "redirect:/todo/";
     }
 }
 
 //    @PostMapping("/{id}/edit")
-//    public String editTodoById(@PathVariable Long id, @ModelAttribute ToDoDTO toDoDTO, Model model) {
+//    public String editTodoById(@PathVariable Long id, @ModelAttribute ToDo todo, Model model) {
 //        model.addAttribute("todo", toDoService.findById(id));
 //        toDoService.addToDo(todo);
+//        assigneeService.addToDo(todo);
 //        return "redirect:/todo/";
 //    }
+//}
+
+//    @PostMapping("/{id}/edit")
+//    public String editTodoById(@PathVariable Long id, @ModelAttribute ToDoDTO toDoDTO, Model model) {
+//        model.addAttribute("todo", toDoService.findById(id));
+//        toDoService.saveToDO(toDoDTO);
+//        return "redirect:/todo/";
+//    }
+//}
