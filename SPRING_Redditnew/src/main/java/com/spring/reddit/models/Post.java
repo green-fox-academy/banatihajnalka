@@ -48,5 +48,13 @@ public class Post {
     public void setLink(String link) {
         this.link = link;
     }
+
+    public Integer getVote() {
+        return vote;
+    }
+
+    public void setVote(Integer vote) {
+        this.vote = vote;
+    }
 }
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>POSTS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<a href="/submit"> Submit new post </a>
+<div>
+    <h1>Trending posts</h1>
+            <table>
+                <p th:if="${posts.size() == 0}">No posts found></p>
+                <tr th:unless="${posts.size() == 0}" th:each="post : ${posts}" th:object="${post}">
+                    <td th:text="*{vote}"></td>
+                    <td th:text="*{title}"></td>
+                    <td th:text="*{link}"></td>
+            </table>
+</div>
+</body>
+</html>
