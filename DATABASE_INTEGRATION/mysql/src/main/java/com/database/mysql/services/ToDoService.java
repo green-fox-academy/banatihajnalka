@@ -31,12 +31,11 @@ public class ToDoService {
 
     public List<ToDo> findActiveOrNot(String isActive) {
         boolean activeSearch = Boolean.parseBoolean(isActive);
-        return toDoRepository.findAllByIsDone(activeSearch);
+        return toDoRepository.findAllByIsDone(!activeSearch);
     }
 
     public void addToDo(ToDo todo) {
         toDoRepository.save(todo);
-
     }
 
     public void deleteToDoById(Long id) {
@@ -88,18 +87,8 @@ public class ToDoService {
 //                filteredTodos = toDoRepository.findAll().stream().filter(todo -> todo.getCreationDate().equals(searchCreationDate)).
 //                        collect(Collectors.toList());
         }
+        return null;
     }
 }
 
-
-//    public void delete(Long id) {
-//        Optional<ToDo> currentTodo = toDopublic Iterable<ToDo> searchByParam(String searchBy){
-//        Iterable<ToDo> searched = new ArrayLiRepository.findById(id);
-//        if (currentTodo.isPresent()) {
-//            ToDo todo = currentTodo.get();
-//            todo.getAssignee().deleteToDo(Optional.of(todo));
-//            todo.setAssignee(null);
-//            toDoRepository.deleteById(id);
-//        }
-//    }
 
