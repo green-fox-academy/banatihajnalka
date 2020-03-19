@@ -20,4 +20,8 @@ public class PostService {
     public List<Post> findAll() {
        return postRepository.findAll();
     }
+
+    public void addPost(Post post) {
+        postRepository.save(post);
+    }
 }

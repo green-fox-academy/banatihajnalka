@@ -11,8 +11,8 @@
 <div>
     <h1>Trending posts</h1>
             <table>
-                <p th:if="${posts.size() == 0}">No posts found></p>
-                <tr th:unless="${posts.size() == 0}" th:each="post : ${posts}" th:object="${post}">
+<!--                <p th:if="${posts.size() == 0}">No posts found></p>-->
+                <tr  th:each="post : ${posts}" th:object="${post}">
                     <td th:text="*{vote}"></td>
                     <td>
                         <button> + </button>
