@@ -14,8 +14,13 @@
                 <p th:if="${posts.size() == 0}">No posts found></p>
                 <tr th:unless="${posts.size() == 0}" th:each="post : ${posts}" th:object="${post}">
                     <td th:text="*{vote}"></td>
+                    <td>
+                        <button> + </button>
+                    </td>
+                    <td>
+                        <button> - </button>
+                    </td>
                     <td th:text="*{title}"></td>
-                    <td th:text="*{link}"></td>
             </table>
 </div>
 </body>
