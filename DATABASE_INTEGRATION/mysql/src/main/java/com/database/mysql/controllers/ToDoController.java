@@ -34,40 +34,9 @@ public class ToDoController {
         } else {
             assert isActive != null;
             model.addAttribute("todos", toDoService.findActiveOrNot(isActive));
-//
-//            if (isActive.equals("true")) {
-//                model.addAttribute("todos", toDoService.findAllActive());
-//            } else if (isActive.equals("false")) {
-//                model.addAttribute("todos", toDoService.findAllNotActive());
-//            }
         }
         return "todolist";
     }
-
-//    @GetMapping(value = {"", "/", "/list"})
-//    public String list(Model model,
-//                       @RequestParam(required = false) String isActive,
-//                       @RequestParam(required = false) String title,
-//                       @RequestParam(required = false) String assignee,
-//                       @RequestParam(required = false) Date dueDate,
-//                       @RequestParam(required = false) Date creationDate) {
-//        if (dueDate != null) {
-//            model.addAttribute("dueDate", toDoService.findByDueDate(dueDate));
-//        } else if (creationDate != null) {
-//                model.addAttribute("dueDate", toDoService.findByCreationDate(creationDate));
-//        } else if (assignee != null) {
-//            model.addAttribute("assignee", assigneeService.listAllConnectedTodos(assignee));
-//        } else if (title != null) {
-//            model.addAttribute("todos", toDoService.findAllByTitleContains(title));
-//        } else if (isActive == null) {
-//            model.addAttribute("todos", toDoService.findAll());
-//        } else if (isActive.equals("true")) {
-//            model.addAttribute("todos", toDoService.findAllActive());
-//        } else if (isActive.equals("false")) {
-//            model.addAttribute("todos", toDoService.findAllNotActive());
-//        }
-//        return "todolist";
-//    }
 
     @GetMapping("/add")
     public String renderAddPage(Model model) {
