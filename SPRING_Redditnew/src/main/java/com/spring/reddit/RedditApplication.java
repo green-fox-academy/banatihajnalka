@@ -23,8 +23,8 @@ public class RedditApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        postRepository.save(new Post("Excellent tool for making presentations", "https://slidesgo.com"));
-        postRepository.save(new Post("Good way to practice Java", "https://data-flair.training/blogs/java-quiz-questions/"));
-        postRepository.save(new Post("Looking around in an aquarium", "https://www.montereybayaquarium.org/animals/live-cams?fbclid=IwAR1Vaw3fEBK85lZOxCoqp6pSR48gvFpmHKEl3B5Nmp7HebIjmKg83iwZ1us"));
+//        postRepository.save(new Post("Excellent tool for making presentations", "https://slidesgo.com"));
+//        postRepository.save(new Post("Good way to practice Java", "https://data-flair.training/blogs/java-quiz-questions/"));
+//        postRepository.save(new Post("Looking around in an aquarium", "https://www.montereybayaquarium.org/animals/live-cams?fbclid=IwAR1Vaw3fEBK85lZOxCoqp6pSR48gvFpmHKEl3B5Nmp7HebIjmKg83iwZ1us"));
     }
 }
