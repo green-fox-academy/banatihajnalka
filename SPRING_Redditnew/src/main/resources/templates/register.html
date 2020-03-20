@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <h1> Welcome to Reddit</h1>
+    <p> Registration</p>
+    <form action="#" th:action="@{/register}"  method="post">
+        <div>
+            <label for="name">Name</label>
+            <input class="field"  id="name" name="username" type="text" required>
+            <label for="password1">Password</label>
+            <input class="field"  id="password1" name="password" type="text" required>
+<!--            <label for="password2">Password again</label>-->
+<!--            <input class="field"  id="password2" name="password" type="text" required>-->
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

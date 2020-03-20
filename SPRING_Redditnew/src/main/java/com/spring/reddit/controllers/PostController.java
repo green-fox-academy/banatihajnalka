@@ -2,38 +2,41 @@ package com.spring.reddit.controllers;
 
 import com.spring.reddit.models.Post;
 import com.spring.reddit.services.PostService;
+import com.spring.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
 
     private PostService postService;
+    private UserService userService;
 
     @Autowired
-    public PostController(PostService postService) {
+    public PostController(PostService postService, UserService userService) {
         this.postService = postService;
+        this.userService = userService;
     }
 
-    @GetMapping("/")
-    public String renderPostPage(Model model) {
-        model.addAttribute("posts", postService.findAll());
-        return "posts";
+    @GetMapping(value = {"/"})
+    public String renderPostPage(Model model, @RequestParam String name) {
+        if (userService.isExistsByName(name)) {
+            model.addAttribute("posts", postService.findAll());
+            return "posts";
+        }
+        return "redirect:/register";
     }
 
-    @GetMapping("/submit")
-    public String renderSubmitPage(Model model) {
+    @GetMapping("/{name}/submit")
+    public String renderSubmitPage(@PathVariable String name, Model model) {
         model.addAttribute("post", new Post());
         return "submit";
     }
 
-    @PostMapping("/submit")
-    public String submitPost(@ModelAttribute Post post) {
+    @PostMapping("/{name}/submit")
+    public String submitPost(@PathVariable String name, @ModelAttribute Post post) {
         postService.addPost(post);
         return "redirect:/";
     }
@@ -46,7 +49,7 @@ public class PostController {
 
     @PostMapping("/{id}/decrease")
     public String decreasePostVote(@PathVariable Long id) {
-        postService.increasePostVote(id);
+        postService.decreasePostVote(id);
         return "redirect:/";
     }
 

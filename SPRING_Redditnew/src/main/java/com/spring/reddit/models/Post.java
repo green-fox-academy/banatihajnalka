@@ -1,9 +1,9 @@
 package com.spring.reddit.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Post {
@@ -14,12 +14,19 @@ public class Post {
     private Integer vote;
     private String title;
     private String link;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate creationDate;
+    @ManyToOne
+    private User user;
+
 
     public Post() {
+        this.creationDate = LocalDate.now();
         this.vote = 0;
     }
 
     public Post(String title, String link) {
+        this.creationDate = LocalDate.now();
         this.vote = 0;
         this.title = title;
         this.link = link;
@@ -55,6 +62,14 @@ public class Post {
 
     public void setVote(Integer vote) {
         this.vote = vote;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 }
 
