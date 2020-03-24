@@ -34,11 +34,14 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(String name, String password) {
-        if (userService.isExistsByNameAndPassword(name, password)) {
-            return "redirect:/?name=" + name;
+    public String login(String userName, String password) {
+        if (userService.isExistsByUserNameAndPassword(userName, password)) {
+            return "redirect:/?userName=" + userName;
+//        }
+//            return userService.getLoginPath(userName, password);
         } else {
             return "redirect:/login";
         }
     }
+
 }

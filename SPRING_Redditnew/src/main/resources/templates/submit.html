@@ -9,7 +9,7 @@
 <body>
 <div>
     <h1> Submit a new post </h1>
-    <form action="#" th:action="@{/submit}"  th:object="${post}" method="post">
+    <form action="#" th:action="'/' + ${user.getUserName()} + '/submit'"  th:object="${post}" method="post">
         <div>
             <label>
                 <input th:field="*{title}" type="text" required>
@@ -17,7 +17,8 @@
             <label>
                 <input th:field="*{link}" type="text" required>
             </label>
-            <button type="submit">Submit</button>
+            <input type="hidden" name="userId" th:value="${user.getUserId()}">
+            <button type="submit"> Submit </button>
         </div>
     </form>
 </div>

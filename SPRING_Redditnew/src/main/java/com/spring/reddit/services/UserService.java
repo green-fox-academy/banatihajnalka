@@ -17,19 +17,45 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public boolean isExistsByNameAndPassword(String name, String password) {
-        if (userRepository.findByUsername(name).isPresent()) {
-            Optional<User> currentUser = userRepository.findByUsername(name);
-            return currentUser.get().getPassword().equals(password);
+    public boolean isExistsByUserNameAndPassword(String userName, String password) {
+        if (userRepository.findUserByUserName(userName).isPresent()) {
+            Optional<User> currentUser = userRepository.findUserByUserName(userName);
+            if (currentUser.isPresent()) {
+                return currentUser.get().getPassword().equals(password);
+            }
         }
         return false;
     }
 
-    public boolean isExistsByName(String name) {
-        return userRepository.findByUsername(name).isPresent();
+    public boolean isExistsByName(String userName) {
+        return userRepository.findUserByUserName(userName).isPresent();
+    }
+
+    public boolean isExistsByUserId(Long userID) {
+        return userRepository.findUserByUserId(userID).isPresent();
     }
 
     public void add(User user) {
         userRepository.save(user);
     }
+
+    public User findUserByName(String userName) {
+        Optional<User> user = userRepository.findUserByUserName(userName);
+        return user.orElse(null);
     }
+
+    public String getLoginPath(String userName, String password) {
+        if (isExistsByUserNameAndPassword(userName, password)) {
+            return "redirect:/" + findUserByName(userName).getUserId();
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    public User findUserById(Long userId) {
+        Optional<User> user = userRepository.findUserByUserId(userId);
+        return user.orElse(null);
+    }
+
+
+}

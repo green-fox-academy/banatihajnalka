@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-<a href="/submit"> Submit new post </a>
+<a th:href="'/' + ${user.getUserName()} + '/submit'"> Submit new post </a>
 <div>
     <h1>Trending posts</h1>
             <table>
@@ -24,7 +24,9 @@
                             <button>-</button>
                         </form>
                     </td>
-                    <td th:text="*{title}"></td>
+                    <td>
+                        <a th:text="*{title}" th:href="*{link}"></a>
+                    </td>
                     <td th:text="*{creationDate}"></td>
             </table>
 </div>

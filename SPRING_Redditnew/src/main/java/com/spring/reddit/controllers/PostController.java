@@ -1,6 +1,7 @@
 package com.spring.reddit.controllers;
 
 import com.spring.reddit.models.Post;
+import com.spring.reddit.models.User;
 import com.spring.reddit.services.PostService;
 import com.spring.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,24 +22,29 @@ public class PostController {
     }
 
     @GetMapping(value = {"/"})
-    public String renderPostPage(Model model, @RequestParam String name) {
-        if (userService.isExistsByName(name)) {
+    public String renderPostPage(Model model, @RequestParam String userName) {
+//    public String renderPostPage(Model model, Long userId) {
+//        if (userService.isExistsByUserId(userId)) {
+        if (userService.isExistsByName(userName)) {
+            model.addAttribute("user", userService.findUserByName(userName));
             model.addAttribute("posts", postService.findAll());
             return "posts";
         }
         return "redirect:/register";
     }
 
-    @GetMapping("/{name}/submit")
-    public String renderSubmitPage(@PathVariable String name, Model model) {
+    @GetMapping("/{userName}/submit")
+    public String renderSubmitPage(@PathVariable String userName, Model model) {
         model.addAttribute("post", new Post());
+        model.addAttribute("user", userService.findUserByName(userName));
         return "submit";
     }
 
-    @PostMapping("/{name}/submit")
-    public String submitPost(@PathVariable String name, @ModelAttribute Post post) {
+    @PostMapping("/{userName}/submit")
+    public String submitPost(@PathVariable String userName, @ModelAttribute Post post) {
+        post.setUser(userService.findUserByName(userName));
         postService.addPost(post);
-        return "redirect:/";
+        return "redirect:/?userName="+userName;
     }
 
     @PostMapping("/{id}/increase")

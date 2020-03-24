@@ -9,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private String username;
+    private String userName;
     private String password;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Post> posts;
@@ -21,8 +21,8 @@ public class User {
         this.posts = posts;
     }
 
-    public User(String username, String password, List<Post> posts) {
-        this.username = username;
+    public User(String userName, String password, List<Post> posts) {
+        this.userName = userName;
         this.password = password;
         this.posts = posts;
     }
@@ -35,12 +35,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

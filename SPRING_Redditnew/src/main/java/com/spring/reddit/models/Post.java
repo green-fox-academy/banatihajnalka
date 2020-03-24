@@ -22,7 +22,15 @@ public class Post {
 
     public Post() {
         this.creationDate = LocalDate.now();
-        this.vote = 0;
+        this.vote = 1;
+    }
+
+    public Post(String title, String link, User user) {
+        this.vote = 1;
+        this.title = title;
+        this.link = link;
+        this.creationDate = LocalDate.now();
+        this.user = user;
     }
 
     public Post(String title, String link) {
@@ -70,6 +78,14 @@ public class Post {
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 
