@@ -35,53 +35,62 @@ public class PostService {
         postRepository.save(post);
     }
 
-//    public Post findById(Long id) {
-//        Optional<Post> t = postRepository.findById(id);
-//        todo.get().
-//        return todo.orElse(null);
-//    }
-
     public void increasePostVote(Long id, String userName) {
         Optional<Post> optionalPost = postRepository.findById(id);
-        if (optionalPost.isPresent()) {
+        Optional<User> optionalUser = userRepository.findUserByUserName(userName);
+        if (optionalPost.isPresent() && optionalUser.isPresent()) {
             Post post = optionalPost.get();
-            Optional<User> optionalUser = userRepository.findUserByUserName(userName);
-            if (optionalUser.isPresent()) {
-                User user = optionalUser.get();
-                if (!isVotedForThisPost(id, userName, post)) {
-                    post.setVote(post.getVote() + 1);
-                    Vote newVote = new Vote(1, user, post);
-                    post.addVotes(newVote);
-                    postRepository.save(post);
+            User user = optionalUser.get();
+            List<Post> userPosts = user.getPosts();
+            if (!userPosts.contains(post) && (!isVoted(id, userName))) {
+                post.setVote(post.getVote() + 1);
+                Vote newVote = new Vote(1, user, post);
+                post.addVotes(newVote);
+                postRepository.save(post);
+            } else {
+                List<Vote> votes = post.getVotes();
+                for (Vote vote : votes) {
+                    if (vote.getVote() == -1) {
+                        post.setVote(post.getVote() + 2);
+                        postRepository.save(post);
+                    }
                 }
             }
         }
     }
 
-    private boolean isVotedForThisPost(Long id, String username, Post post) {
-        Optional<User> currentUser = userRepository.findUserByUserName(username);
-        if (currentUser.isPresent()) {
-            List<Post> posts = currentUser.get().getPosts();
-            if (posts.contains(post)) {
-                return true;
+    public void decreasePostVote(Long id, String userName) {
+        Optional<Post> optionalPost = postRepository.findById(id);
+        Optional<User> optionalUser = userRepository.findUserByUserName(userName);
+        if (optionalPost.isPresent() && optionalUser.isPresent()) {
+            Post post = optionalPost.get();
+            User user = optionalUser.get();
+            List<Post> userPosts = user.getPosts();
+            if (!userPosts.contains(post) && (!isVoted(id, userName))) {
+                post.setVote(post.getVote() - 1);
+                Vote newVote = new Vote(-1, user, post);
+                post.addVotes(newVote);
+                postRepository.save(post);
+            } else {
+                List<Vote> votes = post.getVotes();
+                for (Vote vote : votes) {
+                    if (vote.getVote() == 1) {
+                        post.setVote(post.getVote() - 2);
+                        postRepository.save(post);
+                    }
+                }
             }
-            List<Vote> votes = post.getVotes();
+        }
+    }
+
+    private boolean isVoted(Long id, String userName) {
+        Optional<Post> optionalPost = postRepository.findById(id);
+        List<Vote> votes = optionalPost.get().getVotes();
             for (Vote vote : votes) {
-                if (vote.getUser().getUserName().equals(username)) {
+                if (vote.getUser().getUserName().equals(userName)) {
                     return true;
                 }
             }
-        }
-        return false;
-    }
-
-
-    public void decreasePostVote(Long id) {
-        Optional<Post> optionalPost = postRepository.findById(id);
-        if (optionalPost.isPresent()) {
-            Post post = optionalPost.get();
-            post.setVote(post.getVote() - 1);
-            postRepository.save(post);
-        }
+            return false;
     }
 }
