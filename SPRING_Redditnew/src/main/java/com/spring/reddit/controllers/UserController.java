@@ -37,8 +37,6 @@ public class UserController {
     public String login(String userName, String password) {
         if (userService.isExistsByUserNameAndPassword(userName, password)) {
             return "redirect:/?userName=" + userName;
-//        }
-//            return userService.getLoginPath(userName, password);
         } else {
             return "redirect:/login";
         }

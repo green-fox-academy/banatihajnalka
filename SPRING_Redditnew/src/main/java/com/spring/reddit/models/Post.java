@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -18,11 +20,15 @@ public class Post {
     private LocalDate creationDate;
     @ManyToOne
     private User user;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Vote> votes;
+
 
 
     public Post() {
         this.creationDate = LocalDate.now();
         this.vote = 1;
+        votes = new ArrayList<>();
     }
 
     public Post(String title, String link, User user) {
@@ -31,6 +37,7 @@ public class Post {
         this.link = link;
         this.creationDate = LocalDate.now();
         this.user = user;
+        votes = new ArrayList<>();
     }
 
     public Post(String title, String link) {
@@ -38,6 +45,7 @@ public class Post {
         this.vote = 0;
         this.title = title;
         this.link = link;
+        votes = new ArrayList<>();
     }
 
     public Long getId() {
@@ -86,6 +94,18 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
+
+    public void addVotes(Vote vote) {
+        votes.add(vote);
     }
 }
 

@@ -2,6 +2,7 @@ package com.spring.reddit.controllers;
 
 import com.spring.reddit.models.Post;
 import com.spring.reddit.models.User;
+import com.spring.reddit.models.Vote;
 import com.spring.reddit.services.PostService;
 import com.spring.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,16 +48,16 @@ public class PostController {
         return "redirect:/?userName="+userName;
     }
 
-    @PostMapping("/{id}/increase")
-    public String increasePostVote(@PathVariable Long id) {
-        postService.increasePostVote(id);
-        return "redirect:/";
+    @PostMapping("/{userName}/{id}/increase")
+    public String increasePostVote(@PathVariable String userName, @PathVariable Long id) {
+        postService.increasePostVote(id, userName);
+        return "redirect:/?userName="+userName;
     }
 
-    @PostMapping("/{id}/decrease")
-    public String decreasePostVote(@PathVariable Long id) {
+    @PostMapping("/{userName}/{id}/decrease")
+    public String decreasePostVote(@PathVariable Long id, @PathVariable String userName) {
         postService.decreasePostVote(id);
-        return "redirect:/";
+        return "redirect:/?userName="+userName;
     }
 
 }

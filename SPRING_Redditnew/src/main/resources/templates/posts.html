@@ -15,12 +15,12 @@
                 <tr th:unless="${posts.size() == 0}" th:each="post : ${posts}" th:object="${post}">
                     <td th:text="*{vote}"></td>
                     <td>
-                        <form th:action="${post.id} + '/increase'" th:object="${post}" th:method="post">
+                        <form th:action="@{'/' + ${user.getUserName()} + '/' + ${post.id} + '/increase'}" th:object="${post}" th:method="post">
                             <button>+</button>
                         </form>
                     </td>
                     <td>
-                        <form th:action="${post.id} + '/decrease'" th:object="${post}" th:method="post">
+                        <form th:action="'/' + ${user.getUserName()} + '/' + ${post.id} + '/decrease'" th:object="${post}" th:method="post">
                             <button>-</button>
                         </form>
                     </td>

@@ -2,8 +2,10 @@ package com.spring.reddit.services;
 
 import com.spring.reddit.models.Post;
 import com.spring.reddit.models.User;
+import com.spring.reddit.models.Vote;
 import com.spring.reddit.repositories.PostRepository;
 import com.spring.reddit.repositories.UserRepository;
+import com.spring.reddit.repositories.VoteRepository;
 import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +28,7 @@ public class PostService {
     }
 
     public List<Post> findAll() {
-       return postRepository.findAllByOrderByVoteDesc();
+        return postRepository.findAllByOrderByVoteDesc();
     }
 
     public void addPost(Post post) {
@@ -39,14 +41,40 @@ public class PostService {
 //        return todo.orElse(null);
 //    }
 
-    public void increasePostVote(Long id) {
+    public void increasePostVote(Long id, String userName) {
         Optional<Post> optionalPost = postRepository.findById(id);
         if (optionalPost.isPresent()) {
             Post post = optionalPost.get();
-            post.setVote(post.getVote() + 1);
-            postRepository.save(post);
+            Optional<User> optionalUser = userRepository.findUserByUserName(userName);
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                if (!isVotedForThisPost(id, userName, post)) {
+                    post.setVote(post.getVote() + 1);
+                    Vote newVote = new Vote(1, user, post);
+                    post.addVotes(newVote);
+                    postRepository.save(post);
+                }
+            }
         }
     }
+
+    private boolean isVotedForThisPost(Long id, String username, Post post) {
+        Optional<User> currentUser = userRepository.findUserByUserName(username);
+        if (currentUser.isPresent()) {
+            List<Post> posts = currentUser.get().getPosts();
+            if (posts.contains(post)) {
+                return true;
+            }
+            List<Vote> votes = post.getVotes();
+            for (Vote vote : votes) {
+                if (vote.getUser().getUserName().equals(username)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     public void decreasePostVote(Long id) {
         Optional<Post> optionalPost = postRepository.findById(id);
@@ -56,5 +84,4 @@ public class PostService {
             postRepository.save(post);
         }
     }
-
 }
