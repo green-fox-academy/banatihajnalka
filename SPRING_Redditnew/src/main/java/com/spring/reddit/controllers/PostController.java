@@ -55,7 +55,7 @@ public class PostController {
     }
 
     @PostMapping("/{userName}/{id}/decrease")
-    public String decreasePostVote( @PathVariable String userName, @PathVariable Long id) {
+    public String decreasePostVote(@PathVariable String userName, @PathVariable Long id) {
         postService.decreasePostVote(id, userName);
         return "redirect:/?userName="+userName;
     }

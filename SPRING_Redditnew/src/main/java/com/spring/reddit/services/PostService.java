@@ -5,13 +5,9 @@ import com.spring.reddit.models.User;
 import com.spring.reddit.models.Vote;
 import com.spring.reddit.repositories.PostRepository;
 import com.spring.reddit.repositories.UserRepository;
-import com.spring.reddit.repositories.VoteRepository;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +48,7 @@ public class PostService {
                 for (Vote vote : votes) {
                     if (vote.getVote() == -1) {
                         post.setVote(post.getVote() + 2);
+                        vote.setVote(1);
                         postRepository.save(post);
                     }
                 }
@@ -76,6 +73,7 @@ public class PostService {
                 for (Vote vote : votes) {
                     if (vote.getVote() == 1) {
                         post.setVote(post.getVote() - 2);
+                        vote.setVote(-1);
                         postRepository.save(post);
                     }
                 }
@@ -86,11 +84,11 @@ public class PostService {
     private boolean isVoted(Long id, String userName) {
         Optional<Post> optionalPost = postRepository.findById(id);
         List<Vote> votes = optionalPost.get().getVotes();
-            for (Vote vote : votes) {
-                if (vote.getUser().getUserName().equals(userName)) {
-                    return true;
-                }
+        for (Vote vote : votes) {
+            if (vote.getUser().getUserName().equals(userName)) {
+                return true;
             }
-            return false;
+        }
+        return false;
     }
 }
