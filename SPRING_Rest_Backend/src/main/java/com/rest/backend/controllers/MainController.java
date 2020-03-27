@@ -1,6 +1,7 @@
 package com.rest.backend.controllers;
 
 import com.rest.backend.models.Doubling;
+import com.rest.backend.models.Greeter;
 import com.rest.backend.models.RestError;
 import com.rest.backend.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,19 @@ public class MainController {
         } else {
             Doubling doubling = restService.getDoubling(input);
             return ResponseEntity.status(200).body(doubling);
+        }
+    }
+
+    @GetMapping("/greeter")
+    private  ResponseEntity greeter(@RequestParam (required = false) String name, @RequestParam (required = false) String title) {
+        if (name == null && title == null) {
+            return ResponseEntity.status(400).body(new RestError("Please provide a name and a title!"));
+        } else if (name == null) {
+            return ResponseEntity.status(400).body(new RestError("Please provide a name!"));
+        } else if (title == null) {
+            return ResponseEntity.status(400).body(new RestError("Please provide a title!"));
+        } else {
+            return ResponseEntity.status(200).body(new Greeter("Oh, hi there " + name + ", my dear " + title + "!"));
         }
     }
 
