@@ -58,4 +58,17 @@ public class RestCont {
             return ResponseEntity.status(404).body(new RestError("No action found"));
         }
     }
+
+    @PostMapping("/arrays")
+    public ResponseEntity arrayHandler(@RequestBody Arrayhandler arrayhandler) {
+        if (arrayhandler.getWhat().equals("sum") || arrayhandler.getWhat().equals("multiply"))  {
+            return ResponseEntity.status(200).body(new Result(restService.doWithArrayToInteger(arrayhandler, arrayhandler.getWhat())));
+        } else if (arrayhandler.getWhat().equals("double")) {
+            return ResponseEntity.status(200).body(new ResultArray(restService.doubleArrayElements(arrayhandler.getNumbers())));
+        } else if (arrayhandler.getNumbers() == null) {
+            return ResponseEntity.status(400).body(new RestError("Please provide a number"));
+        } else {
+            return ResponseEntity.status(400).body(new RestError("Please provide what to do with the numbers!"));
+        }
+     }
 }

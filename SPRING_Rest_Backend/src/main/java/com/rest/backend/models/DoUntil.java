@@ -19,19 +19,5 @@ public class DoUntil {
         this.until = until;
     }
 
-    public Integer sum() {
-        int s = 0;
-        for (int i = 1; i <= until; i++) {
-            s += 1;
-        }
-        return s;
-    }
 
-    public Integer factor() {
-        int f = 1;
-        for (int i = 1; i <= until; i++) {
-            f *= i;
-        }
-        return f;
-    }
 }
