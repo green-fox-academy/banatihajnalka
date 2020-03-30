@@ -1,17 +1,24 @@
 package com.rest.backend.controllers;
 
 import com.rest.backend.models.*;
+import com.rest.backend.services.LogService;
 import com.rest.backend.services.RestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @RestController
 public class RestCont {
 
     private RestService restService;
+    private LogService logService;
 
-    public RestCont(RestService restService) {
+    @Autowired
+    public RestCont(RestService restService, LogService logService) {
         this.restService = restService;
+        this.logService = logService;
     }
 
     @GetMapping("/doubling")
@@ -20,6 +27,7 @@ public class RestCont {
             return ResponseEntity.status(200).body(new RestError("Please provide an input!"));
         } else {
             Doubling doubling = restService.getDoubling(input);
+            logService.addLog(new Log("/doubling", "input=" + input));
             return ResponseEntity.status(200).body(doubling);
         }
     }
@@ -33,6 +41,7 @@ public class RestCont {
         } else if (title == null) {
             return ResponseEntity.status(400).body(new RestError("Please provide a title!"));
         } else {
+            logService.addLog(new Log("/greeter", "name=" + name + "&" + "title=" + title));
             return ResponseEntity.status(200).body(new Greeter("Oh, hi there " + name + ", my dear " + title + "!"));
         }
     }
@@ -40,6 +49,7 @@ public class RestCont {
     @GetMapping("/appenda/{appendable}")
     public ResponseEntity append(@PathVariable String appendable) {
         AppendA appendA = restService.append(appendable);
+        logService.addLog(new Log("/appenda/" + appendable, "appendable"));
         return ResponseEntity.status(200).body(appendA);
     }
 
@@ -53,6 +63,7 @@ public class RestCont {
         if (until == null) {
             return ResponseEntity.status(400).body(new RestError("Please provide a number!"));
         } else if (action.equals("sum") || action.equals("factor")) {
+            logService.addLog(new Log("/dountil/" + action, "until=" + until.getUntil().toString()));
             return ResponseEntity.status(200).body(new Result(restService.doUntil(until, action)));
         } else {
             return ResponseEntity.status(404).body(new RestError("No action found"));
@@ -62,8 +73,10 @@ public class RestCont {
     @PostMapping("/arrays")
     public ResponseEntity arrayHandler(@RequestBody Arrayhandler arrayhandler) {
         if (arrayhandler.getWhat().equals("sum") || arrayhandler.getWhat().equals("multiply"))  {
+            logService.addLog(new Log("/arrays", "what=" + arrayhandler.getWhat() + "," + "numbers=" + Arrays.toString(arrayhandler.getNumbers())));
             return ResponseEntity.status(200).body(new Result(restService.doWithArrayToInteger(arrayhandler, arrayhandler.getWhat())));
         } else if (arrayhandler.getWhat().equals("double")) {
+            logService.addLog(new Log("/arrays", "what=" + arrayhandler.getWhat() + "," + "numbers=" + Arrays.toString(arrayhandler.getNumbers())));
             return ResponseEntity.status(200).body(new ResultArray(restService.doubleArrayElements(arrayhandler.getNumbers())));
         } else if (arrayhandler.getNumbers() == null) {
             return ResponseEntity.status(400).body(new RestError("Please provide a number"));
