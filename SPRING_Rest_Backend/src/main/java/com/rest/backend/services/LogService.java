@@ -5,6 +5,8 @@ import com.rest.backend.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LogService {
 
@@ -18,5 +20,11 @@ public class LogService {
     public void addLog(Log log) {
         logRepository.save(log);
     }
+
+    public List<Log> showLogs() {
+        return logRepository.findAll();
+    }
+
+
 
 }

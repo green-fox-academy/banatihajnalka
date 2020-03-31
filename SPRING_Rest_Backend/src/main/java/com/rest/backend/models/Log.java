@@ -1,12 +1,10 @@
 package com.rest.backend.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+//@Table(name = "entries")
 public class Log {
 
     @Id
@@ -23,6 +21,7 @@ public class Log {
     }
 
     public Log() {
+        this.createdAt = new Date();
     }
 
     public Long getLogId() {
