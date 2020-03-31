@@ -91,6 +91,27 @@ public class RestService {
         }
         return arrangedList.toString();
     }
+
+    public String teveTranslator(String text) {
+        int length = text.length();
+        int i = 0;
+        while (i < length) {
+            char characters = text.charAt(i);
+            if (isVowel(characters)) {
+                text =  String.join(characters + "v" + characters, text.split("" + characters, text.length()));
+                i += 3;
+                length += 2;
+            }
+            i++;
+        }
+        return text;
+    }
+
+    boolean isVowel(char character) {
+        return Arrays.asList('a', 'u', 'o', 'e', 'i', 'A', 'U', 'O', 'E', 'I',
+                'á', 'Á', 'é', 'É', 'Í', 'í', 'ó', 'Ó', 'ö', 'Ő', 'Ö', 'ő', 'ú',
+                'Ú', 'Ü', 'ü', 'ű', 'Ű').contains(character);
+    }
 }
 
 

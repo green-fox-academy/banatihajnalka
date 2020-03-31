@@ -106,4 +106,14 @@ public class RestCont {
         }
     }
 
+    @PostMapping("/translate")
+    public ResponseEntity teve(@RequestBody TextToTeve textToTeve) {
+        if (textToTeve == null) {
+            return ResponseEntity.status(400).body(new RestError("I can't translate that!"));
+        } else {
+            logService.addLog(new Log("POST/translate", textToTeve.getText() + ", " + textToTeve.getLang()));
+            return ResponseEntity.status(200).body(new TeveText(restService.teveTranslator(textToTeve.getText()), "teve"));
+        }
+    }
+
 }
