@@ -94,4 +94,16 @@ public class RestCont {
             return ResponseEntity.status(200).body(logResult);
         }
     }
+
+
+    @PostMapping("/sith")
+    public ResponseEntity sithTalk(@RequestBody TextToSith textToSith) {
+        if (textToSith == null) {
+            return ResponseEntity.status(400).body(new RestError("Feed me some text you have to, padawan young you are. Hmmm."));
+        } else {
+            logService.addLog(new Log("POST/sith", textToSith.getText()));
+            return ResponseEntity.status(200).body(new SithText(restService.translateSithText(textToSith.getText())));
+        }
+    }
+
 }

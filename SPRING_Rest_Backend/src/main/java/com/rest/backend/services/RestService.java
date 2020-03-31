@@ -3,7 +3,9 @@ package com.rest.backend.services;
 import com.rest.backend.models.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 @Service
@@ -55,7 +57,7 @@ public class RestService {
 
     private int sumArray(Integer[] numbers) {
         int sum = 0;
-        for(int i = 0; i < numbers.length; i++){
+        for (int i = 0; i < numbers.length; i++) {
             sum += numbers[i];
         }
         return sum;
@@ -70,11 +72,25 @@ public class RestService {
     }
 
     public Integer[] doubleArrayElements(Integer[] numbers) {
-       Integer[] result = new Integer[numbers.length];
-            for(int i = 0; i< numbers.length ; ++i) {
-                result[i]= numbers[i] *2;
+        Integer[] result = new Integer[numbers.length];
+        for (int i = 0; i < numbers.length; ++i) {
+            result[i] = numbers[i] * 2;
+        }
+        return result;
+    }
+
+    public String translateSithText(String text) {
+        String[] splitText = text.split(" ");
+        List<String> splitList = new ArrayList<String>(Arrays.asList(splitText));
+        List<String> arrangedList = new ArrayList<>();
+        for (int i = 1; i < splitList.size(); i += 2) {
+            arrangedList.add(splitList.get(i));
+            for (int j = 0; j < splitList.size(); j += 2) {
+                arrangedList.add(splitList.get(j));
             }
-            return result;
+        }
+        return arrangedList.toString();
     }
 }
+
 
