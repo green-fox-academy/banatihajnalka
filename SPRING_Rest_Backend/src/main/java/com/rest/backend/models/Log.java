@@ -1,5 +1,7 @@
 package com.rest.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ public class Log {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long logId;
+    @JsonIgnore
     private Date createdAt;
     private String endpoint;
     private String data;

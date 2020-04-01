@@ -4,10 +4,14 @@ import com.rest.backend.models.*;
 import com.rest.backend.services.LogService;
 import com.rest.backend.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 public class RestCont {
@@ -86,34 +90,40 @@ public class RestCont {
     }
 
     @GetMapping("/log")
-    public ResponseEntity getLogs() {
-        LogResult logResult = new LogResult(logService.showLogs(), logService.showLogs().size());
-        if (logResult == null) {
-            return ResponseEntity.status(400).body(new RestError("There is no log saved"));
+    public ResponseEntity getLogs(@RequestParam(value = "count", required = false) Integer count,
+                                  @RequestParam(value = "page", required = false) Integer page) {
+        if (count == null || page == null) {
+            LogResult logResult = new LogResult(logService.showLogs(), logService.showLogs().size());
+            if (logResult == null) {
+                return ResponseEntity.status(400).body(new RestError("There is no log saved"));
+            } else {
+                return ResponseEntity.status(200).body(logResult);
+            }
         } else {
-            return ResponseEntity.status(200).body(logResult);
+            List<Log> logs = logService.findAllPageCount(page, count).getContent();
+            return ResponseEntity.status(200).body(new PageList(logs, logService.showLogs().size()));
         }
     }
 
 
-    @PostMapping("/sith")
-    public ResponseEntity sithTalk(@RequestBody TextToSith textToSith) {
-        if (textToSith == null) {
-            return ResponseEntity.status(400).body(new RestError("Feed me some text you have to, padawan young you are. Hmmm."));
-        } else {
-            logService.addLog(new Log("POST/sith", textToSith.getText()));
-            return ResponseEntity.status(200).body(new SithText(restService.translateSithText(textToSith.getText())));
+        @PostMapping("/sith")
+        public ResponseEntity sithTalk (@RequestBody TextToSith textToSith){
+            if (textToSith == null) {
+                return ResponseEntity.status(400).body(new RestError("Feed me some text you have to, padawan young you are. Hmmm."));
+            } else {
+                logService.addLog(new Log("POST/sith", textToSith.getText()));
+                return ResponseEntity.status(200).body(new SithText(restService.translateSithText(textToSith.getText())));
+            }
         }
-    }
 
-    @PostMapping("/translate")
-    public ResponseEntity teve(@RequestBody TextToTeve textToTeve) {
-        if (textToTeve == null) {
-            return ResponseEntity.status(400).body(new RestError("I can't translate that!"));
-        } else {
-            logService.addLog(new Log("POST/translate", textToTeve.getText() + ", " + textToTeve.getLang()));
-            return ResponseEntity.status(200).body(new TeveText(restService.teveTranslator(textToTeve.getText()), "teve"));
+        @PostMapping("/translate")
+        public ResponseEntity teve (@RequestBody TextToTeve textToTeve){
+            if (textToTeve == null) {
+                return ResponseEntity.status(400).body(new RestError("I can't translate that!"));
+            } else {
+                logService.addLog(new Log("POST/translate", textToTeve.getText() + ", " + textToTeve.getLang()));
+                return ResponseEntity.status(200).body(new TeveText(restService.teveTranslator(textToTeve.getText()), "teve"));
+            }
         }
-    }
 
-}
+    }
