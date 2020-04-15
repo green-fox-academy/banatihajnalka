@@ -1,5 +1,6 @@
 # banatihajnalka
 
-https://github.com/banatihajnalka/todo-app
+[ToDo App](https://github.com/banatihajnalka/todo-app)
 
-https://github.com/banatihajnalka/p2p-chat
+[Peer to perr chat](https://github.com/banatihajnalka/p2p-chat)
+
