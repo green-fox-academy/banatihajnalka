@@ -13,4 +13,5 @@ public interface FoxRepository extends CrudRepository<Fox, Long> {
     List<Fox> findAll();
 
     Optional<Fox> findByName(String foxname);
+    Optional<Fox> findByUserUserId(Long userId);
 }

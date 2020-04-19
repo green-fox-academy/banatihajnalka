@@ -1,5 +1,6 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
+import com.greenfoxacademy.programmerfoxclub.models.User;
 import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import com.greenfoxacademy.programmerfoxclub.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +29,17 @@ public class MainControllerWithUser {
         } else if (!(userService.isExistsByName(name))) {
             return "login_with_user";
         } else {
-            model.addAttribute("fox", foxService.find(name));
-            model.addAttribute("toString", foxService.find(name).toString());
-            model.addAttribute("numOfTricks", foxService.find(name).numberOfTricks());
-            model.addAttribute("tricks", foxService.find(name).getTricks());
-            model.addAttribute("actions", foxService.find(name).isActionListIsEmpty() ? "There was no action yet." : foxService.find(name).getLatestFiveActions());
+            model.addAttribute("user", userService.findByName(name));
+            model.addAttribute("fox", userService.findUsersFox(name));
+//            model.addAttribute("toString", foxService.find(name).toString());
+//            model.addAttribute("numOfTricks", foxService.find(name).numberOfTricks());
+//            model.addAttribute("tricks", foxService.find(name).getTricks());
+//            model.addAttribute("actions", foxService.find(name).isActionListIsEmpty() ? "There was no action yet." : foxService.find(name).getLatestFiveActions());
 //            model.addAttribute("active", "index");
 //            model.addAttribute("actions", foxService.find(name).getActions());
 //            model.addAttribute("numOfActions", foxService.find(name).numberOfActions());
         }
-        return "index";
+        return "index_with_user";
     }
 
     @GetMapping("/login")

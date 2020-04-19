@@ -63,6 +63,7 @@ public class FoxService {
         return null;
     }
 
+
     public String date() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy. MMMM dd. HH:mm:ss");
