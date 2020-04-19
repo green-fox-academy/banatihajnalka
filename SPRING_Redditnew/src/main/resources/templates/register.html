@@ -10,10 +10,11 @@
 <div>
     <h1> Welcome to Reddit</h1>
     <p> Registration</p>
+    <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
     <form action="#" th:action="@{/register}"  method="post">
         <div>
             <label for="name">Name</label>
-            <input class="field"  id="name" name="userName" type="text" required>
+            <input class="field"  id="name" name="userName" type="text" th:value="${name}" required>
             <label for="password1">Password</label>
             <input class="field"  id="password1" name="password" type="text" required>
 <!--            <label for="password2">Password again</label>-->

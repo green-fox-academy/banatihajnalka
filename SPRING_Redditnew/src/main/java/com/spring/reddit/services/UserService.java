@@ -36,7 +36,7 @@ public class UserService {
     }
 
     public void add(User user) {
-        userRepository.save(user);
+            userRepository.save(user);
     }
 
     public User findUserByName(String userName) {

@@ -4,6 +4,7 @@ import com.spring.reddit.models.User;
 import com.spring.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -23,9 +24,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute User user) {
-        userService.add(user);
-        return "redirect:/login";
+    public String register(@ModelAttribute User user, Model model) {
+        if (!userService.isExistsByName(user.getUserName())) {
+            userService.add(user);
+            return "redirect:/login";
+        } else {
+            model.addAttribute("error", "This username is already exists, please choose an other one");
+            model.addAttribute("name", user.getUserName());
+            return "register";
+        }
     }
 
     @GetMapping("/login")
