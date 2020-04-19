@@ -16,7 +16,7 @@ public class Fox {
     private List<Trick> tricks;
     private String food;
     private String drink;
-    @OneToMany
+    @OneToMany(targetEntity = Action.class)
     private List<String> actions;
 //    private List<String> notKnownTricks;
     @ManyToOne
