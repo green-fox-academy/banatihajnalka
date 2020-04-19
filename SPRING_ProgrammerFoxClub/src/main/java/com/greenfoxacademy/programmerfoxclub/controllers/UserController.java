@@ -1,5 +1,6 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
+import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import com.greenfoxacademy.programmerfoxclub.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
     private UserService userService;
+    private FoxService foxService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, FoxService foxService) {
         this.userService = userService;
+        this.foxService = foxService;
     }
-
 
     @GetMapping("/register")
     public String renderRegisterPage(Model model) {
@@ -25,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(Model model, @RequestParam String username, @RequestParam String password, @RequestParam String password2) {
+    public String saveUser(Model model, @RequestParam String username, @RequestParam String password, @RequestParam String password2, @RequestParam String foxname) {
         if (userService.isExistsByName(username)) {
             model.addAttribute("error", "Username already exists");
             return "register";
@@ -34,7 +36,8 @@ public class UserController {
             model.addAttribute("error", "Passwords do not match");
             return "register";
         }
-        userService.registerUser(username, password);
+//        foxService.add(foxname);
+        userService.registerUser(username, password, foxname);
         return "login";
     }
 }

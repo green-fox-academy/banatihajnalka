@@ -19,7 +19,7 @@ public class Fox {
     @OneToMany(targetEntity = Action.class)
     private List<String> actions;
 //    private List<String> notKnownTricks;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private User user;
 
     public Fox() {

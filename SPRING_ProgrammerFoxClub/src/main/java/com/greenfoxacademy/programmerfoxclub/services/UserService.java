@@ -11,10 +11,12 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository userRepository;
+    private FoxService foxService;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, FoxService foxService) {
         this.userRepository = userRepository;
+        this.foxService = foxService;
     }
 
     public boolean isExistsByName(String username) {
@@ -22,8 +24,10 @@ public class UserService {
         return user.isPresent();
     }
 
-    public User registerUser(String username, String password) {
-        return userRepository.save(new User(username, password));
+    public User registerUser(String username, String password, String foxname) {
+        User newUser = new User(username, password);
+        foxService.find(foxname).setUser(newUser);
+        return userRepository.save(newUser);
     }
 
 

@@ -27,12 +27,12 @@ public class ProgrammerFoxClubApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        trickRepository.save(new Trick("coding"));
-        trickRepository.save(new Trick("fly"));
-        trickRepository.save(new Trick("sing"));
-        trickRepository.save(new Trick("play"));
-        foxRepository.save(new Fox("Karak", "meat", "water"));
-        foxRepository.save(new Fox("Vuk"));
+//        trickRepository.save(new Trick("coding"));
+//        trickRepository.save(new Trick("fly"));
+//        trickRepository.save(new Trick("sing"));
+//        trickRepository.save(new Trick("play"));
+//        foxRepository.save(new Fox("Karak", "meat", "water"));
+//        foxRepository.save(new Fox("Vuk"));
         foxRepository.save(new Fox("Csele"));
     }
 }
