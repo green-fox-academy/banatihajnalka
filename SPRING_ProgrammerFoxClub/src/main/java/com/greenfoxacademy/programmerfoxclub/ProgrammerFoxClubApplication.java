@@ -33,6 +33,6 @@ public class ProgrammerFoxClubApplication implements CommandLineRunner {
 //        trickRepository.save(new Trick("play"));
 //        foxRepository.save(new Fox("Karak", "meat", "water"));
 //        foxRepository.save(new Fox("Vuk"));
-        foxRepository.save(new Fox("Csele"));
+//        foxRepository.save(new Fox("Csele"));
     }
 }

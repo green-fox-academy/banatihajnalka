@@ -36,8 +36,8 @@ public class UserController {
             model.addAttribute("error", "Passwords do not match");
             return "register";
         }
-//        foxService.add(foxname);
         userService.registerUser(username, password, foxname);
-        return "login";
+        return "login_with_user";
+//        return "login";
     }
 }

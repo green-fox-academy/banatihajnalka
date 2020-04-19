@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <h1> Welcome to Programmer Fox Club </h1>
+    <p> Please login, and check your pet(s)! </p>
+    <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
+    <form action="#" th:action="@{/login}" th:method="post">
+        <div>
+            <label for="name">Name</label>
+            <input class="field"  id="name" name="name" type="text" >
+            <label for="password">Password</label>
+            <input class="field"  id="password" name="password" type="text" >
+            <button type="submit">Go</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

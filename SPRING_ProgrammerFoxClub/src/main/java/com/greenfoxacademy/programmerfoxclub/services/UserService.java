@@ -26,9 +26,13 @@ public class UserService {
 
     public User registerUser(String username, String password, String foxname) {
         User newUser = new User(username, password);
+        foxService.add(foxname);
         foxService.find(foxname).setUser(newUser);
         return userRepository.save(newUser);
     }
 
-
+    public boolean isValidUser(String name, String password) {
+        Optional<User> user = userRepository.findByUsername(name);
+        return user.isPresent() && user.get().getPassword().equals(password);
+    }
 }
