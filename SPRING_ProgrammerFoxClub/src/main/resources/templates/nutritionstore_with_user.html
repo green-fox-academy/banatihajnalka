@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Nutrition Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="en"/>
+    <!--    <link rel="stylesheet" th:href="@{/useful.css}"  type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a th:href="'/?name=' + ${user.username}"> Information </a>
+                </li>
+                <li>
+                    <a th:href="'/nutritionstore?name='+ ${fox.name}"> Nutrition Store </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div>
+    <form action="#" th:action="@{/nutritionstore}" th:method="post">
+        <label class="form-title" for="food">Food:</label>
+        <select id="food" name="food" th:style="'text-transform: lowercase'">
+            <option th:each="food : ${foods}" th:selected="(${food} == ${fox.food})" th:text="${food}"
+                    th:style="'text-transform: lowercase'"></option>
+        </select>
+        <label class="form-title" for="drink">Drink:</label>
+        <select id="drink" name="drink" th:style="'text-transform: lowercase'">
+            <option th:each="drink : ${drinks}" th:selected="(${drink} == ${fox.drink})" th:text="${drink}"
+                    th:style="'text-transform: lowercase'"></option>
+        </select>
+        <input type="hidden" name="name" th:value="${fox.name}">
+        <button type="submit">Change</button>
+    </form>
+</div>
+</body>
+</html>

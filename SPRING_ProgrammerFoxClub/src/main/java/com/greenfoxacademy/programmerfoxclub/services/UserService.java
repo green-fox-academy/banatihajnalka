@@ -50,4 +50,9 @@ public class UserService {
         Optional<Fox> fox = foxRepository.findByUserUserId(user.getUserId());
         return fox.orElse(null);
     }
+
+    public User findByFoxName(String name) {
+        Fox fox = foxService.find(name);
+        return fox.getUser();
+    }
 }
