@@ -54,9 +54,9 @@ public class FoxService {
         }
     }
 
-    public Fox find(String name) {
+    public Fox find(String foxname) {
         for (Fox fox : foxRepository.findAll()) {
-            if (fox.getName().equals(name)) {
+            if (fox.getName().equals(foxname)) {
                 return fox;
             }
         }
@@ -70,10 +70,10 @@ public class FoxService {
         return now.format(formatter);
     }
 
-    public void feedAndRecordChanges(String name, String food) {
-        String foodChange = date() + ": Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
-        find(name).addAction(foodChange);
-        find(name).setFood(food.toLowerCase());
+    public void feedAndRecordChanges(String foxname, String food) {
+        String foodChange = date() + ": Food has been changed from: " + find(foxname).getFood() + " to " + food.toLowerCase();
+        find(foxname).addAction(foodChange);
+        find(foxname).setFood(food.toLowerCase());
     }
 
     public void drinkAndRecordChanges(String name, String drink) {
@@ -97,11 +97,13 @@ public class FoxService {
         List<Trick> notKnownTricks = trickRepository.findAll();
         List<Trick> foxTricks = new ArrayList<>();
         if (fox.getTricks() != null) {
-            foxTricks.add((Trick) fox.getTricks());
+            List<Trick> tricks = fox.getTricks();
+            foxTricks.addAll(tricks);
+            notKnownTricks.removeAll(foxTricks);
         }
-        notKnownTricks.removeAll(foxTricks);
         return notKnownTricks;
     }
+}
 
 
 //    public int knowsAll() {
@@ -111,9 +113,6 @@ public class FoxService {
     //    public List<String> getNotKnownTricks() {
 //        return notKnownTricks;
 //    }
-
-
-}
 
 
 

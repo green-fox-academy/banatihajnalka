@@ -1,5 +1,6 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
+import com.greenfoxacademy.programmerfoxclub.models.User;
 import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import com.greenfoxacademy.programmerfoxclub.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +23,24 @@ public class FoxControllerWithUser {
     }
 
     @GetMapping("/nutritionstore")
-    public String renderNutritionStorePage(@RequestParam(required = false) String name, Model model) {
-        if (name == null) {
+    public String renderNutritionStorePage(@RequestParam(required = false) String foxname, Model model) {
+        if (foxname == null) {
             return "redirect:/login";
         }
-        model.addAttribute("user", userService.findByFoxName(name));
-        model.addAttribute("fox", foxService.find(name));
-        model.addAttribute("foods", foxService.find(name).getFoodsList());
-        model.addAttribute("drinks", foxService.find(name).getDrinksList());
+        model.addAttribute("user", userService.findByFoxName(foxname));
+        model.addAttribute("fox", foxService.find(foxname));
+        model.addAttribute("foods", foxService.find(foxname).getFoodsList());
+        model.addAttribute("drinks", foxService.find(foxname).getDrinksList());
 //        model.addAttribute("active", "nutrition-store");
         return "nutritionstore_with_user";
     }
 
     @PostMapping("/nutritionstore")
-    public String addFoodAndDrink(@RequestParam (required = false) String name,  @RequestParam String food, @RequestParam String drink, Model model) {
-        foxService.feedAndRecordChanges(userService.findUsersFox(name).getName(), food);
-        foxService.drinkAndRecordChanges(userService.findUsersFox(name).getName(), drink);
-        return "redirect:/?name=" + name;
+    public String addFoodAndDrink(String name, String food, String drink, Model model) {
+        foxService.feedAndRecordChanges(name, food);
+        foxService.drinkAndRecordChanges(name, drink);
+        User user = userService.findByFoxName(name);
+        return "redirect:/?username=" + user.getUsername();
     }
 
     @GetMapping("/trickcenter")
