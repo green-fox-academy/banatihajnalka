@@ -3,8 +3,6 @@
 //        For example, there are  socks with colors . There is one pair of color  and one of color .
 //        There are three odd socks left, one of each color. The number of pairs is .
 
-
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
