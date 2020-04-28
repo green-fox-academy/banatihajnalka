@@ -70,10 +70,10 @@ public class FoxService {
         return now.format(formatter);
     }
 
-    public void feedAndRecordChanges(String foxname, String food) {
-        String foodChange = date() + ": Food has been changed from: " + find(foxname).getFood() + " to " + food.toLowerCase();
-        find(foxname).addAction(foodChange);
-        find(foxname).setFood(food.toLowerCase());
+    public void feedAndRecordChanges(String name, String food) {
+        String foodChange = date() + ": Food has been changed from: " + find(name).getFood() + " to " + food.toLowerCase();
+        find(name).addAction(foodChange);
+        find(name).setFood(food.toLowerCase());
     }
 
     public void drinkAndRecordChanges(String name, String drink) {
