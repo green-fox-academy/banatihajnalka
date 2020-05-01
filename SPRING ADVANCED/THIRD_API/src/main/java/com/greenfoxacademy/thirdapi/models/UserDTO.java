@@ -1,10 +1,9 @@
 package com.greenfoxacademy.thirdapi.models;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
 public class UserDTO {
     @NotNull
     @NotEmpty(message = "Firstname may not be empty")
@@ -14,6 +13,7 @@ public class UserDTO {
     private String lastName;
     @NotNull
     @NotEmpty(message = "Password may not be empty")
+    @Size(min = 8, max = 30)
     private String password;
     @NotNull
     @NotEmpty(message = "Password may not be empty")

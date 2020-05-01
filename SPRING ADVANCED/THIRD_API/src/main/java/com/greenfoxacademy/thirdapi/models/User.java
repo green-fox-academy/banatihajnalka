@@ -1,11 +1,13 @@
 package com.greenfoxacademy.thirdapi.models;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
+@EntityScan
 @Table(name = "users")
 class User {
 
@@ -14,17 +16,23 @@ class User {
     private Long userId;
     @NotNull
     @NotEmpty
-    @Size(min=8, max=30)
+    private String firstName;
+    @NotNull
+    @NotEmpty
+    private String lastName;
+    @NotNull
+    @NotEmpty
     private String password;
     @NotNull
     @NotEmpty
     private String email;
 
-
     public User() {
     }
 
-    public User(String password, String email) {
+    public User(String firstName, String lastName, String password, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.email = email;
     }
@@ -35,6 +43,22 @@ class User {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPassword() {
