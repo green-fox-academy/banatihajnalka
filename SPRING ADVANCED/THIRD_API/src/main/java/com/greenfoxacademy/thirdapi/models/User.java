@@ -1,25 +1,32 @@
 package com.greenfoxacademy.thirdapi.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
 class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private String username;
-    @OneToOne (cascade = CascadeType.ALL)
-    private Client client;
+    @NotNull
+    @NotEmpty
+    @Size(min=8, max=30)
+    private String password;
+    @NotNull
+    @NotEmpty
+    private String email;
+
 
     public User() {
     }
 
-    public User(String username, Client client) {
-        this.username = username;
-        this.client = client;
+    public User(String password, String email) {
+        this.password = password;
+        this.email = email;
     }
 
     public Long getUserId() {
@@ -30,19 +37,19 @@ class User {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Client getClient() {
-        return client;
+    public String getEmail() {
+        return email;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
