@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
-public class MainController {
+public class RegisterController {
 
     private UserService userService;
 
     @Autowired
-    public MainController(UserService userService) {
+    public RegisterController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping("/registration")
-    private String renderRegisterForm(WebRequest request, Model model) {
+    @GetMapping("/register")
+    private String renderRegisterForm(Model model) {
         model.addAttribute("user", new UserDTO());
         return "register";
     }

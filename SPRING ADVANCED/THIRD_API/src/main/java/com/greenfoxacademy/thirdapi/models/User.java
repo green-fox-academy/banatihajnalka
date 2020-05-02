@@ -7,30 +7,36 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@EntityScan
 @Table(name = "users")
 class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    @NotNull
-    @NotEmpty
+//    @NotNull
+//    @NotEmpty
     private String firstName;
-    @NotNull
-    @NotEmpty
+//    @NotNull
+//    @NotEmpty
     private String lastName;
-    @NotNull
-    @NotEmpty
+//    @NotNull
+//    @NotEmpty
     private String password;
-    @NotNull
-    @NotEmpty
+//    @NotNull
+//    @NotEmpty
     private String email;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String password, String email) {
+//    public User(@NotNull @NotEmpty String firstName, @NotNull @NotEmpty String lastName, @NotNull @NotEmpty String password, @NotNull @NotEmpty String email) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.password = password;
+//        this.email = email;
+//    }
+
+        public User(String firstName, String lastName, String password, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;

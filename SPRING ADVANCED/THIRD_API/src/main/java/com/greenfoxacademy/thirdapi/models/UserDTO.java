@@ -25,13 +25,21 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String firstName, String lastName, String password, String matchingPassword, String email) {
+    public UserDTO(@NotNull @NotEmpty(message = "Firstname may not be empty") String firstName, @NotNull @NotEmpty(message = "Lastname may not be empty") String lastName, @NotNull @NotEmpty(message = "Password may not be empty") @Size(min = 8, max = 30) String password, @NotNull @NotEmpty(message = "Password may not be empty") String matchingPassword, @NotNull @NotEmpty(message = "Email may not be empty") String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.matchingPassword = matchingPassword;
         this.email = email;
     }
+
+    //    public UserDTO(String firstName, String lastName, String password, String matchingPassword, String email) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.password = password;
+//        this.matchingPassword = matchingPassword;
+//        this.email = email;
+//    }
 
     public String getFirstName() {
         return firstName;
