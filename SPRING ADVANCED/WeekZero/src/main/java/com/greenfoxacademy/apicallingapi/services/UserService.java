@@ -1,6 +1,6 @@
 package com.greenfoxacademy.apicallingapi.services;
 
-import com.greenfoxacademy.apicallingapi.models.UserDTO;
+import com.greenfoxacademy.apicallingapi.models.dtos.UserDTO;
 
 public interface UserService {
 

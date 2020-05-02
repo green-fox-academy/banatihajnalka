@@ -1,4 +1,4 @@
-package com.greenfoxacademy.apicallingapi.models;
+package com.greenfoxacademy.apicallingapi.models.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

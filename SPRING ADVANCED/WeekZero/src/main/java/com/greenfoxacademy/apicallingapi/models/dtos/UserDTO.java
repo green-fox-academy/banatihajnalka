@@ -1,4 +1,4 @@
-package com.greenfoxacademy.apicallingapi.models;
+package com.greenfoxacademy.apicallingapi.models.dtos;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

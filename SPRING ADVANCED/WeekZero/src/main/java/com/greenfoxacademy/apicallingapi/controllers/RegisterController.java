@@ -1,6 +1,6 @@
 package com.greenfoxacademy.apicallingapi.controllers;
 
-import com.greenfoxacademy.apicallingapi.models.UserDTO;
+import com.greenfoxacademy.apicallingapi.models.dtos.UserDTO;
 import com.greenfoxacademy.apicallingapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
