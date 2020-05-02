@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
@@ -23,7 +25,7 @@ public class RegisterController {
     }
 
     @GetMapping
-    private String renderRegisterPage(Model model, @ModelAttribute UserDTO userDTO) {
+    private String renderRegisterPage(Model model, @Valid @ModelAttribute UserDTO userDTO) {
         model.addAttribute("user", userDTO);
         return "register";
     }

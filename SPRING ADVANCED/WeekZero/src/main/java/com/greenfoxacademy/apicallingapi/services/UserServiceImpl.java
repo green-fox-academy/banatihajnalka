@@ -30,4 +30,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(newUser);
     }
 
+    @Override
+    public boolean isValidUser(String userName, String password) {
+        Optional<User> user = userRepository.findByUserName(userName);
+        return user.isPresent() && user.get().getPassword().equals(password);
+    }
+
 }

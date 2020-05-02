@@ -7,4 +7,6 @@ public interface UserService {
     boolean userIsExists(String userName);
 
     void save(UserDTO userDTO);
+
+    boolean isValidUser(String userName, String password);
 }
