@@ -3,6 +3,7 @@ package com.greenfoxacademy.apicallingapi.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -13,6 +14,7 @@ public class User {
     private Long userId;
     @NotNull
     @NotEmpty
+    @Size(min=2, max=30)
     private String userName;
     @NotNull
     @NotEmpty

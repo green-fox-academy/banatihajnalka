@@ -2,6 +2,7 @@ package com.greenfoxacademy.apicallingapi.models;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class UserDTO {
@@ -18,6 +19,7 @@ public class UserDTO {
     private String matchingPassword;
     @NotNull
     @NotEmpty(message = "Email may not be empty")
+//    @Pattern(regexp = "^[@A-Z0-9]")
     private String email;
 
     public UserDTO() {

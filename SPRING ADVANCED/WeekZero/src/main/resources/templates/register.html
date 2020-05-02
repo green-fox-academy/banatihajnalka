@@ -9,6 +9,7 @@
     <div>
         <label> UserName </label>
         <input type=text name="userName" th:value="*{userName}">
+        <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</p>
     </div>
     <div>
         <label> Email </label>
