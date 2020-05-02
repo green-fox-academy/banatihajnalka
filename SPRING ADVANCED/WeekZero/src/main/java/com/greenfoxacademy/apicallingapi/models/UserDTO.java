@@ -19,7 +19,7 @@ public class UserDTO {
     private String matchingPassword;
     @NotNull
     @NotEmpty(message = "Email may not be empty")
-//    @Pattern(regexp = "^[@A-Z0-9]")
+//    @Pattern(regexp = "^[_A-Za-z0-9-+]+ + (.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)* (.[A-Za-z]{2,})$")
     private String email;
 
     public UserDTO() {

@@ -7,20 +7,24 @@
 <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
 <form action="#" th:action="@{/register}" th:object="${user}" method="POST">
     <div>
-        <label> UserName </label>
-        <input type=text name="userName" th:value="*{userName}">
-        <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</p>
+        <label> Username </label>
+        <br>
+        <input type="text" name="userName" th:value="*{userName}">
+<!--        <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</p>-->
     </div>
     <div>
         <label> Email </label>
+        <br>
         <input type="email" name="email" th:value="*{email}"/>
     </div>
     <div>
         <label> Password </label>
+        <br>
         <input type="password" name="password" th:value="*{password}"/>
     </div>
     <div>
         <label> Confirm password </label>
+        <br>
         <input type="password" name=matchingPassword th:value="*{matchingPassword}"/>
     </div>
     <button type="submit">Submit</button>

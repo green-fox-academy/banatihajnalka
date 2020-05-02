@@ -13,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     @NotNull
-    @NotEmpty
+    @NotEmpty//
     @Size(min=2, max=30)
     private String userName;
     @NotNull
