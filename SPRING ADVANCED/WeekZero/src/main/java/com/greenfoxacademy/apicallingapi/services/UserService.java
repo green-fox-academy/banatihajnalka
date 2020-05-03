@@ -4,9 +4,12 @@ import com.greenfoxacademy.apicallingapi.models.dtos.UserDTO;
 
 public interface UserService {
 
-    boolean userIsExists(String userName);
+    boolean userIsExistsByName(String userName);
+
+    boolean userIsExistsByEmail(String email);
 
     void save(UserDTO userDTO);
 
     boolean isValidUser(String userName, String password);
+
 }

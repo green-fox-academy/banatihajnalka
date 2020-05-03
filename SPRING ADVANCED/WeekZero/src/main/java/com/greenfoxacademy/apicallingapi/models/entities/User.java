@@ -40,7 +40,7 @@ public class User {
     public User() {
     }
 
-    public User(@NotNull @NotEmpty String userName, @NotNull @NotEmpty String password, @NotNull @NotEmpty String email) {
+    public User(@NotNull @NotEmpty @Size(min = 2, max = 30) String userName, @NotNull @NotEmpty @Size(max = 50) String password, @NotNull @NotEmpty @Size(max = 50) String email) {
         this.userName = userName;
         this.password = password;
         this.email = email;

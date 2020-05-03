@@ -27,7 +27,7 @@ public class LoginController {
 
     @PostMapping
     public String login(@RequestParam String userName, @RequestParam String password, Model model) {
-        if (!userService.userIsExists(userName)) {
+        if (!userService.userIsExistsByName(userName)) {
             model.addAttribute("error", "Invalid username");
             return "api";
         } else if (!userService.isValidUser(userName, password)) {

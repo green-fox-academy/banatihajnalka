@@ -33,7 +33,7 @@ public class RegisterController {
     @PostMapping
     public String saveUser(@ModelAttribute("user") @Valid UserDTO userDTO, RedirectAttributes redirect) {
 //                                ModelAndView HttpServletRequest request, Errors errors) {
-        if (!userService.userIsExists(userDTO.getUserName())) {
+        if (!userService.userIsExistsByName(userDTO.getUserName())) {
             userService.save(userDTO);
             return "login";
         } else {
