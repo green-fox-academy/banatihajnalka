@@ -1,6 +1,7 @@
 package com.greenfoxacademy.apicallingapi.security.jwt;
 
 import com.greenfoxacademy.apicallingapi.security.services.UserDetailsServiceImpl;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,7 +25,7 @@ public class AuthTokenFilter<JwUtils> extends OncePerRequestFilter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

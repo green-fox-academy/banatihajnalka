@@ -20,12 +20,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean userIsExistsByName(String userName) {
-       return userRepository.isExistsByUserName(userName);
+        Optional<User> optionalUser = userRepository.findByUserName(userName);
+        return optionalUser.isPresent();
     }
 
     @Override
     public boolean userIsExistsByEmail(String email) {
-        return userRepository.isExistsByEmail(email);
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        return optionalUser.isPresent();
     }
 
     @Override
