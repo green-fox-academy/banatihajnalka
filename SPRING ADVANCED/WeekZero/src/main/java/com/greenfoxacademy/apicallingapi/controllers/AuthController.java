@@ -50,14 +50,22 @@ public class AuthController {
         this.encoder = encoder;
         this.jwtUtils = jwtUtils;
     }
-//
-//    @PostMapping("/register")
-//    ResponseEntity<String> addUser(@Valid @RequestBody UserDTO user) {
-//        // persisting the user
-//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//        userService.save(user);
-//        return ResponseEntity.ok("User is valid");
-//    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+        if (userService.userIsExistsByName(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
+        if (userService.userIsExistsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+        userService.saveRequest(signUpRequest);
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws Exception {
@@ -73,7 +81,7 @@ public class AuthController {
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
+                .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(new JwtResponse(jwt,
@@ -81,24 +89,5 @@ public class AuthController {
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
-    }
-
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        if (userService.userIsExistsByName(signUpRequest.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
-        }
-
-        if (userService.userIsExistsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
-        }
-
-        userService.saveRequest(signUpRequest);
-
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }

@@ -31,8 +31,7 @@ public class RegisterController {
 
     @PostMapping
     public String saveUser(@ModelAttribute("user") @Valid UserDTO userDTO, RedirectAttributes redirect) {
-//                                ModelAndView HttpServletRequest request, Errors errors) {
-        if (!userService.userIsExistsByName(userDTO.getUserName())) {
+        if (!userService.userIsExistsByName(userDTO.getUserName()) && !userService.userIsExistsByEmail(userDTO.getEmail() )) {
             userService.save(userDTO);
             return "login";
         } else {
