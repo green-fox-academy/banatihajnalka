@@ -14,13 +14,10 @@ import com.greenfoxacademy.apicallingapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,16 +50,16 @@ public class AuthController {
         this.encoder = encoder;
         this.jwtUtils = jwtUtils;
     }
+//
+//    @PostMapping("/register")
+//    ResponseEntity<String> addUser(@Valid @RequestBody UserDTO user) {
+//        // persisting the user
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        userService.save(user);
+//        return ResponseEntity.ok("User is valid");
+//    }
 
-    @PostMapping("register")
-    ResponseEntity<String> addUser(@Valid @RequestBody UserDTO user) {
-        // persisting the user
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userService.save(user);
-        return ResponseEntity.ok("User is valid");
-    }
-
-    @PostMapping("/login")
+    @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws Exception {
 //        try {
 //        } catch (BadCredentialsException e) {
@@ -100,33 +97,7 @@ public class AuthController {
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-//         Create new user's account
-//        User user = new User(signUpRequest.getUsername(),
-//                signUpRequest.getPassword(), "USER", signUpRequest.getEmail());
-
-        Set<String> strRoles = signUpRequest.getRole();
-        Set<Role> roles = new HashSet<>();
-
-        if (strRoles == null) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-            roles.add(userRole);
-        } else {
-            strRoles.forEach(role -> {
-                if ("admin".equals(role)) {
-                    Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(adminRole);
-                } else {
-                    Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(userRole);
-                }
-            });
-        }
-//
-//        user.setRoles(roles);
-//        userService.save(user);
+        userService.saveRequest(signUpRequest);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
