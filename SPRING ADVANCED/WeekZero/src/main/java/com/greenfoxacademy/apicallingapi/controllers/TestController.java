@@ -10,6 +10,7 @@ public class TestController {
 
         @GetMapping("/all")
         public String allAccess() {
+
             return "Public Content.";
         }
 
