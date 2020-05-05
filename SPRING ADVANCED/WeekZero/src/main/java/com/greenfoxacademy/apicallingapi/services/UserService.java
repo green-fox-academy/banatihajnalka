@@ -1,7 +1,10 @@
 package com.greenfoxacademy.apicallingapi.services;
 
 import com.greenfoxacademy.apicallingapi.models.dtos.UserDTO;
+import com.greenfoxacademy.apicallingapi.models.entities.Role;
 import com.greenfoxacademy.apicallingapi.payload.SignUpRequest;
+
+import java.util.Set;
 
 public interface UserService {
 
@@ -16,4 +19,6 @@ public interface UserService {
     boolean isValidUser(String userName, String password);
 
     void saveRequest(SignUpRequest signUpRequest);
+
+    Set<Role> setRoleSet(Set<String> strRoles);
 }

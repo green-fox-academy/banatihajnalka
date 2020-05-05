@@ -34,7 +34,7 @@ public class LoginController {
             model.addAttribute("error", "Username and password do not match");
             return "login";
         } else {
-            return "redirect:/api/test/all";
+            return "redirect:/api/test/user";
         }
     }
 }

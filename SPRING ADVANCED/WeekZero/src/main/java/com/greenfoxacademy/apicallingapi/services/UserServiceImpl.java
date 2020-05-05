@@ -46,6 +46,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(UserDTO userDTO) {
         User newUser = new User(userDTO.getUserName(), userDTO.getPassword(), userDTO.getEmail());
+        Set<String> strRoles = new HashSet<>();
+        strRoles.add("ROLE_USER");
+        newUser.setRoles(setRoleSet(strRoles));
         userRepository.save(newUser);
     }
 
@@ -59,6 +62,12 @@ public class UserServiceImpl implements UserService {
     public void saveRequest(SignUpRequest signUpRequest) {
         User newUser = new User(signUpRequest.getUsername(), signUpRequest.getPassword(), signUpRequest.getEmail());
         Set<String> strRoles = signUpRequest.getRole();
+        newUser.setRoles(setRoleSet(strRoles));
+        userRepository.save(newUser);
+    }
+
+    @Override
+    public Set<Role> setRoleSet(Set<String> strRoles) {
         Set<Role> roles = new HashSet<>();
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
@@ -77,10 +86,7 @@ public class UserServiceImpl implements UserService {
                 }
             });
         }
-        newUser.setRoles(roles);
-        userRepository.save(newUser);
+        return roles;
     }
-
-//    setrole
 
 }
