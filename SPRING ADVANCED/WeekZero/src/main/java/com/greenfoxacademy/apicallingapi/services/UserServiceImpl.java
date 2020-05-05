@@ -8,6 +8,7 @@ import com.greenfoxacademy.apicallingapi.payload.SignUpRequest;
 import com.greenfoxacademy.apicallingapi.repositories.RoleRepository;
 import com.greenfoxacademy.apicallingapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -19,11 +20,14 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+    private PasswordEncoder encoder;;
+
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.encoder = encoder;
     }
 
     @Override
@@ -45,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserDTO userDTO) {
-        User newUser = new User(userDTO.getUserName(), userDTO.getPassword(), userDTO.getEmail());
+        User newUser = new User(userDTO.getUserName(), encoder.encode(userDTO.getPassword()), userDTO.getEmail());
         Set<String> strRoles = new HashSet<>();
         strRoles.add("ROLE_USER");
         newUser.setRoles(setRoleSet(strRoles));
@@ -60,7 +64,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveRequest(SignUpRequest signUpRequest) {
-        User newUser = new User(signUpRequest.getUsername(), signUpRequest.getPassword(), signUpRequest.getEmail());
+        User newUser = new User(signUpRequest.getUsername(), encoder.encode(signUpRequest.getPassword()), signUpRequest.getEmail());
         Set<String> strRoles = signUpRequest.getRole();
         newUser.setRoles(setRoleSet(strRoles));
         userRepository.save(newUser);

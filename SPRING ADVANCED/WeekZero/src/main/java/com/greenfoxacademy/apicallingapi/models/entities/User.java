@@ -24,12 +24,11 @@ public class User {
     private String userName;
     @NotNull
     @NotEmpty
-    @Size(max = 50)
+    @Size(max = 120)
     private String password;
     @NotNull
     @NotEmpty
     @Size(max = 50)
-
     private String email;
 
     @ManyToMany(fetch = FetchType.LAZY)
