@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("api/test/register")
+@RequestMapping("register")
 public class RegisterController {
 
     private UserService userService;
@@ -31,11 +31,13 @@ public class RegisterController {
 
     @PostMapping
     public String saveUser(@ModelAttribute("user") @Valid UserDTO userDTO, RedirectAttributes redirect) {
-        if (!userService.userIsExistsByName(userDTO.getUserName()) && !userService.userIsExistsByEmail(userDTO.getEmail() )) {
+        if (!userService.userIsExistsByName(userDTO.getUserName()) && !userService.userIsExistsByEmail(userDTO.getEmail())) {
+//                userService.arePasswordsMatching(userDTO.getPassword(), userDTO.getMatchingPassword()) )) {
             userService.save(userDTO);
             return "login";
         } else {
             redirect.addFlashAttribute("user", userDTO);
+            redirect.addFlashAttribute("error", "Username/email already exists");
             return "redirect:/";
         }
     }
