@@ -13,7 +13,7 @@ import java.util.Set;
         @UniqueConstraint(columnNames = {
                 "email"
         })})
-public class User {
+public class ApplicationUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,18 +29,18 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User() {
+    public ApplicationUser() {
         roles = new HashSet<>();
     }
 
-    public User(String username, String email, String password) {
+    public ApplicationUser(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
         roles = new HashSet<>();
     }
 
-    public User(String username, String email, String password, Set<Role> roles) {
+    public ApplicationUser(String username, String email, String password, Set<Role> roles) {
         this.username = username;
         this.email = email;
         this.password = password;
