@@ -1,7 +1,9 @@
-package com.greenfoxacademy.apicallingapi.services;
+package com.greenfoxacademy.apicallingapi.security.services;
 
-import com.greenfoxacademy.apicallingapi.models.dtos.CountryResponse;
+import com.greenfoxacademy.apicallingapi.models.dtos.CountryResponseDTO;
 import com.greenfoxacademy.apicallingapi.repositories.CountryRepository;
+import com.greenfoxacademy.apicallingapi.services.DataService;
+import com.greenfoxacademy.apicallingapi.services.RetrofitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;
@@ -24,9 +26,9 @@ public class CountyServiceImpl implements CountryService {
     }
 
     @Override
-    public List<CountryResponse> getCountries() throws IOException {
-        Call<List<CountryResponse>> retrofitCall = service.getCountries();
-        Response<List<CountryResponse>> response = retrofitCall.execute();
+    public List<CountryResponseDTO> getCountries() throws IOException {
+        Call<List<CountryResponseDTO>> retrofitCall = service.getCountries();
+        Response<List<CountryResponseDTO>> response = retrofitCall.execute();
 
         if (!response.isSuccessful()) {
             throw new IOException(response.errorBody() != null
