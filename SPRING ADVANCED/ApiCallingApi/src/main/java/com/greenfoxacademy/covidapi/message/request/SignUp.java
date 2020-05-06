@@ -6,7 +6,6 @@ import java.util.Set;
 public class SignUp {
 
     private String username;
-    @Email
     private String email;
     private String password;
     private Set<String> role;
