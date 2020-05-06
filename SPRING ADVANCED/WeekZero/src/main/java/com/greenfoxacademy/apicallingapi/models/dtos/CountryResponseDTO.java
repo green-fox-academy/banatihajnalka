@@ -1,62 +1,34 @@
 package com.greenfoxacademy.apicallingapi.models.dtos;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.greenfoxacademy.apicallingapi.models.entities.Country;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class CountryResponseDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @JsonProperty("Country")
-    private String country;
-    @JsonProperty("Slug")
-    private String slug;
-    @JsonProperty("ISO2")
-    private String iSO2;
+    private String result;
+    private List<Country> data;
 
     public CountryResponseDTO() {
     }
 
-    public CountryResponseDTO(String country, String slug, String iSO2) {
-        this.country = country;
-        this.slug = slug;
-        this.iSO2 = iSO2;
+    public CountryResponseDTO(String result, List<Country> data) {
+        this.result = result;
+        this.data = data;
     }
 
-    @JsonProperty("Country")
-    public String getCountry() {
-        return country;
+    public String getResult() {
+        return result;
     }
 
-    @JsonProperty("Country")
-    public void setCountry(String country) {
-        this.country = country;
+    public void setResult(String result) {
+        this.result = result;
     }
 
-    @JsonProperty("Slug")
-    public String getSlug() {
-        return slug;
+    public List<Country> getData() {
+        return data;
     }
 
-    @JsonProperty("Slug")
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setData(List<Country> data) {
+        this.data = data;
     }
-
-    @JsonProperty("ISO2")
-    public String getISO2() {
-        return iSO2;
-    }
-
-    @JsonProperty("ISO2")
-    public void setISO2(String iSO2) {
-        this.iSO2 = iSO2;
-    }
-
 }

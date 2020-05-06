@@ -1,6 +1,7 @@
 package com.greenfoxacademy.apicallingapi.security.services;
 
 import com.greenfoxacademy.apicallingapi.models.dtos.CountryResponseDTO;
+import com.greenfoxacademy.apicallingapi.models.entities.Country;
 import com.greenfoxacademy.apicallingapi.repositories.CountryRepository;
 import com.greenfoxacademy.apicallingapi.services.DataService;
 import com.greenfoxacademy.apicallingapi.services.RetrofitService;
@@ -26,9 +27,9 @@ public class CountyServiceImpl implements CountryService {
     }
 
     @Override
-    public List<CountryResponseDTO> getCountries() throws IOException {
-        Call<List<CountryResponseDTO>> retrofitCall = service.getCountries();
-        Response<List<CountryResponseDTO>> response = retrofitCall.execute();
+    public List<Country> getCountries() throws IOException {
+        Call<List<Country>> retrofitCall = service.getCountries();
+        Response<List<Country>> response = retrofitCall.execute();
 
         if (!response.isSuccessful()) {
             throw new IOException(response.errorBody() != null
