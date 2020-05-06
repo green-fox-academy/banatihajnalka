@@ -1,8 +1,8 @@
-package com.greenfoxacademy.apicallingapi.models.entities;
+package com.greenfoxacademy.apicallingapi.models.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Countries {
+public class CountryResponse {
 
     @JsonProperty("Country")
     private String country;
