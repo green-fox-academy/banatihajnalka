@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/register")
+@RequestMapping("register")
 public class RegisterController {
 
     private UserService userService;
@@ -25,19 +24,20 @@ public class RegisterController {
     }
 
     @GetMapping
-    private String renderRegisterPage(WebRequest request, Model model, @ModelAttribute UserDTO userDTO) {
+    private String renderRegisterPage(Model model, @ModelAttribute UserDTO userDTO) {
         model.addAttribute("user", userDTO);
         return "register";
     }
 
     @PostMapping
     public String saveUser(@ModelAttribute("user") @Valid UserDTO userDTO, RedirectAttributes redirect) {
-//                                ModelAndView HttpServletRequest request, Errors errors) {
-        if (!userService.userIsExists(userDTO.getUserName())) {
+        if (!userService.userIsExistsByName(userDTO.getUserName()) && !userService.userIsExistsByEmail(userDTO.getEmail())) {
+//                userService.arePasswordsMatching(userDTO.getPassword(), userDTO.getMatchingPassword()) )) {
             userService.save(userDTO);
             return "login";
         } else {
             redirect.addFlashAttribute("user", userDTO);
+            redirect.addFlashAttribute("error", "Username/email already exists");
             return "redirect:/";
         }
     }

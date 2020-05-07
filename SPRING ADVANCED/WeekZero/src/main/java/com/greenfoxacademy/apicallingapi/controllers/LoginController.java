@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("login")
 public class LoginController {
 
     private UserService userService;
@@ -27,14 +27,14 @@ public class LoginController {
 
     @PostMapping
     public String login(@RequestParam String userName, @RequestParam String password, Model model) {
-        if (!userService.userIsExists(userName)) {
+        if (!userService.userIsExistsByName(userName)) {
             model.addAttribute("error", "Invalid username");
-            return "api";
+            return "login";
         } else if (!userService.isValidUser(userName, password)) {
             model.addAttribute("error", "Username and password do not match");
-            return "api";
+            return "login";
         } else {
-            return "redirect:/?username=" + userName;
+            return "redirect:/api/test/user";
         }
     }
 }

@@ -24,7 +24,7 @@ public class User {
     private String userName;
     @NotNull
     @NotEmpty
-    @Size(max = 50)
+    @Size(max = 120)
     private String password;
     @NotNull
     @NotEmpty
@@ -38,13 +38,21 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     public User() {
+        roles = new HashSet<>();
     }
 
-    public User(@NotNull @NotEmpty String userName, @NotNull @NotEmpty String password, @NotNull @NotEmpty String email) {
+    public User(String userName, String password, String email) {
         this.userName = userName;
         this.password = password;
         this.email = email;
+       roles = new HashSet<>();
     }
+
+//    public User(@NotNull @NotEmpty @Size(min = 2, max = 30) String username, @NotNull @NotEmpty @Size(max = 50) String password, @NotNull @NotEmpty @Size(max = 50) String email) {
+//        this.userName = username;
+//        this.password = password;
+//        this.email = email;
+//    }
 
     public Long getUserId() {
         return userId;
@@ -54,12 +62,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.userName = username;
     }
 
     public String getPassword() {

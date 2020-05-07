@@ -23,7 +23,7 @@ public class MainController {
     public String showMain(Model model, @RequestParam(required = false) String username) {
         if (username == null) {
             return "login";
-        } else if (!(userService.userIsExists(username))) {
+        } else if (!(userService.userIsExistsByName(username))) {
             return "register";
         }
         return "api";
