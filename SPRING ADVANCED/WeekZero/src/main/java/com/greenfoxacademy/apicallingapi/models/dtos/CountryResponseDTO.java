@@ -5,30 +5,20 @@ import java.util.List;
 
 public class CountryResponseDTO {
 
-    private String result;
-    private List<Country> data;
+    private List<Country> countries;
 
     public CountryResponseDTO() {
     }
 
-    public CountryResponseDTO(String result, List<Country> data) {
-        this.result = result;
-        this.data = data;
+    public CountryResponseDTO(List<Country> countries) {
+        this.countries = countries;
     }
 
-    public String getResult() {
-        return result;
+    public List<Country> getCountries() {
+        return countries;
     }
 
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public List<Country> getData() {
-        return data;
-    }
-
-    public void setData(List<Country> data) {
-        this.data = data;
+    public void setCountries(List<Country> countries) {
+        this.countries = countries;
     }
 }

@@ -23,8 +23,18 @@ public class Country {
     public Country() {
     }
 
-    public Country(String country) {
+    public Country(String country, String slug, String iSO2) {
         this.country = country;
+        this.slug = slug;
+        this.iSO2 = iSO2;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCountry() {
@@ -33,5 +43,21 @@ public class Country {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public String getiSO2() {
+        return iSO2;
+    }
+
+    public void setiSO2(String iSO2) {
+        this.iSO2 = iSO2;
     }
 }

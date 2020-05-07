@@ -1,6 +1,5 @@
 package com.greenfoxacademy.apicallingapi.security.services;
 
-import com.greenfoxacademy.apicallingapi.models.dtos.CountryResponseDTO;
 import com.greenfoxacademy.apicallingapi.models.entities.Country;
 import com.greenfoxacademy.apicallingapi.repositories.CountryRepository;
 import com.greenfoxacademy.apicallingapi.services.DataService;

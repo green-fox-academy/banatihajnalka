@@ -6,7 +6,6 @@ import com.greenfoxacademy.apicallingapi.security.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class DataController {
     @GetMapping("/countries")
     public ResponseEntity getCountries() throws IOException {
         List<Country> countries =  countryService.getCountries();
-        return ResponseEntity.status(200).body(new CountryResponseDTO("ok", countries));
+        return ResponseEntity.status(200).body(new CountryResponseDTO(countries));
     }
 
 
