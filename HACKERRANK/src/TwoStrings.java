@@ -8,7 +8,7 @@ public class TwoStrings {
 
   public static void main(String[] args) {
 
-    String s1 = "hi";
+    String s1 = "hiw";
     String s2 = "world";
 
     System.out.println(twoStrings(s1, s2));

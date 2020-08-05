@@ -1,4 +1,4 @@
-public class twoDArraysDs {
+public class TwoDArraysDs {
 
   public static void main(String[] args) {
 
